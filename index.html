@@ -760,6 +760,11 @@ const trainLightGeo=mergeList([-.65,.65].flatMap(x=>[
  {g:USPH_LO,c:0xff7680,x,y:1.13,z:4.12,sx:.07,sy:.07,sz:.05}
 ]));
 // Barreiras coloridas com peças fundidas em um único lote por tipo.
+// Luz frontal azul identifica os trens que se aproximam.
+const movingTrainSignal=mergeList([
+ {g:UBOX,c:0x2b4766,y:2.99,z:4.15,sx:1.0,sy:.24,sz:.07},
+ {g:UBOX,c:0x5ff1ff,y:3.0,z:4.20,sx:.82,sy:.12,sz:.035}
+]);
 const lowGeo=mergeList([
   {g:UBOX,c:0x27334b,y:.60,sx:2.2,sy:.48,sz:.42},
   {g:UBOX,c:0xffbd3d,y:.60,z:.23,sx:2.1,sy:.39,sz:.05},
@@ -804,6 +809,7 @@ function getObsMesh(type){
       m.add(body,freeze(new THREE.Mesh(trainLightGeo,VBM)));
       [-1,1].forEach(side=>{const stripe=new THREE.Mesh(trainStripeGeo,trainStripeMat);stripe.position.set(side*1.08,.72,0);stripe.rotation.y=side*Math.PI/2;m.add(freeze(stripe))});
       const ramp=freeze(new THREE.Mesh(rampGeo,VLM));m.add(ramp);m.userData.ramp=ramp;
+      const movingSignal=freeze(new THREE.Mesh(movingTrainSignal,VBM));m.add(movingSignal);m.userData.movingSignal=movingSignal;
       m.userData.body=body;
     }else m=new THREE.Mesh(type==='low'?lowGeo:highGeo,VLM);
     poolGrp.add(m);
@@ -822,7 +828,11 @@ function freeObs(o){o.m.visible=false;obsPool[o.type].push(o.m)}
 function freeCoin(c){c.m.visible=false;coinPool.push(c.m)}
 
 function addObs(type,lane,z){const m=getObsMesh(type);
-  m.position.set(LANES[lane],0,z);obs.push({m,lane,type,depth:type==='train'?8:.6,ramp:type==='train'&&m.userData.ramp.visible,hit:false})}
+  // Uma parte dos trens vem em direção ao jogador, numa velocidade moderada.
+  // No modo lava, os trens permanecem alinhados aos itens sobre seus tetos.
+  const moving=type==='train'&&mode!=='lava'&&z< -40&&!m.userData.ramp.visible&&Math.random()<.32;
+  if(type==='train')m.userData.movingSignal.visible=moving;
+  m.position.set(LANES[lane],0,z);obs.push({m,lane,type,depth:type==='train'?8:.6,ramp:type==='train'&&m.userData.ramp.visible,moveSpeed:moving?3.5:0,hit:false})}
 function addCoin(lane,z,y=1){let m=coinPool.pop();if(!m){m=new THREE.Mesh(coinGeo,coinMat);poolGrp.add(m)}
   m.material=mode==='nocoin'?bombMat:coinMat;m.position.set(LANES[lane],y,z);m.rotation.y=0;m.visible=true;coins.push({m,lane})}
 let nextZ=-60;
@@ -1153,9 +1163,9 @@ function loop(now){requestAnimationFrame(loop);
   updateBlasts(dt);
 
   if(state==='play'){
-    speed=Math.min(40,speed+dt*(dizzy>0?1.2:.35));const d=speed*dt;dist+=d;
+    speed=Math.min(26,speed+dt*(dizzy>0?.3:.10));const d=speed*dt;dist+=d;
     for(let i=0;i<NSEG;i++){const s=segs[i];s.position.z+=d;if(s.position.z>SEG*1.5)s.position.z-=SEG*NSEG}
-    for(let i=0;i<obs.length;i++)obs[i].m.position.z+=d;
+    for(let i=0;i<obs.length;i++){const o=obs[i];o.m.position.z+=d+(o.moveSpeed||0)*dt;}
     for(let i=tramps.length-1;i>=0;i--){const tr=tramps[i];tr.m.position.z+=d;if(tr.m.position.z>12){poolGrp.remove(tr.m);tramps.splice(i,1)}}
     if(globalEventStart!==null&&(globalEventType==='nuke'||growthTime<0)){const elapsed=(performance.now()-globalEventStart)/1000;if(elapsed>=0){globalEventStart=null;if(globalEventType==='nuke'){beginNuke(now);return}growthTime=0;throwTarget=null;thrownDone=false}else{$('growthNotice').style.display='block';$('growthNotice').textContent='Evento global em '+Math.ceil(-elapsed)+'s'}}
     if(growthTime>=0&&growthTime<10){
@@ -1393,5 +1403,5 @@ $('nukeToggle').onclick=async()=>{const button=$('nukeToggle');button.disabled=t
 accountView();
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5bed5279eaaf637',t:'MTc5NDkxOTUyNw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5bed5279eaaf637',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5bedf6249b8f624',t:'MTc5NDkxOTk0Ng=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5bedf6249b8f624',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
