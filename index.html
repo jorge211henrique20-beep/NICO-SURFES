@@ -851,7 +851,8 @@ function pickThrowTarget(){
   if(mode==='lava'){
     const targetZ=-(28+speed*2.3);const trains=obs.filter(o=>o.type==='train'&&o.m.position.z < targetZ+14&&o.m.position.z > targetZ-14).sort((a,b)=>Math.abs(a.m.position.z-targetZ)-Math.abs(b.m.position.z-targetZ));
     if(trains.length)return {lane:trains[0].lane,z:trains[0].m.position.z,base:TOP};
-    return null;
+    const fallback=obs.filter(o=>o.type==='train'&&!o.broken&&o.m.position.z < -15).sort((a,b)=>Math.abs(a.m.position.z-targetZ)-Math.abs(b.m.position.z-targetZ))[0];
+    return fallback?{lane:fallback.lane,z:fallback.m.position.z,base:TOP}:null;
   }
   const startZ=-(28+speed*2.3);for(let z=startZ;z>=startZ-20;z-=4)for(let lane=0;lane<3;lane++){
     if(!obs.some(o=>o.lane===lane&&Math.abs(o.m.position.z-z)<o.depth/2+3))return {lane,z,base:0};
@@ -958,13 +959,25 @@ let dizzy=0,invul=0,boardT=0,boards=1,shake=0,mode='normal',gY=0,lavaT=0,camY=0,
 let jetT=0,runBoards=1,drops=[],jetCamBlend=0,jetCamFollow=false,jetUsed=false,previousRampTrain=null;
 let growthArmed=false,growthEnabled=false,growthTime=-1,trampsActive=false,tramps=[],trampTimeLeft=0;
 let cutStart=0,cutTarget=null,cutCamStart=new THREE.Vector3(),cutLookStart=new THREE.Vector3(),cutDest=new THREE.Vector3(),cutLookDest=new THREE.Vector3();
-function beginCutscene(target,now){cutTarget=target;cutStart=now;cutCamStart.copy(cam.position);cutLookStart.copy(look);cutDest.set(target.m.position.x+3,target.base+3.1,target.m.position.z+6);cutLookDest.set(target.m.position.x,target.base+.3,target.m.position.z);state='cutscene';giant.visible=false;flyingTramp.visible=false;$('cutMsg').style.display='block';$('growthNotice').style.display='none'}
+function beginCutscene(target,now){cutTarget=target;cutStart=now;cutCamStart.copy(cam.position);cutLookStart.copy(look);cutDest.set(target.m.position.x+3,target.base+3.1,target.m.position.z+6);cutLookDest.set(target.m.position.x,target.base+.3,target.m.position.z);state='cutscene';giant.visible=false;flyingTramp.visible=false;$('adminOverlay').style.display='none';$('cutMsg').innerHTML='Olha o trampolim!<br><small>Jogo pausado</small>';$('cutMsg').style.display='block';$('growthNotice').style.display='none'}
 function playCutscene(now){const elapsed=Math.max(0,(now-cutStart)/1000);const msg=$('cutMsg');
   if(elapsed<3){const p=Math.min(1,elapsed/1.25),smooth=p*p*(3-2*p);cam.position.copy(cutCamStart).lerp(cutDest,smooth);look.copy(cutLookStart).lerp(cutLookDest,smooth);msg.innerHTML='Olha o trampolim!<br><small>Jogo pausado</small>'}
   else if(elapsed<6){const left=Math.ceil(6-elapsed),p=Math.max(0,Math.min(1,(elapsed-4.7)/1.3)),smooth=p*p*(3-2*p);cam.position.copy(cutDest).lerp(cutCamStart,smooth);look.copy(cutLookDest).lerp(cutLookStart,smooth);msg.innerHTML='▶ O jogo despausa em <b>'+left+'</b>';}
   else{cam.position.copy(cutCamStart);look.copy(cutLookStart);msg.style.display='none';state='play';last=now;cutTarget=null}
   cam.lookAt(look);ren.render(scene,cam);
 }
+// Os lotes da cidade desabam e se reconstroem, sem criar novas geometrias.
+function prepareCinematicCity(){const parts=[];segs.forEach((seg,si)=>seg.userData.cinematicObstacles.forEach((mesh,mi)=>parts.push({mesh,visible:mesh.visible,pos:mesh.position.clone(),rot:mesh.rotation.clone(),scale:mesh.scale.clone(),delay:((si*3+mi)%5)*.055})));return parts}
+function animateCinematicCity(parts,elapsed,total){
+ for(const item of parts){const {mesh,pos,rot,scale,delay}=item;
+   let fall=Math.max(0,Math.min(1,(elapsed-delay)/1.2));fall=fall*fall*(3-2*fall);
+   let rise=Math.max(0,Math.min(1,(elapsed-(total-1.6)-delay)/1.25));rise=rise*rise*(3-2*rise);
+   const collapse=fall*(1-rise);mesh.position.copy(pos);mesh.position.y=pos.y-collapse*.65;
+   mesh.scale.set(scale.x,Math.max(.001,scale.y*(1-collapse*.999)),scale.z);
+   mesh.rotation.set(rot.x+collapse*.035,rot.y,rot.z);mesh.updateMatrix();
+ }
+}
+function restoreCinematicCity(parts){for(const item of parts){const m=item.mesh;m.position.copy(item.pos);m.rotation.copy(item.rot);m.scale.copy(item.scale);m.visible=item.visible;m.updateMatrix()}}
 // Nave alienígena reutilizada para recolher os trampolins ao fim do evento.
 const ufoScene=new THREE.Group();scene.add(ufoScene);ufoScene.visible=false;
 const ufoShip=new THREE.Group();ufoScene.add(ufoShip);
@@ -974,26 +987,36 @@ const ufoRing=new THREE.Mesh(new THREE.TorusGeometry(2.1,.12,7,24),new THREE.Mes
 const ufoLampGeo=new THREE.SphereGeometry(.18,8,6),ufoLampMat=new THREE.MeshBasicMaterial({color:0xffe982});for(let i=0;i<8;i++){let a=i*Math.PI/4,m=new THREE.Mesh(ufoLampGeo,ufoLampMat);m.position.set(Math.cos(a)*2.1,-.1,Math.sin(a)*2.1);ufoShip.add(m)}
 const ufoBeam=new THREE.Mesh(new THREE.CylinderGeometry(.55,2.4,8,20,1,true),new THREE.MeshBasicMaterial({color:0x77fbe1,transparent:true,opacity:.27,depthWrite:false,side:THREE.DoubleSide}));ufoScene.add(ufoBeam);ufoBeam.visible=false;
 const ufoGhost=new THREE.Mesh(trampGeo,VLM);ufoScene.add(ufoGhost);ufoGhost.visible=false;
+// Naves adicionais compartilham geometria e materiais e são reaproveitadas.
+const ufoFleet=[];
+function fleetShip(i){if(!ufoFleet[i]){const ship=ufoShip.clone(),beam=ufoBeam.clone();ufoScene.add(ship,beam);ufoFleet[i]={ship,beam}}return ufoFleet[i]}
+function hideFleet(){for(const unit of ufoFleet){unit.ship.visible=false;unit.beam.visible=false}}
 let ufoStart=0,ufoTarget=null,ufoItems=[],ufoHidden=[];const ufoCamStart=new THREE.Vector3(),ufoLookStart=new THREE.Vector3();
-function hideUfo(){ufoScene.visible=false;ufoBeam.visible=false;ufoGhost.visible=false;for(const [mesh,visible] of ufoHidden)mesh.visible=visible;ufoHidden=[];ufoItems=[];ufoTarget=null}
+function hideUfo(){hideFleet();ufoScene.visible=false;ufoBeam.visible=false;ufoGhost.visible=false;restoreCinematicCity(ufoHidden);ufoHidden=[];ufoItems=[];ufoTarget=null}
 function beginUfo(now){
   trampTimeLeft=0;trampsActive=false;growthTime=-1;giant.visible=false;flyingTramp.visible=false;
   ufoStart=now;ufoCamStart.copy(cam.position);ufoLookStart.copy(look);ufoItems=tramps.map(tr=>({tr,y:tr.m.position.y,scale:tr.m.scale.clone()}));
   ufoTarget=tramps.filter(tr=>tr.m.position.z< -3&&tr.m.position.z> -32).sort((a,b)=>Math.abs(a.m.position.z+12)-Math.abs(b.m.position.z+12))[0]||null;
   const px=ufoTarget?ufoTarget.m.position.x:0,pz=ufoTarget?ufoTarget.m.position.z:-12,base=ufoTarget?ufoTarget.base:(mode==='lava'?TOP:0);
   ufoScene.position.set(px,base,pz);ufoShip.position.set(0,13,0);ufoBeam.position.set(0,6,0);ufoBeam.visible=false;ufoGhost.visible=!ufoTarget;ufoGhost.position.set(0,0,0);ufoGhost.scale.set(1,1,1);
-  ufoHidden=[];for(const seg of segs)for(const mesh of seg.userData.cinematicObstacles){ufoHidden.push([mesh,mesh.visible]);mesh.visible=false}
+  hideFleet();let index=0;
+  for(const item of ufoItems){if(item.tr===ufoTarget)continue;const unit=fleetShip(index++);item.unit=unit;unit.ship.visible=true;unit.beam.visible=false;
+    unit.ship.position.set(item.tr.m.position.x-px,item.tr.base-base+13,item.tr.m.position.z-pz);
+    unit.beam.position.set(item.tr.m.position.x-px,item.tr.base-base+6,item.tr.m.position.z-pz)}
+  ufoHidden=prepareCinematicCity();
   ufoScene.visible=true;state='ufoCutscene';$('growthNotice').style.display='none';$('cutMsg').style.display='block';
 }
-function playUfo(now){const e=Math.max(0,(now-ufoStart)/1000),msg=$('cutMsg'),base=ufoScene.position.y,x=ufoScene.position.x,z=ufoScene.position.z;
- if(e<5){const p=Math.min(1,e/1.1),sm=p*p*(3-2*p);cam.position.copy(ufoCamStart).lerp(new THREE.Vector3(x+4,base+7,z+13),sm);look.copy(ufoLookStart).lerp(new THREE.Vector3(x,base+4,z),sm);
+function playUfo(now){const e=Math.max(0,(now-ufoStart)/1000),msg=$('cutMsg'),base=ufoScene.position.y,x=ufoScene.position.x,z=ufoScene.position.z;animateCinematicCity(ufoHidden,e,8);
+ if(e<5){const p=Math.min(1,e/1.1),sm=p*p*(3-2*p);cam.position.copy(ufoCamStart).lerp(new THREE.Vector3(x+4,base+9,z+18),sm);look.copy(ufoLookStart).lerp(new THREE.Vector3(x,base+4,z-10),sm);
    ufoShip.position.y=13-Math.min(1,e/1.8)*4+Math.sin(e*3)*.12;ufoShip.rotation.y=e*.7;ufoBeam.visible=e>=1.5;
    const lift=Math.max(0,Math.min(1,(e-1.8)/2.6));ufoBeam.material.opacity=.25*(1-Math.max(0,(e-4.5)*2));
-   for(const item of ufoItems){item.tr.m.position.y=item.y+lift*8;item.tr.m.scale.copy(item.scale).multiplyScalar(1-lift*.75)}
+   for(const item of ufoItems){item.tr.m.position.y=item.y+lift*8;item.tr.m.scale.copy(item.scale).multiplyScalar(1-lift*.75);
+     if(item.unit){item.unit.ship.position.y=item.tr.base-base+13-Math.min(1,e/1.8)*4+Math.sin(e*3+item.tr.m.position.z)*.12;item.unit.ship.rotation.y=e*.7;item.unit.beam.visible=e>=1.5}}
    if(ufoGhost.visible){ufoGhost.position.y=lift*8;ufoGhost.scale.setScalar(1-lift*.75)}
-   msg.innerHTML='A nave está abduzindo os trampolins!<br><small>Jogo pausado</small>';
- }else if(e<8){for(const tr of tramps)poolGrp.remove(tr.m);tramps.length=0;ufoItems=[];ufoGhost.visible=false;ufoBeam.visible=false;ufoShip.position.y=9+(e-5)*7;
-   const p=Math.max(0,Math.min(1,(e-6.7)/1.3)),sm=p*p*(3-2*p);cam.position.lerpVectors(new THREE.Vector3(x+4,base+7,z+13),ufoCamStart,sm);look.lerpVectors(new THREE.Vector3(x,base+4,z),ufoLookStart,sm);
+   msg.innerHTML='As naves estão abduzindo os trampolins!<br><small>Jogo pausado</small>';
+ }else if(e<8){for(const tr of tramps)poolGrp.remove(tr.m);tramps.length=0;ufoGhost.visible=false;ufoBeam.visible=false;ufoShip.position.y=9+(e-5)*7;
+   for(const item of ufoItems)if(item.unit){item.unit.beam.visible=false;item.unit.ship.position.y=item.tr.base-base+9+(e-5)*7}
+   const p=Math.max(0,Math.min(1,(e-6.7)/1.3)),sm=p*p*(3-2*p);cam.position.lerpVectors(new THREE.Vector3(x+4,base+9,z+18),ufoCamStart,sm);look.lerpVectors(new THREE.Vector3(x,base+4,z-10),ufoLookStart,sm);
    msg.innerHTML='O jogo despausa em <b>'+Math.ceil(8-e)+'</b>';
  }else{for(const tr of tramps)poolGrp.remove(tr.m);tramps.length=0;cam.position.copy(ufoCamStart);look.copy(ufoLookStart);hideUfo();msg.style.display='none';state='play';last=now}
  cam.lookAt(look);ren.render(scene,cam);
@@ -1027,9 +1050,9 @@ const shockwave=new THREE.Mesh(new THREE.RingGeometry(.8,1,32),new THREE.MeshBas
 const nukePlume=new THREE.Group();nukeScene.add(nukePlume);nukePlume.position.set(0,0,-12);const smokeGeo=new THREE.SphereGeometry(1,10,7);const smokeMats=[0xffa331,0xffcb63,0x786d75,0x554f65].map(nukeMat);for(let i=0;i<9;i++){const part=new THREE.Mesh(smokeGeo,smokeMats[i%4]);part.position.set(Math.cos(i*2.4)*(1+i*.24),1+i*.95,Math.sin(i*2.4)*(1+i*.24));part.scale.setScalar(1.5+i*.18);nukePlume.add(part)}nukePlume.visible=false;
 let nukeStart=0,nukeFog=null,nukeHidden=[];
 const nukeCameraStart=new THREE.Vector3(),nukeLookStart=new THREE.Vector3();
-function hideNuke(){for(const [mesh,visible] of nukeHidden)mesh.visible=visible;nukeHidden=[];nukeScene.visible=false;nukeFlash.visible=false;shockwave.visible=false;nukePlume.visible=false;if(nukeFog!==null){scene.fog=nukeFog;nukeFog=null}}
-function beginNuke(now){nukeHidden=[];for(const seg of segs)for(const mesh of seg.userData.cinematicObstacles){nukeHidden.push([mesh,mesh.visible]);mesh.visible=false}nukeStart=now;nukeCameraStart.copy(cam.position);nukeLookStart.copy(look);nukeFog=scene.fog;scene.fog=null;nukeScene.visible=true;hatchL.position.x=-1.8;hatchR.position.x=1.8;missile.visible=true;missile.position.set(32,17.5,-65);missile.rotation.set(0,0,0);nukeFlash.visible=false;shockwave.visible=false;nukePlume.visible=false;state='nukeCutscene';$('growthNotice').style.display='none';$('cutMsg').style.display='block'}
-function playNuke(now){const e=Math.max(0,(now-nukeStart)/1000),msg=$('cutMsg');
+function hideNuke(){restoreCinematicCity(nukeHidden);nukeHidden=[];nukeScene.visible=false;nukeFlash.visible=false;shockwave.visible=false;nukePlume.visible=false;if(nukeFog!==null){scene.fog=nukeFog;nukeFog=null}}
+function beginNuke(now){nukeHidden=prepareCinematicCity();nukeStart=now;nukeCameraStart.copy(cam.position);nukeLookStart.copy(look);nukeFog=scene.fog;scene.fog=null;nukeScene.visible=true;hatchL.position.x=-1.8;hatchR.position.x=1.8;missile.visible=true;missile.position.set(32,17.5,-65);missile.rotation.set(0,0,0);nukeFlash.visible=false;shockwave.visible=false;nukePlume.visible=false;state='nukeCutscene';$('growthNotice').style.display='none';$('cutMsg').style.display='block'}
+function playNuke(now){const e=Math.max(0,(now-nukeStart)/1000),msg=$('cutMsg');animateCinematicCity(nukeHidden,e,11);
  if(e<3){const p=Math.min(1,e/1.2),sm=p*p*(3-2*p);cam.position.copy(nukeCameraStart).lerp(new THREE.Vector3(68,33,-20),sm);look.copy(nukeLookStart).lerp(new THREE.Vector3(32,13,-65),sm);let door=Math.max(0,Math.min(1,(e-1)/1.7));hatchL.position.x=-1.8-door*2;hatchR.position.x=1.8+door*2;msg.innerHTML='A fábrica está abrindo o teto<br><small>Jogo pausado</small>'}
  else if(e<5){let q=(e-3)/2;missile.position.set(32,17.5+q*37.5,-65);cam.position.set(68,33+q*26,-20);look.copy(missile.position);msg.innerHTML='A Nuke está decolando<br><small>Jogo pausado</small>'}
  else if(e<8){let q=(e-5)/3;missile.rotation.z=Math.PI*Math.min(1,q*3);missile.position.set(32*(1-q),55-(q*q)*45.2,-65+q*53);cam.position.set((missile.position.x+27)*(1-q),missile.position.y+14,missile.position.z+30);look.copy(missile.position);msg.innerHTML='A Nuke está descendo nos trilhos<br><small>Jogo pausado</small>'}
@@ -1209,7 +1232,7 @@ function loop(now){requestAnimationFrame(loop);
     for(let i=0;i<NSEG;i++){const s=segs[i];s.position.z+=d;if(s.position.z>SEG*1.5)s.position.z-=SEG*NSEG}
     for(let i=0;i<obs.length;i++){const o=obs[i];o.m.position.z+=d+(o.moveSpeed||0)*dt;}
     for(let i=tramps.length-1;i>=0;i--){const tr=tramps[i];tr.m.position.z+=d;if(tr.m.position.z>12){poolGrp.remove(tr.m);tramps.splice(i,1)}}
-    if(globalEventStart!==null&&(globalEventType==='nuke'||growthTime<0)){const elapsed=(performance.now()-globalEventStart)/1000;if(elapsed>=0){globalEventStart=null;if(globalEventType==='nuke'){beginNuke(now);return}growthTime=0;trampTimeLeft=60;throwTarget=null;thrownDone=false}else{$('growthNotice').style.display='block';$('growthNotice').textContent='Evento global em '+Math.ceil(-elapsed)+'s'}}
+    if(globalEventStart!==null&&(globalEventType==='nuke'||growthTime<0)){const elapsed=(performance.now()-globalEventStart)/1000;if(elapsed>=0){globalEventStart=null;if(globalEventType==='nuke'){beginNuke(now);return}growthTime=0;trampTimeLeft=60;throwTarget=null;thrownDone=false}else{$('growthNotice').style.display='block';$('growthNotice').textContent=(globalEventType==='growth'?'Evento dos trampolins em ':'Evento Nuke em ')+Math.ceil(-elapsed)+' s'}}
     if(trampTimeLeft>0){trampTimeLeft=Math.max(0,trampTimeLeft-dt);if(trampTimeLeft<=0){beginUfo(now);return}}
     if(growthTime>=0&&growthTime<10){
       growthTime+=dt;const notice=$('growthNotice');notice.style.display='block';
@@ -1466,10 +1489,10 @@ let seenGlobalId=0,globalEventStart=null,globalEventType='growth';
 function receiveEvent(data){const ev=data.event;if(!ev||ev.id===seenGlobalId)return;seenGlobalId=ev.id;const age=data.server_time-ev.start_at;if(age>20)return;globalEventType=ev.type==='nuke'?'nuke':'growth';globalEventStart=performance.now()+(ev.start_at-data.server_time)*1000;if(state==='play'||state==='pause'||state==='cutscene'||state==='nukeCutscene'||state==='ufoCutscene'){if(state==='play'||state==='pause'){growthTime=-1;trampsActive=false}}else $('growthStatus').textContent='Evento enviado! Entre em uma corrida para participar.'}
 async function pollGlobalEvent(){try{receiveEvent(await accountApi('/api/event'))}catch(e){/* servidor indisponível: tenta de novo */}}
 setInterval(pollGlobalEvent,1000);pollGlobalEvent();
-$('growthToggle').onclick=async()=>{const button=$('growthToggle');button.disabled=true;$('growthStatus').textContent='Enviando evento...';try{const result=await accountApi('/api/event',{type:'growth'},true);receiveEvent(result);$('growthStatus').textContent='Evento enviado a todos neste servidor! Começa em 5 segundos.'}catch(e){$('growthStatus').textContent='Não foi possível iniciar: '+e.message}finally{button.disabled=false}};
+$('growthToggle').onclick=async()=>{const button=$('growthToggle');button.disabled=true;$('growthStatus').textContent='Enviando evento...';try{const result=await accountApi('/api/event',{type:'growth'},true);receiveEvent(result);$('growthStatus').textContent='Evento enviado a todos neste servidor! Começa em 5 segundos.';if(state==='play'){ $('adminOverlay').style.display='none';$('growthNotice').textContent='Evento dos trampolins em 5 s';$('growthNotice').style.display='block'}}catch(e){$('growthStatus').textContent='Não foi possível iniciar: '+e.message}finally{button.disabled=false}};
 $('nukeToggle').onclick=async()=>{const button=$('nukeToggle');button.disabled=true;$('nukeStatus').textContent='Enviando evento...';try{const result=await accountApi('/api/event',{type:'nuke'},true);receiveEvent(result);$('nukeStatus').textContent='Nuke enviada! Começa em 5 segundos.'}catch(e){$('nukeStatus').textContent='Não foi possível iniciar: '+e.message}finally{button.disabled=false}};
 accountView();
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5bf17eb3b16e0e2',t:'MTc5NDkyMjI2Mg=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5bf17eb3b16e0e2',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
