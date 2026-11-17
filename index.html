@@ -211,7 +211,7 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
 <div class="bank"><i class="coin-icon"></i><span id="shopBalance">0</span></div>
 <div class="shop-row"><span class="emoji"><svg class="ui-icon" aria-hidden="true"><use href="#icon-board"></use></svg></span><div class="details"><strong>Prancha extra</strong><small>Proteção por 15 s · estoque: <b id="shopBoards">0</b></small></div><button id="buyBoard">100 moedas</button></div>
 <div class="shop-row"><span class="emoji"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rocket"></use></svg></span><div class="details"><strong>Jetpack</strong><small>Voe por 8 s · 1 uso por partida · estoque: <b id="shopJets">0</b></small></div><button id="buyJet">150 moedas</button></div><div id="shopMsg" aria-live="polite"></div></div></div>
-<div class="account-overlay" id="accountOverlay"><div class="account-card"><div class="shop-head"><h2>Sua conta</h2><button class="w-close" id="closeAccount" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><p id="accountIntro">Entre ou crie sua conta para jogar com seu perfil.</p><form id="emailForm"><label for="emailInput">E-mail</label><input id="emailInput" type="email" autocomplete="email" required><label for="passInput">Senha</label><input id="passInput" type="password" minlength="6" autocomplete="current-password" required><div class="actions"><button type="submit">Entrar</button><button id="signupBtn" type="button" class="btn-sec">Criar conta</button></div></form><div class="actions"><button id="logoutBtn" type="button" class="btn-sec" style="display:none">Sair da conta</button></div><div class="account-error" id="accountMsg" aria-live="polite"></div><p>As moedas, o estoque e os recordes ainda ficam salvos neste navegador.</p></div></div>
+<div class="account-overlay" id="accountOverlay"><div class="account-card"><div class="shop-head"><h2>Sua conta</h2><button class="w-close" id="closeAccount" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><p id="accountIntro">Entre ou crie sua conta para jogar com seu perfil.</p><form id="emailForm"><label for="nameInput">Nome de jogador <small>(somente para criar conta)</small></label><input id="nameInput" type="text" maxlength="20" autocomplete="nickname" placeholder="Como quer aparecer no jogo"><label for="emailInput">E-mail</label><input id="emailInput" type="email" autocomplete="email" required><label for="passInput">Senha</label><input id="passInput" type="password" minlength="6" autocomplete="current-password" required><div class="actions"><button type="submit">Entrar</button><button id="signupBtn" type="button" class="btn-sec">Criar conta</button></div></form><form id="chooseNameForm" style="display:none"><label for="chooseName">Nome de jogador</label><input id="chooseName" type="text" minlength="2" maxlength="20" autocomplete="nickname" placeholder="Escolha seu nome" required><p>Use de 2 a 20 letras, números, espaços, hífen ou sublinhado. Não use seu e-mail.</p><div class="actions"><button type="submit" id="saveNameBtn">Salvar nome</button></div></form><div class="actions"><button id="logoutBtn" type="button" class="btn-sec" style="display:none">Sair da conta</button></div><div class="account-error" id="accountMsg" aria-live="polite"></div><p>As moedas, o estoque e os recordes ainda ficam salvos neste navegador.</p></div></div>
 <div class="account-overlay" id="adminOverlay"><div class="account-card"><div class="shop-head"><h2><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg> Painel admin</h2><button class="w-close" id="closeAdmin" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><div class="admin-feature"><strong><svg class="ui-icon" aria-hidden="true"><use href="#icon-spark"></use></svg> Crescimento + trampolins</strong><p>Painel exclusivo do administrador: inicie o evento para todos conectados a este servidor. Em 5 segundos, um Nico gigante voa pelo centro, cresce e lança um trampolim. A câmera mostra onde caiu com o jogo pausado; depois há contagem de 3 segundos!</p><button id="growthToggle">Iniciar evento global</button><div id="growthStatus" class="account-error"></div></div><div class="admin-feature"><strong>Operação Nuke</strong><p>A câmera mostra a fábrica, a abertura do teto e a nuke descendo até os trilhos. Após a animação, a corrida volta com contagem de 3 segundos.</p><button id="nukeToggle">Iniciar evento Nuke</button><div id="nukeStatus" class="account-error" aria-live="polite"></div></div><p>Apenas a conta autorizada pode iniciar os eventos globais.</p></div></div>
 <div id="pauseOv">
   <div class="p-card">
@@ -827,12 +827,12 @@ function playCoinSound(){try{if(!coinAudio||coinAudio.state!=='running')return;c
 function freeObs(o){o.m.visible=false;obsPool[o.type].push(o.m)}
 function freeCoin(c){c.m.visible=false;coinPool.push(c.m)}
 
-function addObs(type,lane,z){const m=getObsMesh(type);
+function addObs(type,lane,z,base=0){const m=getObsMesh(type);
   // Uma parte dos trens vem em direção ao jogador, numa velocidade moderada.
   // No modo lava, os trens permanecem alinhados aos itens sobre seus tetos.
   const moving=type==='train'&&mode!=='lava'&&z< -40&&!m.userData.ramp.visible&&Math.random()<.32;
   if(type==='train')m.userData.movingSignal.visible=moving;
-  m.position.set(LANES[lane],0,z);obs.push({m,lane,type,depth:type==='train'?8:.6,ramp:type==='train'&&m.userData.ramp.visible,moveSpeed:moving?3.5:0,hit:false})}
+  m.position.set(LANES[lane],base,z);obs.push({m,lane,type,base,depth:type==='train'?8:.6,ramp:type==='train'&&m.userData.ramp.visible,moveSpeed:moving?3.5:0,hit:false})}
 function addCoin(lane,z,y=1){let m=coinPool.pop();if(!m){m=new THREE.Mesh(coinGeo,coinMat);poolGrp.add(m)}
   m.material=mode==='nocoin'?bombMat:coinMat;m.position.set(LANES[lane],y,z);m.rotation.y=0;m.visible=true;coins.push({m,lane})}
 let nextZ=-60;
@@ -870,7 +870,15 @@ function spawnRow(){const safe=(Math.random()*3)|0,r=Math.random();
   nextZ-=14+Math.random()*8}
 
 let nz=[0,0,0];
-function addTrainTop(l,z){addObs('train',l,z);addCoin(l,z-1.5,4.5);addCoin(l,z+1.5,4.5);if(trampsActive&&z < -25&&Math.random()<.23)addTramp(l,z,TOP);if(z < -25&&Math.random()<.035)addDrop(Math.random()<.5?'board':'jet',l,z,4.4)}
+function addTrainTop(l,z){
+  addObs('train',l,z);
+  // Mantém o início livre e não mistura obstáculos com trampolins ou itens do teto.
+  const roofObstacle=z < -65&&Math.random()<.22;
+  if(roofObstacle){addObs(Math.random()<.5?'low':'high',l,z,TOP)}
+  else{addCoin(l,z-1.5,4.5);addCoin(l,z+1.5,4.5);
+    if(trampsActive&&z < -25&&Math.random()<.23)addTramp(l,z,TOP);
+    else if(z < -25&&Math.random()<.035)addDrop(Math.random()<.5?'board':'jet',l,z,4.4)}
+}
 function lavaSpawn(){for(let l=0;l<3;l++)while(nz[l]>-170){const n=1+((Math.random()*3)|0);for(let c=0;c<n;c++)addTrainTop(l,nz[l]-4-c*8);nz[l]-=n*8+3+Math.random()*5}}
 
 /* ---------- Catálogo Expandido: 39 Skins e 26 Pranchas (c/ Texturas!) ---------- */
@@ -1194,7 +1202,7 @@ function loop(now){requestAnimationFrame(loop);
         if(y>=rampY-1.6&&(vy<=0||y<=previousGround+.15))gY=Math.max(gY,rampY);
       }else if(Math.abs(localZ)<=4.15&&y>=TOP-.6&&vy<=0)gY=Math.max(gY,TOP);
     }}
-    if(mode==='lava'&&jetT<=0)for(let i=0;i<obs.length;i++){const o=obs[i];if(o.lane!==lane||Math.abs(o.m.position.z)>4.35)continue;if(y>=TOP-.6)gY=TOP;else{explodeTrain(o);return die('crash')}}
+    if(mode==='lava'&&jetT<=0)for(let i=0;i<obs.length;i++){const o=obs[i];if(o.type!=='train'||o.broken||o.lane!==lane||Math.abs(o.m.position.z)>4.35)continue;if(y>=TOP-.6)gY=TOP;else{explodeTrain(o);return die('crash')}}
     if(jetT>0){y+=(7-y)*Math.min(1,dt*3);vy=0}else{vy-=38*dt;y+=vy*dt}if(y<=gY){y=gY;if(vy<0)vy=0}
     const grd=y<=gY+.01;
     if(wasAir&&grd)squash=-.24; // squash elástico ao pousar!
@@ -1208,6 +1216,11 @@ function loop(now){requestAnimationFrame(loop);
       if(o.hit||o.broken)continue;
       if(o.type==='train'&&o.ramp&&-z>=4&&y>=gY-.1)continue;
       if((o.type==='train'&&y<3.3)||(o.type==='low'&&y<.9)||(o.type==='high'&&!sliding&&y<1.6)){if(o.type==='train')explodeTrain(o);if(hit(o))return}}
+    if(mode==='lava'&&jetT<=0){for(const o of obs){
+      if(o.type==='train'||o.base!==TOP||o.hit||o.lane!==lane||Math.abs(o.m.position.z)>o.depth/2+.35||Math.abs(hero.position.x-LANES[o.lane])>1)continue;
+      const roofY=y-TOP;
+      if((o.type==='low'&&roofY<.9)||(o.type==='high'&&!sliding&&roofY<1.6)){if(hit(o))return}
+    }}
     if(jetT<=0&&vy<=0){for(const tr of tramps){
       if(!tr.used&&tr.lane===lane&&Math.abs(tr.m.position.z)<1.35&&Math.abs(hero.position.x-LANES[tr.lane])<1&&y>=tr.base-.1&&y<=tr.base+.55){
         tr.used=true;tr.m.scale.y=.5;vy=24;y=tr.base+.15;slide=0;squash=.32;flipT=1;break;
@@ -1384,13 +1397,22 @@ async function accountApi(path,body,authenticated=false){
   if(error)throw Error(error.message||'Não foi possível concluir.');
   return method==='nico_is_admin'?{admin:data===true}:data;
 }
-function accountView(){const u=accountUser;$('accountLabel').textContent=u?(u.user_metadata?.full_name||u.email||'Conta'):'Entrar';$('adminBtn').style.display=accountIsAdmin?'inline-flex':'none';$('gameAdmin').style.display=accountIsAdmin?'inline-flex':'none';$('emailForm').style.display=u?'none':'block';$('logoutBtn').style.display=u?'inline-block':'none';$('accountIntro').textContent=u?'Conectado como '+(u.email||'usuário')+(accountIsAdmin?' · administrador':''):'Entre ou crie sua conta para jogar com seu perfil.'}
+function validPlayerName(value){const n=typeof value==='string'?value.trim().replace(/\s+/g,' '):'';return n.length>=2&&n.length<=20&&/^[\p{L}\p{N}_ -]+$/u.test(n)?n:''}
+function playerName(user){return validPlayerName(user?.user_metadata?.player_name)||validPlayerName(user?.user_metadata?.full_name)}
+function accountView(){const u=accountUser,name=playerName(u),needsName=!!u&&!name;
+  $('accountLabel').textContent=u?(name||'Escolher nome'):'Entrar';
+  $('adminBtn').style.display=accountIsAdmin?'inline-flex':'none';$('gameAdmin').style.display=accountIsAdmin?'inline-flex':'none';
+  $('emailForm').style.display=u?'none':'block';$('chooseNameForm').style.display=needsName?'block':'none';$('logoutBtn').style.display=u?'inline-block':'none';
+  $('accountIntro').textContent=needsName?'Para proteger sua privacidade, escolha um nome de jogador. Seu e-mail não será exibido no perfil.':u?'Conectado como '+name+(accountIsAdmin?' · administrador':''):'Entre ou crie sua conta. Seu e-mail não aparece no perfil.';
+  if(needsName){$('accountOverlay').style.display='flex';$('accountMsg').textContent='';}
+}
 async function changeAuth(user){const rev=++authRevision;accountUser=user;accountIsAdmin=false;accountView();if(!user)$('adminOverlay').style.display='none';if(user){try{const result=await accountApi('/api/admin/check',undefined,true);if(rev!==authRevision)return;accountIsAdmin=result.admin===true;accountView()}catch(e){if(rev===authRevision)$('accountMsg').textContent='Não foi possível verificar o acesso de administrador.'}}}
 $('accountBtn').onclick=()=>{$('accountMsg').textContent='';$('accountOverlay').style.display='flex'};$('closeAccount').onclick=()=>$('accountOverlay').style.display='none';
 function accountErr(e){const message=e.message||'';return message.includes('Invalid login credentials')?'E-mail ou senha incorretos.':message.includes('Email not confirmed')?'Confirme seu e-mail antes de entrar.':message.includes('provider is not enabled')?'O login Google ainda precisa ser ativado no Supabase.':message||'Confira a conexão e tente novamente.'}
-$('emailForm').onsubmit=async e=>{e.preventDefault();if(!sb){$('accountMsg').textContent='Supabase indisponível.';return}try{$('accountMsg').textContent='Entrando...';const {error}=await sb.auth.signInWithPassword({email:$('emailInput').value.trim(),password:$('passInput').value});if(error)throw error;$('passInput').value='';$('accountMsg').textContent='Login realizado!'}catch(err){$('accountMsg').textContent=accountErr(err)}};
-$('signupBtn').onclick=async()=>{if(!$('emailForm').reportValidity())return;if(!sb){$('accountMsg').textContent='Supabase indisponível.';return}try{$('accountMsg').textContent='Criando conta...';const {data,error}=await sb.auth.signUp({email:$('emailInput').value.trim(),password:$('passInput').value,options:{emailRedirectTo:location.origin+location.pathname}});if(error)throw error;$('passInput').value='';$('accountMsg').textContent=data.session?'Conta criada!':'Confira seu e-mail e confirme a conta antes de entrar.'}catch(err){$('accountMsg').textContent=accountErr(err)}};
-$('logoutBtn').onclick=async()=>{try{const {error}=await sb.auth.signOut();if(error)throw error;$('adminOverlay').style.display='none';$('accountMsg').textContent='Você saiu da conta.'}catch(e){$('accountMsg').textContent='Não foi possível sair.'}};
+$('emailForm').onsubmit=async e=>{e.preventDefault();if(!sb){$('accountMsg').textContent='Supabase indisponível.';return}try{$('accountMsg').textContent='Entrando...';const {error}=await sb.auth.signInWithPassword({email:$('emailInput').value.trim(),password:$('passInput').value});if(error)throw error;$('passInput').value='';$('emailInput').value='';$('accountMsg').textContent='Login realizado!'}catch(err){$('accountMsg').textContent=accountErr(err)}};
+$('signupBtn').onclick=async()=>{if(!$('emailForm').reportValidity())return;const name=validPlayerName($('nameInput').value);if(!name){$('accountMsg').textContent='Escolha um nome de 2 a 20 letras, números, espaços, hífen ou sublinhado. Não use seu e-mail.';$('nameInput').focus();return}if(!sb){$('accountMsg').textContent='Supabase indisponível.';return}try{$('signupBtn').disabled=true;$('accountMsg').textContent='Criando conta...';const {data,error}=await sb.auth.signUp({email:$('emailInput').value.trim(),password:$('passInput').value,options:{data:{player_name:name},emailRedirectTo:location.origin+location.pathname}});if(error)throw error;$('passInput').value='';$('emailInput').value='';$('nameInput').value='';$('accountMsg').textContent=data.session?'Conta criada!':'Confira seu e-mail e confirme a conta antes de entrar.'}catch(err){$('accountMsg').textContent=accountErr(err)}finally{$('signupBtn').disabled=false}};
+$('chooseNameForm').onsubmit=async e=>{e.preventDefault();const name=validPlayerName($('chooseName').value);if(!name){$('accountMsg').textContent='Escolha um nome válido, sem e-mail.';return}if(!sb||!accountUser){$('accountMsg').textContent='Entre na sua conta para salvar o nome.';return}try{$('saveNameBtn').disabled=true;$('accountMsg').textContent='Salvando nome...';const {data,error}=await sb.auth.updateUser({data:{player_name:name}});if(error)throw error;if(data.user){accountUser=data.user;accountView()}$('chooseName').value='';$('accountMsg').textContent='Nome salvo com sucesso!'}catch(err){$('accountMsg').textContent='Não foi possível salvar o nome. Verifique sua conexão e tente novamente.'}finally{$('saveNameBtn').disabled=false}};
+$('logoutBtn').onclick=async()=>{try{const {error}=await sb.auth.signOut();if(error)throw error;$('adminOverlay').style.display='none';$('emailInput').value='';$('nameInput').value='';$('chooseName').value='';$('accountMsg').textContent='Você saiu da conta.'}catch(e){$('accountMsg').textContent='Não foi possível sair.'}};
 function openEventPanel(){if(!accountIsAdmin)return;$('growthStatus').textContent='';$('nukeStatus').textContent='';$('adminOverlay').style.display='flex'}$('adminBtn').onclick=openEventPanel;$('gameAdmin').onclick=openEventPanel;
 $('closeAdmin').onclick=()=>$('adminOverlay').style.display='none';
 if(sb){sb.auth.onAuthStateChange((_event,session)=>{setTimeout(()=>changeAuth(session?.user||null),0)});}else $('accountMsg').textContent='Supabase indisponível. Verifique a conexão.';
@@ -1403,5 +1425,5 @@ $('nukeToggle').onclick=async()=>{const button=$('nukeToggle');button.disabled=t
 accountView();
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5bedf6249b8f624',t:'MTc5NDkxOTk0Ng=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5bedf6249b8f624',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</body>
 </html>
