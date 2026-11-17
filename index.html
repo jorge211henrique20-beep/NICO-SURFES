@@ -168,7 +168,7 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
 <div class="bank"><i class="coin-icon"></i><span id="shopBalance">0</span></div>
 <div class="shop-row"><span class="emoji">🛹</span><div class="details"><strong>Prancha extra</strong><small>Proteção por 15 s · estoque: <b id="shopBoards">0</b></small></div><button id="buyBoard">100 moedas</button></div>
 <div class="shop-row"><span class="emoji">🚀</span><div class="details"><strong>Jetpack</strong><small>Voe por 8 s · 1 uso por partida · estoque: <b id="shopJets">0</b></small></div><button id="buyJet">150 moedas</button></div><div id="shopMsg" aria-live="polite"></div></div></div>
-<div class="account-overlay" id="accountOverlay"><div class="account-card"><div class="shop-head"><h2>👤 Sua conta</h2><button class="w-close" id="closeAccount" aria-label="Fechar">✕</button></div><p id="accountIntro">Entre com sua conta Google para jogar com seu perfil.</p><div class="actions"><button id="googleLogin" type="button">🌐 Entrar com Google</button><button id="logoutBtn" type="button" class="btn-sec" style="display:none">Sair da conta</button></div><div class="account-error" id="accountMsg" aria-live="polite"></div><p>As moedas, o estoque e os recordes ainda ficam salvos neste navegador.</p></div></div>
+<div class="account-overlay" id="accountOverlay"><div class="account-card"><div class="shop-head"><h2>👤 Sua conta</h2><button class="w-close" id="closeAccount" aria-label="Fechar">✕</button></div><p id="accountIntro">Entre ou crie sua conta para jogar com seu perfil.</p><form id="emailForm"><label for="emailInput">E-mail</label><input id="emailInput" type="email" autocomplete="email" required><label for="passInput">Senha</label><input id="passInput" type="password" minlength="6" autocomplete="current-password" required><div class="actions"><button type="submit">Entrar</button><button id="signupBtn" type="button" class="btn-sec">Criar conta</button></div></form><div class="actions"><button id="logoutBtn" type="button" class="btn-sec" style="display:none">Sair da conta</button></div><div class="account-error" id="accountMsg" aria-live="polite"></div><p>As moedas, o estoque e os recordes ainda ficam salvos neste navegador.</p></div></div>
 <div class="account-overlay" id="adminOverlay"><div class="account-card"><div class="shop-head"><h2>🛡 Painel admin</h2><button class="w-close" id="closeAdmin" aria-label="Fechar">✕</button></div><div class="admin-feature"><strong>✨ Crescimento + trampolins</strong><p>Painel exclusivo do administrador: inicie o evento para todos conectados a este servidor. Em 5 segundos, um Nico gigante voa pelo centro, cresce e lança um trampolim. A câmera mostra onde caiu com o jogo pausado; depois há contagem de 5 segundos!</p><button id="growthToggle">🌍 Iniciar evento global</button><div id="growthStatus" class="account-error"></div></div><p>Apenas a conta autorizada pode iniciar o evento global.</p></div></div>
 <div id="pauseOv">
   <div class="p-card">
@@ -180,6 +180,7 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
 <script>
 const L=2.6,LANES=[-L,0,L];
 const scene=new THREE.Scene();
@@ -1175,22 +1176,29 @@ function loop(now){requestAnimationFrame(loop);
   lookP.set(cam.position.x*.5,1.7+camY+(trackedHeight-gY),-9);look.lerp(lobby?lookL:lookP,lobby?.08:.2);cam.lookAt(look);
   ren.render(scene,cam)}
 requestAnimationFrame(loop);
-// Login Google/Firebase. A autorização do evento é sempre validada no servidor.
+// Autenticação e evento global no Supabase. Somente a chave pública é usada.
+const SUPABASE_URL='https://jfwsfliaqfprxgtvllki.supabase.co';
+const SUPABASE_PUBLIC_KEY='sb_publishable_GTzH5jBjbR62NM2ojrRoXw_J_SjmJtz';
+const sb=window.supabase?window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLIC_KEY):null;
 let accountUser=null,accountIsAdmin=false,authRevision=0;
 async function accountApi(path,body,authenticated=false){
-  const headers={};let opts={credentials:'same-origin',headers};
-  if(body!==undefined){opts.method='POST';headers['Content-Type']='application/json';headers['X-Nico-Request']='1';opts.body=JSON.stringify(body)}
-  if(authenticated){if(!accountUser)throw Error('Entre com sua conta Google.');headers.Authorization='Bearer '+await accountUser.getIdToken()}
-  const r=await fetch(path,opts);let data;try{data=await r.json()}catch(e){throw Error('Servidor de jogo indisponível.')}if(!r.ok)throw Error(data.error||'Não foi possível concluir.');return data
+  if(!sb)throw Error('Não foi possível carregar o Supabase. Verifique sua conexão.');
+  const method=path==='/api/admin/check'?'nico_is_admin':body===undefined?'nico_read_event':'nico_start_event';
+  if(authenticated&&!accountUser)throw Error('Entre com sua conta.');
+  const {data,error}=await sb.rpc(method);
+  if(error)throw Error(error.message||'Não foi possível concluir.');
+  return method==='nico_is_admin'?{admin:data===true}:data;
 }
-function accountView(){const u=accountUser;$('accountBtn').textContent=u?'👤 '+(u.displayName||u.email||'Conta'):'👤 Entrar';$('adminBtn').style.display=accountIsAdmin?'inline-block':'none';$('gameAdmin').style.display=accountIsAdmin?'inline-block':'none';$('googleLogin').style.display=u?'none':'inline-block';$('logoutBtn').style.display=u?'inline-block':'none';$('accountIntro').textContent=u?'Conectado como '+(u.email||u.displayName)+(accountIsAdmin?' · administrador':''):'Entre com sua conta Google para jogar com seu perfil.'}
-window.nicoAuthChanged=async user=>{const rev=++authRevision;accountUser=user;accountIsAdmin=false;accountView();if(user){try{const result=await accountApi('/api/admin/check',undefined,true);if(rev!==authRevision)return;accountIsAdmin=result.admin===true;accountView()}catch(e){if(rev===authRevision){$('accountMsg').textContent='Não foi possível verificar o acesso de administrador.'}}}};
-window.nicoAuthError=msg=>{$('accountMsg').textContent=msg};
+function accountView(){const u=accountUser;$('accountBtn').textContent=u?'👤 '+(u.user_metadata?.full_name||u.email||'Conta'):'👤 Entrar';$('adminBtn').style.display=accountIsAdmin?'inline-block':'none';$('gameAdmin').style.display=accountIsAdmin?'inline-block':'none';$('emailForm').style.display=u?'none':'block';$('logoutBtn').style.display=u?'inline-block':'none';$('accountIntro').textContent=u?'Conectado como '+(u.email||'usuário')+(accountIsAdmin?' · administrador':''):'Entre ou crie sua conta para jogar com seu perfil.'}
+async function changeAuth(user){const rev=++authRevision;accountUser=user;accountIsAdmin=false;accountView();if(!user)$('adminOverlay').style.display='none';if(user){try{const result=await accountApi('/api/admin/check',undefined,true);if(rev!==authRevision)return;accountIsAdmin=result.admin===true;accountView()}catch(e){if(rev===authRevision)$('accountMsg').textContent='Não foi possível verificar o acesso de administrador.'}}}
 $('accountBtn').onclick=()=>{$('accountMsg').textContent='';$('accountOverlay').style.display='flex'};$('closeAccount').onclick=()=>$('accountOverlay').style.display='none';
-$('googleLogin').onclick=async()=>{if(!window.nicoFirebase){$('accountMsg').textContent='O login Google está carregando ou está indisponível.';return}try{$('accountMsg').textContent='Abrindo login Google...';await window.nicoFirebase.login();$('accountMsg').textContent='Login realizado!'}catch(e){$('accountMsg').textContent='Não foi possível entrar: '+(e.message||'tente novamente')}};
-$('logoutBtn').onclick=async()=>{try{if(window.nicoFirebase)await window.nicoFirebase.logout();$('adminOverlay').style.display='none';$('accountMsg').textContent='Você saiu da conta.'}catch(e){$('accountMsg').textContent='Não foi possível sair.'}};
+function accountErr(e){const message=e.message||'';return message.includes('Invalid login credentials')?'E-mail ou senha incorretos.':message.includes('Email not confirmed')?'Confirme seu e-mail antes de entrar.':message.includes('provider is not enabled')?'O login Google ainda precisa ser ativado no Supabase.':message||'Confira a conexão e tente novamente.'}
+$('emailForm').onsubmit=async e=>{e.preventDefault();if(!sb){$('accountMsg').textContent='Supabase indisponível.';return}try{$('accountMsg').textContent='Entrando...';const {error}=await sb.auth.signInWithPassword({email:$('emailInput').value.trim(),password:$('passInput').value});if(error)throw error;$('passInput').value='';$('accountMsg').textContent='Login realizado!'}catch(err){$('accountMsg').textContent=accountErr(err)}};
+$('signupBtn').onclick=async()=>{if(!$('emailForm').reportValidity())return;if(!sb){$('accountMsg').textContent='Supabase indisponível.';return}try{$('accountMsg').textContent='Criando conta...';const {data,error}=await sb.auth.signUp({email:$('emailInput').value.trim(),password:$('passInput').value,options:{emailRedirectTo:location.origin+location.pathname}});if(error)throw error;$('passInput').value='';$('accountMsg').textContent=data.session?'Conta criada!':'Confira seu e-mail e confirme a conta antes de entrar.'}catch(err){$('accountMsg').textContent=accountErr(err)}};
+$('logoutBtn').onclick=async()=>{try{const {error}=await sb.auth.signOut();if(error)throw error;$('adminOverlay').style.display='none';$('accountMsg').textContent='Você saiu da conta.'}catch(e){$('accountMsg').textContent='Não foi possível sair.'}};
 function openEventPanel(){if(!accountIsAdmin)return;$('growthStatus').textContent='';$('adminOverlay').style.display='flex'}$('adminBtn').onclick=openEventPanel;$('gameAdmin').onclick=openEventPanel;
 $('closeAdmin').onclick=()=>$('adminOverlay').style.display='none';
+if(sb){sb.auth.onAuthStateChange((_event,session)=>{setTimeout(()=>changeAuth(session?.user||null),0)});}else $('accountMsg').textContent='Supabase indisponível. Verifique a conexão.';
 let seenGlobalId=0,globalEventStart=null;
 function receiveEvent(data){const ev=data.event;if(!ev||ev.id===seenGlobalId)return;seenGlobalId=ev.id;const age=data.server_time-ev.start_at;if(age>20)return;globalEventStart=performance.now()+(ev.start_at-data.server_time)*1000;if(state==='play'||state==='pause'){growthTime=-1;trampsActive=false}else $('growthStatus').textContent='Evento enviado! Entre em uma corrida para participar.'}
 async function pollGlobalEvent(){try{receiveEvent(await accountApi('/api/event'))}catch(e){/* servidor indisponível: tenta de novo */}}
@@ -1198,15 +1206,6 @@ setInterval(pollGlobalEvent,1000);pollGlobalEvent();
 $('growthToggle').onclick=async()=>{const button=$('growthToggle');button.disabled=true;$('growthStatus').textContent='Enviando evento...';try{const result=await accountApi('/api/event',{},true);receiveEvent(result);$('growthStatus').textContent='Evento enviado a todos neste servidor! Começa em 5 segundos.'}catch(e){$('growthStatus').textContent='Não foi possível iniciar: '+e.message}finally{button.disabled=false}};
 accountView();
 </script>
-<script type="module">
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/13.4.0/firebase-app.js';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/13.4.0/firebase-auth.js';
-const firebaseConfig={apiKey:'AIzaSyAzwnlWGTcY4l1mHp37mUUtpod4hcXA6zg',authDomain:'project-gamelab-studio.firebaseapp.com',projectId:'project-gamelab-studio',storageBucket:'project-gamelab-studio.firebasestorage.app',messagingSenderId:'221464311930',appId:'1:221464311930:web:35265f443725da1077e3c3',measurementId:'G-P44NKTLCCG'};
-try {
- const app=initializeApp(firebaseConfig),auth=getAuth(app),provider=new GoogleAuthProvider();
- window.nicoFirebase={login:()=>signInWithPopup(auth,provider),logout:()=>signOut(auth)};
- onAuthStateChanged(auth,user=>window.nicoAuthChanged(user));
-}catch(e){window.nicoAuthError('Não foi possível iniciar o Firebase. Confira a conexão e a configuração.');}
-</script>
-</body>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5be234f78aef612',t:'MTc5NDkxMjI0Mw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5be234f78aef612',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
