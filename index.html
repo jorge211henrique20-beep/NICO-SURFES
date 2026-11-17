@@ -98,84 +98,127 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
 .admin-feature{padding:14px;margin:14px 0;border:1px solid #fece7d55;background:linear-gradient(135deg,#ff9e401f,#b35fff22);border-radius:16px}.admin-feature strong{display:block;font-size:16px}.admin-feature p{margin:7px 0 12px;line-height:1.45}.admin-feature button{font-size:14px;padding:10px 16px;background:linear-gradient(135deg,#ffaf40,#ec4c78)}#growthNotice{position:fixed;top:72px;left:50%;transform:translateX(-50%);z-index:6;display:none;white-space:nowrap;background:#30254cdd;border:1px solid #ffe19677;color:#fff0c1;border-radius:30px;padding:8px 16px;font-weight:800;font-size:13px;pointer-events:none}
 
 #cutMsg{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 85px);transform:translateX(-50%);z-index:35;display:none;text-align:center;background:#18162fef;border:1px solid #8cecff;color:white;padding:12px 22px;border-radius:18px;box-shadow:0 10px 40px #0008;font-weight:850;max-width:85vw}#cutMsg b{color:#ffdb75}
+
+/* Lobby 2026: vidro escuro, cartões de modos e foco no personagem. */
+#ov{padding:calc(env(safe-area-inset-top,0px) + 14px) 18px calc(env(safe-area-inset-bottom,0px) + 14px);background:linear-gradient(180deg,rgba(15,17,38,.9) 0%,rgba(19,20,44,.20) 28%,rgba(19,20,44,.05) 48%,rgba(13,16,39,.9) 100%)}
+.top-bar{max-width:850px;gap:10px}.top-actions{align-items:center}.top-actions button,.bank{border:1px solid #ffffff28;box-shadow:0 8px 20px #110f2a55;border-radius:14px;transition:transform .15s,background .15s,filter .15s}.top-actions button:hover,.bank:hover{transform:translateY(-2px)}
+#accountBtn,#adminBtn,.ward-btn{background:rgba(33,36,65,.82)}.shop-btn{background:linear-gradient(130deg,#ffbb5c,#f16582)}.bank{background:#241f3ecc;color:#ffdf7c;padding:9px 13px}
+.hd{position:relative;text-align:center}.lobby-kicker{display:inline-block;color:#ffdeac;background:#302544b8;border:1px solid #ffdaa341;border-radius:99px;padding:5px 12px;margin-bottom:6px;font-size:10px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+#t{font-size:clamp(39px,8vw,74px);font-weight:950;letter-spacing:-.06em;line-height:.95;color:#fff;text-shadow:0 4px 0 #bc5376,0 10px 34px #100d2ea8}.sub-row{margin-top:10px}#m{color:#e6e9f7;background:#211f42c9;border:1px solid #ffffff25;padding:6px 14px}
+.pn{max-width:850px;border:1px solid #ffffff36;border-radius:26px;background:linear-gradient(135deg,rgba(32,34,62,.91),rgba(23,24,49,.92));box-shadow:0 20px 60px #0b0b25a8,inset 0 1px #ffffff18;padding:15px 17px}.sel{margin-bottom:12px}.pill{background:#ffffff0a;border:1px solid #ffffff25;border-radius:16px;box-shadow:none}.ar{background:#ffffff17;border-radius:10px}.pill-lbl{min-width:150px}.sw-dot{width:18px;height:18px;border-radius:6px}
+.panel-heading{display:flex;align-items:center;gap:10px;color:#a9b4d4;font-size:10px;letter-spacing:.16em;font-weight:900;margin:0 2px 9px}.panel-heading:after{content:'';height:1px;flex:1;background:#ffffff22}
+.grid{gap:9px}.mode{overflow:hidden;min-height:98px;padding:12px 14px!important;gap:5px;border:1px solid #ffffff35;box-shadow:0 9px 25px #0a0d1a55,inset 0 1px #ffffff35;background:linear-gradient(135deg,var(--c1),var(--c2));border-radius:18px}.mode .ic{display:grid;place-items:center;border-radius:11px;width:38px;height:38px;background:#ffffff30;font-size:23px;flex:none}.mode .nm{font-size:17px}.mode small{opacity:.94;font-size:11px}.mode em{position:absolute;right:9px;top:9px;font-size:10px;background:#22243b55;margin:0}.keys{color:#bcc5dc;opacity:1;margin-top:11px}
+@media(max-width:560px){#ov{padding:calc(env(safe-area-inset-top,0px) + 8px) 9px calc(env(safe-area-inset-bottom,0px) + 8px)}.top-bar{gap:4px}.top-actions{gap:4px}.top-actions button,.bank{font-size:11px;padding:8px 7px}.pn{padding:10px 11px;border-radius:20px}.sel{gap:5px;margin-bottom:8px}.pill-lbl{min-width:112px;font-size:11px}.ar{width:28px;height:28px;font-size:18px}.grid{gap:5px}.mode{min-height:51px;padding:6px 8px!important;gap:8px}.mode .ic{width:36px;height:36px;font-size:21px!important}.mode-txt{flex:1}.mode .nm{font-size:14px}.mode small{font-size:10px}.mode em{position:static;font-size:10px;padding:3px 7px}.panel-heading{margin-bottom:6px}.keys{font-size:9px;margin-top:6px}.lobby-kicker{font-size:9px;margin-bottom:4px}.sub-row{margin-top:6px}}
+@media(max-height:650px){#ov{padding-top:5px;padding-bottom:5px}.lobby-kicker{display:none}.hd{margin:0}#t{font-size:36px}.sub-row{margin-top:3px}.panel-heading,.keys{display:none}.sel{margin-bottom:5px}.mode{min-height:43px}.pn{padding:7px 10px}}
+
+/* Tela inicial: controles mais claros e botões com hierarquia visual. */
+#ov{background:linear-gradient(180deg,rgba(11,15,39,.88),rgba(18,19,42,.12) 30%,rgba(17,18,41,.08) 51%,rgba(10,13,32,.91));}
+.top-bar{max-width:940px;align-items:center}.top-actions{min-width:0}.top-actions button,.bank{min-height:42px;border-radius:14px;box-shadow:0 6px 20px #0a0d2455,inset 0 1px #ffffff28;font-size:13px;font-weight:800}.top-actions button{padding:9px 14px}.top-actions button:focus-visible,.bank:focus-visible,.mode:focus-visible,.ar:focus-visible,.pill-lbl:focus-visible{outline:3px solid #fff1a8;outline-offset:3px}
+#accountBtn{max-width:190px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.shop-btn{color:#29203d;background:linear-gradient(120deg,#ffdb80,#ffab61)}.ward-btn{background:linear-gradient(120deg,#6b63ce,#b360bd)}
+.hd{margin:0}.lobby-kicker{background:#ffffff15;backdrop-filter:blur(7px);border-color:#ffffff36;color:#ffe6b8;font-size:10px;letter-spacing:.19em}#t{font-size:clamp(42px,8vw,76px);letter-spacing:-.065em;text-shadow:0 3px 0 #b84f72,0 9px 30px #171135bb}#m{font-size:12px;border-color:#ffffff28;background:#201d3fc7}
+.pn{max-width:900px;padding:17px 19px;background:linear-gradient(150deg,rgba(34,37,68,.96),rgba(20,24,50,.96));border:1px solid #ffffff31;box-shadow:0 20px 55px #080b20a8,0 1px 0 #ffffff24 inset;border-radius:25px}
+.sel{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:14px}.pill{display:flex;min-width:0;border:1px solid #ffffff20;background:#ffffff09;border-radius:15px;padding:5px;box-shadow:none;gap:4px}.ar{width:37px;height:37px;flex:none;border-radius:11px;background:#ffffff13;border:1px solid #ffffff17;font-size:20px;transition:background .15s,transform .15s}.ar:hover{background:#ffffff30;transform:translateY(-1px)}
+.pill-lbl{flex:1;min-width:0;width:100%;padding:3px 5px;border-radius:10px;background:transparent;box-shadow:none;text-align:left;justify-content:flex-start;gap:9px;color:white;font-size:13px}.pill-lbl:hover{filter:none;background:#ffffff0d}.pill-lbl:active{transform:none;box-shadow:none}.sw-dot{width:25px;height:25px;border-radius:8px;border-color:#ffffff88;box-shadow:0 2px 8px #0004;background-size:cover}.selection-copy{min-width:0;display:flex;flex-direction:column;gap:2px}.selection-copy small{color:#aebbd4;font-size:9px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.selection-copy>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.panel-heading{font-size:10px;color:#b5c3de;letter-spacing:.14em}.mode{min-height:126px;display:grid;grid-template-columns:44px 1fr;grid-template-rows:44px auto;align-items:center!important;column-gap:10px;row-gap:8px;padding:12px!important;border-radius:17px;background:linear-gradient(135deg,var(--c1),var(--c2));border:1px solid #ffffff40;box-shadow:inset 0 1px #ffffff45,0 8px 20px #090b194d}.mode .ic{width:44px;height:44px;border-radius:13px;background:#ffffff35;font-size:23px!important}.mode-txt{min-width:0;display:flex;flex-direction:column;gap:3px}.mode .nm{font-size:17px;line-height:1.05}.mode small{font-size:11px;line-height:1.2}.mode em{position:static;justify-self:start;margin:0;padding:5px 9px;background:#171c384f;font-size:10px}.mode .play-label{justify-self:end;font-size:11px;font-weight:950;letter-spacing:.04em;padding:7px 10px;border-radius:9px;color:#30243c;background:#ffffffda;box-shadow:0 2px 8px #0002}.mode:hover{transform:translateY(-3px);filter:brightness(1.06)}.mode:active{transform:translateY(1px)}.keys{font-size:10px;color:#aebbd4;margin-top:11px}
+@media(max-width:560px){#ov{padding:calc(env(safe-area-inset-top,0px) + 8px) 8px calc(env(safe-area-inset-bottom,0px) + 8px)}.top-bar{gap:4px}.top-actions{gap:3px}.top-actions button,.bank{min-height:37px;padding:7px 7px;font-size:11px;border-radius:11px}#accountBtn{max-width:94px}.pn{padding:10px;border-radius:20px}.sel{gap:6px;margin-bottom:8px}.pill{gap:2px;padding:3px}.ar{width:27px;height:32px;font-size:17px}.pill-lbl{font-size:11px;gap:5px;padding:2px}.sw-dot{width:19px;height:19px;border-radius:6px}.selection-copy small{font-size:8px}.grid{gap:5px}.mode{min-height:52px;grid-template-columns:36px minmax(0,1fr) auto auto;grid-template-rows:auto;gap:7px;padding:6px 8px!important}.mode .ic{width:36px;height:36px;font-size:20px!important}.mode .nm{font-size:14px}.mode small{font-size:10px}.mode em{font-size:9px;padding:4px 5px}.mode .play-label{font-size:10px;padding:6px 7px}.panel-heading{margin-bottom:6px}.keys{font-size:9px;margin-top:6px}}
+@media(max-width:370px){.top-actions button,.bank{font-size:10px;padding:7px 5px}#accountBtn{max-width:70px}.mode small{font-size:9px}.mode em{display:none}.mode{grid-template-columns:36px 1fr auto}.pill-lbl{font-size:10px}.ar{width:24px}}
+@media(max-height:650px){.pn{padding:7px 10px}.sel{margin-bottom:5px}.mode{min-height:45px}.mode .ic{width:32px;height:32px}.panel-heading,.keys{display:none}}
+
+/* Ícones vetoriais locais e painéis da loja e vestiário. */
+.ui-icon{width:19px;height:19px;display:inline-block;vertical-align:middle;flex:none}button .ui-icon{pointer-events:none}.top-actions button{display:inline-flex;align-items:center;justify-content:center;gap:6px}#adminBtn{display:none}.mode .ic .ui-icon{width:24px;height:24px;stroke-width:2}.shop-head h2{display:flex;align-items:center;gap:9px}.shop-head h2 .ui-icon{width:25px;height:25px;color:#ffd182}.section-kicker{display:block;color:#b4a8e6;font-size:10px;letter-spacing:.16em;font-weight:900;margin-bottom:4px}
+#shop{background:#0a0c1fce;backdrop-filter:blur(5px)}.shop-card{width:min(500px,100%);padding:24px;background:linear-gradient(155deg,#292b50,#181b37);border:1px solid #ffffff2c;border-radius:26px;box-shadow:0 25px 70px #0009,inset 0 1px #ffffff1c}.shop-head h2{font-size:25px}.shop-sub{line-height:1.5;margin:12px 0 15px}.shop-card>.bank{display:inline-flex;min-height:0;border-radius:11px;padding:8px 12px;margin-bottom:7px}.shop-row{gap:13px;background:#ffffff0b;border:1px solid #ffffff1c;border-radius:17px;padding:14px;margin:9px 0}.shop-row .emoji{display:grid;place-items:center;width:48px;height:48px;flex:none;border-radius:14px;background:linear-gradient(135deg,#6755b1,#39477d);color:#f8e6ff}.shop-row .emoji .ui-icon{width:27px;height:27px}.shop-row .details{min-width:0}.shop-row strong{font-size:15px}.shop-row small{font-size:12px;line-height:1.4;margin-top:4px}.shop-row button{border-radius:12px;white-space:nowrap;color:#312343;font-size:12px;font-weight:900;padding:12px 14px;box-shadow:0 4px 0 #bc6a38;background:linear-gradient(120deg,#ffe096,#ffad70)}.shop-row button:active{transform:translateY(3px);box-shadow:0 1px 0 #bc6a38}#shopMsg{margin-top:10px;line-height:1.4}
+#ward{max-width:720px;padding:19px;background:linear-gradient(155deg,#2c2d54f9,#191c39fa);border:1px solid #ffffff30;border-radius:25px;box-shadow:0 20px 65px #000a,inset 0 1px #ffffff20}.ward-title h2{margin:0;font-size:24px}.ward-title p{font-size:12px;color:#bbbdd6;margin:4px 0 14px}.w-hd{margin-bottom:12px}.w-tabs{gap:5px;padding:4px;background:#10132c88;border:1px solid #ffffff14;border-radius:13px}.w-tab{display:flex;align-items:center;gap:7px;padding:9px 13px;border-radius:10px;background:transparent;color:#bfc7dd;font-size:12px}.w-tab .ui-icon{width:17px;height:17px}.w-tab.on{color:#fff;background:linear-gradient(130deg,#7967d8,#a95eac);box-shadow:0 3px 10px #0003}.w-close{display:grid;place-items:center;width:36px;height:36px;border:1px solid #ffffff24;border-radius:11px;background:#ffffff0e;box-shadow:none;font-size:17px}.w-close:hover{background:#ffffff22}.w-grid{grid-template-columns:repeat(auto-fill,minmax(135px,1fr));max-height:38vh;gap:8px}.w-item{padding:10px;border-radius:14px;min-height:54px;background:#ffffff09;border:1px solid #ffffff14;transition:background .15s,border .15s,transform .15s}.w-item:hover{background:#ffffff16;transform:translateY(-2px)}.w-item.on{border:2px solid #ffcf70;background:#f6bf4b20}.w-sw{width:36px;height:36px;border-radius:10px}.w-meta small{color:#dfc6ff}.w-item.on .w-meta small{color:#ffe18f}
+#bd>.ui-icon,#jetBtn>.ui-icon{width:27px;height:27px}#bd>svg:not(.ui-icon){position:absolute;inset:-4px;width:84px;height:84px}#bd>.ui-icon{position:static;transform:none}#jetBtn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px}
+@media(max-width:560px){.top-actions button{gap:3px}.top-actions .ui-icon{width:14px;height:14px}.shop-card{padding:18px}.shop-row{padding:10px;gap:8px}.shop-row .emoji{width:40px;height:40px}.shop-row button{font-size:11px;padding:10px 8px}.shop-row small{font-size:11px}#ward{padding:14px}.ward-title p{margin-bottom:9px}.w-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));max-height:36vh}}
+@media(max-height:600px){.ward-title p{display:none}.w-grid{max-height:30vh}#ward{padding:10px}.w-hd{margin:7px 0}}
+
+/* Entrada do título, sem bloquear a seleção dos modos. */
+@keyframes nicoTitleEnter{0%{opacity:0;transform:translateY(-24px) scale(.84) rotate(-3deg);filter:blur(6px)}65%{opacity:1;transform:translateY(2px) scale(1.04) rotate(1deg);filter:blur(0)}100%{opacity:1;transform:translateY(0) scale(1) rotate(0);filter:blur(0)}}
+#t.title-enter{animation:nicoTitleEnter 850ms cubic-bezier(.2,.7,.2,1) both}
+#m:empty{display:none}.sub-row:has(#m:empty):has(#againBtn[style*="none"]){margin-top:0}
+@media(prefers-reduced-motion:reduce){#t.title-enter{animation:none}}
 </style>
 </head>
 <body>
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/></symbol><symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 20 6v5c0 5-3.4 8.2-8 10-4.6-1.8-8-5-8-10V6z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="icon-shop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16l-1-6H5zM5 10v10h14V10M9 20v-6h6v6"/></symbol><symbol id="icon-shirt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 4 4 2 4-2 5 4-3 4-2-1v9H8v-9l-2 1-3-4z"/></symbol><symbol id="icon-board" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M7 18h2m6 0h2M7 15v3m10-3v3"/></symbol><symbol id="icon-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15c-2-2-2-5 0-8 2-2 5-3 8-3 0 3-1 6-3 8-2 2-5 4-5 3zM9 9 5 10 4 14l4-1m6 1-1 4-4 2 1-4"/><circle cx="13.5" cy="7.5" r="1"/><path d="m6 18-2 2"/></symbol><symbol id="icon-run" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="4" r="2"/><path d="m12 8 3 2 3 1m-6-3-3 3-3 1m6-4-2 5 4 3 1 4m-5-7-3 3-3 1"/></symbol><symbol id="icon-danger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 10 18H2zM12 9v5m0 3h.01"/></symbol><symbol id="icon-lava" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 9 9l3 4 3-4 6 11zM9 4l1 2m4-3-1 3m5-2-2 3"/></symbol><symbol id="icon-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7z"/></symbol><symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19"/></symbol><symbol id="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M9 5v14M15 5v14"/></symbol><symbol id="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M8 4v16l12-8z"/></symbol></defs></svg>
 <div id="hud" style="visibility:hidden">
   <div class="hud-grp">
     <span class="h-pill" id="scPill"><span id="sc">0 m</span><span id="recTag">RECORDE!</span></span>
   </div>
   <div class="hud-grp">
-    <span class="h-pill" id="co"><i class="coin-icon"></i><span id="coinCount">0</span></span><button id="gameAdmin" title="Evento global" style="display:none;pointer-events:auto;padding:7px 10px;font-size:13px;background:#a96d24">✨ Evento</button>
-    <button id="pauseBtn" title="Pausar (P)">⏸</button>
+    <span class="h-pill" id="co"><i class="coin-icon"></i><span id="coinCount">0</span></span><button id="gameAdmin" title="Evento global" style="display:none;pointer-events:auto;padding:7px 10px;font-size:13px;background:#a96d24"><svg class="ui-icon" aria-hidden="true"><use href="#icon-spark"></use></svg> Evento</button>
+    <button id="pauseBtn" title="Pausar (P)"><svg class="ui-icon" aria-hidden="true"><use href="#icon-pause"></use></svg></button>
   </div>
 </div>
 
 <div id="cutMsg"></div><div id="diz"></div><div id="growthNotice"></div>
 <button id="bd" style="visibility:hidden" title="Ativar Prancha (Espaço duplo / B / Shift)">
   <svg viewBox="0 0 84 84"><circle id="bdRing" cx="42" cy="42" r="39"/></svg>
-  🛹<small id="bn">1</small>
+  <svg class="ui-icon" aria-hidden="true"><use href="#icon-board"></use></svg><small id="bn">1</small>
 </button>
 
-<button id="jetBtn" style="visibility:hidden" title="Ativar jetpack (J)">🚀<small id="jn">0</small></button>
+<button id="jetBtn" style="visibility:hidden" title="Ativar jetpack (J)"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rocket"></use></svg><small id="jn">0</small></button>
 <div id="ov">
   <div class="top-bar">
     <button class="bank" id="bank" title="Abrir loja"><i class="coin-icon"></i><span id="bankValue">0</span></button>
-    <div class="top-actions"><button id="accountBtn">👤 Entrar</button><button id="adminBtn">🛡 Admin</button><button class="shop-btn" id="openShop">🛒 Loja</button><button class="ward-btn" id="openWard">🎨 Vestiário</button></div>
+    <div class="top-actions"><button id="accountBtn"><svg class="ui-icon" aria-hidden="true"><use href="#icon-user"></use></svg><span id="accountLabel">Entrar</span></button><button id="adminBtn"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg> Admin</button><button class="shop-btn" id="openShop"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shop"></use></svg> Loja</button><button class="ward-btn" id="openWard"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shirt"></use></svg> Vestiário</button></div>
   </div>
   <div class="hd">
-    <h1 id="t">NICO RUNNER</h1>
+    <span class="lobby-kicker">A cidade é sua </span>
+    <h1 id="t" class="title-enter">NICO RUNNER</h1>
     <div class="sub-row">
-      <span id="m">Escolha um modo e corra! 🌇</span>
+      <span id="m"></span>
       <button id="againBtn">↻ Jogar de Novo</button>
     </div>
   </div>
   <div class="pn">
     <div class="sel">
       <div class="pill">
-        <button class="ar" data-k="skin" data-d="-1">‹</button>
-        <div class="pill-lbl" data-open="skin"><i class="sw-dot" id="skDot"></i><span id="sk"></span></div>
-        <button class="ar" data-k="skin" data-d="1">›</button>
+        <button class="ar" aria-label="Skin anterior" data-k="skin" data-d="-1">‹</button>
+        <button class="pill-lbl" type="button" data-open="skin" aria-label="Abrir seleção de skins"><i class="sw-dot" id="skDot"></i><span class="selection-copy"><small>Personagem</small><span id="sk"></span></span></button>
+        <button class="ar" aria-label="Próxima skin" data-k="skin" data-d="1">›</button>
       </div>
       <div class="pill">
-        <button class="ar" data-k="board" data-d="-1">‹</button>
-        <div class="pill-lbl" data-open="board"><i class="sw-dot" id="bkDot"></i><span id="bk"></span></div>
-        <button class="ar" data-k="board" data-d="1">›</button>
+        <button class="ar" aria-label="Prancha anterior" data-k="board" data-d="-1">‹</button>
+        <button class="pill-lbl" type="button" data-open="board" aria-label="Abrir seleção de pranchas"><i class="sw-dot" id="bkDot"></i><span class="selection-copy"><small>Prancha</small><span id="bk"></span></span></button>
+        <button class="ar" aria-label="Próxima prancha" data-k="board" data-d="1">›</button>
       </div>
     </div>
+    <div class="panel-heading">ESCOLHA SUA CORRIDA</div>
     <div class="grid">
-      <button class="mode" data-m="normal" style="--c1:#ffb703;--c2:#ff6a3d"><span class="ic">🏃</span><span class="mode-txt"><span class="nm">Normal</span><small>Corra, desvie e pegue moedas</small></span><em id="b-normal"></em></button>
-      <button class="mode" data-m="nocoin" style="--c1:#ff4d6d;--c2:#9b1d4a"><span class="ic">☠️</span><span class="mode-txt"><span class="nm">Sem Moedas</span><small>Pegou uma moeda? Morreu!</small></span><em id="b-nocoin"></em></button>
-      <button class="mode" data-m="lava" style="--c1:#ff8a1f;--c2:#c2260f"><span class="ic">🌋</span><span class="mode-txt"><span class="nm">Chão é Lava</span><small>Corra só em cima dos trens</small></span><em id="b-lava"></em></button>
+      <button class="mode" data-m="normal" style="--c1:#ffb703;--c2:#ff6a3d"><span class="ic"><svg class="ui-icon" aria-hidden="true"><use href="#icon-run"></use></svg></span><span class="mode-txt"><span class="nm">Normal</span><small>Corra, desvie e pegue moedas</small></span><em id="b-normal"></em><span class="play-label">JOGAR ›</span></button>
+      <button class="mode" data-m="nocoin" style="--c1:#ff4d6d;--c2:#9b1d4a"><span class="ic"><svg class="ui-icon" aria-hidden="true"><use href="#icon-danger"></use></svg></span><span class="mode-txt"><span class="nm">Sem Moedas</span><small>Pegou uma moeda? Morreu!</small></span><em id="b-nocoin"></em><span class="play-label">JOGAR ›</span></button>
+      <button class="mode" data-m="lava" style="--c1:#ff8a1f;--c2:#c2260f"><span class="ic"><svg class="ui-icon" aria-hidden="true"><use href="#icon-lava"></use></svg></span><span class="mode-txt"><span class="nm">Chão é Lava</span><small>Corra só em cima dos trens</small></span><em id="b-lava"></em><span class="play-label">JOGAR ›</span></button>
     </div>
     <div class="keys">← → pista · ↑ pular · ↓ deslizar · B/Shift prancha · J jetpack · P pausar · no celular, deslize</div>
   </div>
 </div>
 
 <div id="ward">
+  <div class="ward-title"><div><span class="section-kicker">SEU ESTILO</span><h2>Vestiário</h2><p>Escolha seu visual para a próxima corrida.</p></div></div>
   <div class="w-hd">
     <div class="w-tabs">
-      <button class="w-tab on" data-wt="skin">👕 Skins</button>
-      <button class="w-tab" data-wt="board">🛹 Pranchas</button>
+      <button class="w-tab on" data-wt="skin"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shirt"></use></svg> Skins</button>
+      <button class="w-tab" data-wt="board"><svg class="ui-icon" aria-hidden="true"><use href="#icon-board"></use></svg> Pranchas</button>
     </div>
-    <button class="w-close" id="closeWard">✕</button>
+    <button class="w-close" id="closeWard" aria-label="Fechar vestiário"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button>
   </div>
   <div class="w-grid" id="wardGrid"></div>
 </div>
 
-<div id="shop"><div class="shop-card"><div class="shop-head"><h2>🛒 Loja</h2><button class="w-close" id="closeShop" aria-label="Fechar loja">✕</button></div>
+<div id="shop"><div class="shop-card"><div class="shop-head"><div><span class="section-kicker">PREPARE A CORRIDA</span><h2><svg class="ui-icon" aria-hidden="true"><use href="#icon-shop"></use></svg> Loja</h2></div><button class="w-close" id="closeShop" aria-label="Fechar loja"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div>
 <p class="shop-sub">Use moedas para comprar itens de uso único. Eles ficam guardados neste aparelho até você ativá-los.</p>
 <div class="bank"><i class="coin-icon"></i><span id="shopBalance">0</span></div>
-<div class="shop-row"><span class="emoji">🛹</span><div class="details"><strong>Prancha extra</strong><small>Proteção por 15 s · estoque: <b id="shopBoards">0</b></small></div><button id="buyBoard">100 moedas</button></div>
-<div class="shop-row"><span class="emoji">🚀</span><div class="details"><strong>Jetpack</strong><small>Voe por 8 s · 1 uso por partida · estoque: <b id="shopJets">0</b></small></div><button id="buyJet">150 moedas</button></div><div id="shopMsg" aria-live="polite"></div></div></div>
-<div class="account-overlay" id="accountOverlay"><div class="account-card"><div class="shop-head"><h2>👤 Sua conta</h2><button class="w-close" id="closeAccount" aria-label="Fechar">✕</button></div><p id="accountIntro">Entre ou crie sua conta para jogar com seu perfil.</p><form id="emailForm"><label for="emailInput">E-mail</label><input id="emailInput" type="email" autocomplete="email" required><label for="passInput">Senha</label><input id="passInput" type="password" minlength="6" autocomplete="current-password" required><div class="actions"><button type="submit">Entrar</button><button id="signupBtn" type="button" class="btn-sec">Criar conta</button></div></form><div class="actions"><button id="logoutBtn" type="button" class="btn-sec" style="display:none">Sair da conta</button></div><div class="account-error" id="accountMsg" aria-live="polite"></div><p>As moedas, o estoque e os recordes ainda ficam salvos neste navegador.</p></div></div>
-<div class="account-overlay" id="adminOverlay"><div class="account-card"><div class="shop-head"><h2>🛡 Painel admin</h2><button class="w-close" id="closeAdmin" aria-label="Fechar">✕</button></div><div class="admin-feature"><strong>✨ Crescimento + trampolins</strong><p>Painel exclusivo do administrador: inicie o evento para todos conectados a este servidor. Em 5 segundos, um Nico gigante voa pelo centro, cresce e lança um trampolim. A câmera mostra onde caiu com o jogo pausado; depois há contagem de 5 segundos!</p><button id="growthToggle">🌍 Iniciar evento global</button><div id="growthStatus" class="account-error"></div></div><p>Apenas a conta autorizada pode iniciar o evento global.</p></div></div>
+<div class="shop-row"><span class="emoji"><svg class="ui-icon" aria-hidden="true"><use href="#icon-board"></use></svg></span><div class="details"><strong>Prancha extra</strong><small>Proteção por 15 s · estoque: <b id="shopBoards">0</b></small></div><button id="buyBoard">100 moedas</button></div>
+<div class="shop-row"><span class="emoji"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rocket"></use></svg></span><div class="details"><strong>Jetpack</strong><small>Voe por 8 s · 1 uso por partida · estoque: <b id="shopJets">0</b></small></div><button id="buyJet">150 moedas</button></div><div id="shopMsg" aria-live="polite"></div></div></div>
+<div class="account-overlay" id="accountOverlay"><div class="account-card"><div class="shop-head"><h2>Sua conta</h2><button class="w-close" id="closeAccount" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><p id="accountIntro">Entre ou crie sua conta para jogar com seu perfil.</p><form id="emailForm"><label for="emailInput">E-mail</label><input id="emailInput" type="email" autocomplete="email" required><label for="passInput">Senha</label><input id="passInput" type="password" minlength="6" autocomplete="current-password" required><div class="actions"><button type="submit">Entrar</button><button id="signupBtn" type="button" class="btn-sec">Criar conta</button></div></form><div class="actions"><button id="logoutBtn" type="button" class="btn-sec" style="display:none">Sair da conta</button></div><div class="account-error" id="accountMsg" aria-live="polite"></div><p>As moedas, o estoque e os recordes ainda ficam salvos neste navegador.</p></div></div>
+<div class="account-overlay" id="adminOverlay"><div class="account-card"><div class="shop-head"><h2><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg> Painel admin</h2><button class="w-close" id="closeAdmin" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><div class="admin-feature"><strong><svg class="ui-icon" aria-hidden="true"><use href="#icon-spark"></use></svg> Crescimento + trampolins</strong><p>Painel exclusivo do administrador: inicie o evento para todos conectados a este servidor. Em 5 segundos, um Nico gigante voa pelo centro, cresce e lança um trampolim. A câmera mostra onde caiu com o jogo pausado; depois há contagem de 3 segundos!</p><button id="growthToggle">Iniciar evento global</button><div id="growthStatus" class="account-error"></div></div><div class="admin-feature"><strong>Operação Nuke</strong><p>A câmera mostra a fábrica, a abertura do teto e a nuke descendo até os trilhos. Após a animação, a corrida volta com contagem de 3 segundos.</p><button id="nukeToggle">Iniciar evento Nuke</button><div id="nukeStatus" class="account-error" aria-live="polite"></div></div><p>Apenas a conta autorizada pode iniciar os eventos globais.</p></div></div>
 <div id="pauseOv">
   <div class="p-card">
-    <h2>⏸ Jogo Pausado</h2>
-    <button id="resBtn">▶ Continuar</button>
+    <h2>Jogo Pausado</h2>
+    <button id="resBtn"><svg class="ui-icon" aria-hidden="true"><use href="#icon-play"></use></svg> Continuar</button>
     <button id="rstBtn" class="btn-sec">↻ Reiniciar</button>
-    <button id="menuBtn" class="btn-sec">🏠 Menu Principal</button>
+    <button id="menuBtn" class="btn-sec">Menu Principal</button>
   </div>
 </div>
 
@@ -506,9 +549,19 @@ for(let i=0;i<14;i++){const m=new THREE.Mesh(spGeo,i%2?spM1:spM0);pad.add(m);sp.
 pad.position.y=.075;pad.visible=false;scene.add(pad);
 
 /* ---------- Cidade ao pôr do sol (geometria fundida por segmento) ---------- */
-const wt=[0,1,2].map(()=>{const c=document.createElement('canvas');c.width=128;c.height=256;const x=c.getContext('2d');
-  x.fillStyle='#f8efe6';x.fillRect(0,0,128,256);
-  for(let r=0;r<8;r++)for(let q=0;q<4;q++){x.fillStyle=Math.random()<.5?'#ffd27a':'#40557f';x.fillRect(q*32+6,r*32+7,20,18)}
+const wt=[0,1,2].map(type=>{const c=document.createElement('canvas');c.width=128;c.height=256;const x=c.getContext('2d');
+  x.fillStyle=['#f7e7d7','#e9e5ef','#fff2dc'][type];x.fillRect(0,0,128,256);
+  // Frisos e janelas com moldura, vidro e reflexos ao entardecer.
+  for(let r=0;r<8;r++){
+    x.fillStyle='rgba(114,84,101,.15)';x.fillRect(0,r*32+29,128,2);
+    for(let q=0;q<4;q++){
+      const px=q*32+5,py=r*32+4,lit=((r*7+q*3+type*5)%5)<2;
+      x.fillStyle='#e8d8cb';x.fillRect(px-2,py-2,24,24);
+      x.fillStyle=lit?'#ffe5a0':'#526b92';x.fillRect(px,py,20,20);
+      x.fillStyle=lit?'#fff4ce':'#95c3d5';x.fillRect(px+2,py+2,5,11);
+      x.fillStyle=lit?'#dfb775':'#374a6c';x.fillRect(px+9,py,2,20);x.fillRect(px,py+11,20,2);
+    }
+  }
   const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;return t});
 const bldMats=wt.map(t=>new THREE.MeshLambertMaterial({map:t,vertexColors:true,emissive:0x2a1c10}));
 const bcols=[0xffb3a7,0xffd6a5,0xcdb4db,0xa0c4ff,0xbde0fe,0xfdffb6,0xffc8dd];
@@ -554,6 +607,40 @@ function makeSeg(i){
       lm.push({g:UBOX,c:awn[(Math.random()*5)|0],x:bx-s*(w/2+.6),y:3.4,z:bz,sx:1.4,sy:.25,sz:5,rz:s*.25});
       lm.push({g:UBOX,c:0x3b3350,x:bx-s*(w/2+.02),y:1.2,z:bz,sx:.1,sy:1.8,sz:4});
       if(Math.random()<.6)bm.push({g:UBOX,c:[0xff4d6d,0x4de3ff,0xffd23f,0x8aff6b][(Math.random()*4)|0],x:bx-s*(w/2+.15),y:Math.min(h-2,5+Math.random()*5),z:bz,sx:.2,sy:1.4,sz:3});
+      // Fachadas ricas, mantendo todos os detalhes fundidos em poucos lotes.
+      const face=bx-s*(w/2+.12),style=(i+k+(s>0?1:0))%3;
+      const accent=[0xf3cbb4,0xe4deef,0xffe5bc][style];
+      [-2.65,2.65].forEach(dz=>lm.push({g:UBOX,c:accent,x:face,y:h/2,z:bz+dz,sx:.24,sy:h-.2,sz:.22}));
+      for(let floor=5.4;floor<h-1.5;floor+=4.8){
+        lm.push({g:UBOX,c:accent,x:face,y:floor-.85,z:bz,sx:.24,sy:.14,sz:5.8});
+        if(style!==1){
+          const balX=face-s*.35;
+          lm.push({g:UBOX,c:0xf7e4d2,x:balX,y:floor-.55,z:bz,sx:.75,sy:.16,sz:2.2},
+            {g:UBOX,c:0x4d4159,x:balX-s*.35,y:floor-.18,z:bz,sx:.09,sy:.55,sz:2.15},
+            {g:UBOX,c:0xeacfbc,x:balX-s*.4,y:floor+.08,z:bz,sx:.1,sy:.08,sz:2.2});
+          if((Math.floor(floor)+k)%2===0){lm.push({g:UBOX,c:0xc67665,x:balX-s*.15,y:floor+.1,z:bz+.65,sx:.3,sy:.25,sz:.55},{g:USPH_LO,c:0x79c978,x:balX-s*.15,y:floor+.32,z:bz+.65,sx:.2,sy:.22,sz:.3})}
+        }
+      }
+      // Toldos listrados, vitrine iluminada e placa própria da loja.
+      for(let stripe=0;stripe<8;stripe++)lm.push({g:UBOX,c:stripe%2?0xfff4de:awn[(i+k)%awn.length],x:face-s*.52,y:3.52,z:bz-2.19+stripe*.625,sx:1.15,sy:.09,sz:.61,rz:s*.25});
+      lm.push({g:UBOX,c:0xf7e5d0,x:face-s*.16,y:4.15,z:bz,sx:.16,sy:.65,sz:3.3},
+        {g:UBOX,c:0x3c4266,x:face-s*.25,y:4.15,z:bz,sx:.05,sy:.46,sz:3.05},
+        {g:UBOX,c:0x90c8cf,x:face-s*.2,y:1.65,z:bz+.95,sx:.08,sy:1.75,sz:1.5},
+        {g:UBOX,c:0xf5e5d2,x:face-s*.24,y:1.65,z:bz+.95,sx:.09,sy:1.85,sz:.08},
+        {g:UBOX,c:0x72556b,x:face-s*.18,y:1.35,z:bz-1.1,sx:.09,sy:2.4,sz:1.15});
+      for(let dot=-1;dot<=1;dot++)bm.push({g:USPH_LO,c:[0xffe28a,0x79e7e6,0xff9eb8][style],x:face-s*.3,y:4.15,z:bz+dot*.65,sx:.13,sy:.13,sz:.13});
+      // Coberturas variadas: terraço com casa de máquinas ou caixa-d'água.
+      if(style===0){
+        lm.push({g:UBOX,c:0xd89983,x:bx,y:h+.65,z:bz,sx:w-.7,sy:.65,sz:5.2},
+          {g:UBOX,c:0xffe3c3,x:bx,y:h+1.02,z:bz,sx:w-.4,sy:.12,sz:5.5});
+      }else if(style===1){
+        lm.push({g:UBOX,c:0xb6a9be,x:bx,y:h+.8,z:bz,sx:2.3,sy:1.1,sz:2},
+          {g:UBOX,c:0xf5d8c9,x:bx,y:h+1.4,z:bz,sx:2.5,sy:.12,sz:2.2});
+      }else{
+        lm.push({g:gChim,c:0x5d6e86,x:bx,y:h+1.1,z:bz},
+          {g:UBOX,c:0xffdfb8,x:bx,y:h+2.0,z:bz,sx:1.4,sy:.16,sz:1.4});
+      }
+
     }
     // Mobiliário urbano e detalhes em lote, fora da área jogável
     const sideX=s*(EDGE+1.9);
@@ -609,9 +696,26 @@ function updateBlasts(dt){for(let i=blasts.length-1;i>=0;i--){const b=blasts[i];
   if(b.life>1.1){b.group.visible=false;blasts.splice(i,1);blastPool.push(b)}
 }}
 function clearBlasts(){for(const b of blasts){b.group.visible=false;blastPool.push(b)}blasts.length=0;}
-const coinGeo=new THREE.CylinderGeometry(.36,.36,.1,16);coinGeo.rotateX(Math.PI/2);
-const coinMat=new THREE.MeshStandardMaterial({color:0xffd23f,emissive:0x8a5a00,metalness:.7,roughness:.3});
+// Moeda com desenho gravado nas duas faces; uma textura compartilhada por todas.
+const coinGeo=new THREE.CylinderGeometry(.36,.36,.1,24);coinGeo.rotateX(Math.PI/2);
+const coinFaceTex=(()=>{const c=document.createElement('canvas');c.width=c.height=128;const x=c.getContext('2d');
+  const grad=x.createLinearGradient(0,0,128,128);grad.addColorStop(0,'#fff6ac');grad.addColorStop(.38,'#ffcf3a');grad.addColorStop(1,'#d47a0a');x.fillStyle=grad;x.fillRect(0,0,128,128);
+  x.beginPath();x.arc(64,64,56,0,Math.PI*2);x.fillStyle='#d18a12';x.fill();
+  x.beginPath();x.arc(64,60,52,0,Math.PI*2);x.fillStyle='#ffd954';x.fill();
+  x.beginPath();x.arc(64,60,43,0,Math.PI*2);x.strokeStyle='#fff3a0';x.lineWidth=4;x.stroke();
+  x.beginPath();for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,r=i%2?17:33,px=64+Math.cos(a)*r,py=60+Math.sin(a)*r;if(i===0)x.moveTo(px,py);else x.lineTo(px,py)}x.closePath();x.fillStyle='#b9680c';x.fill();
+  x.beginPath();for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,r=i%2?16:30,px=64+Math.cos(a)*r,py=57+Math.sin(a)*r;if(i===0)x.moveTo(px,py);else x.lineTo(px,py)}x.closePath();x.fillStyle='#fff4a4';x.fill();
+  const t=new THREE.CanvasTexture(c);t.needsUpdate=true;return t})();
+const coinEdgeMat=new THREE.MeshStandardMaterial({color:0xd89412,emissive:0x6b3700,metalness:.6,roughness:.35});
+const coinFaceMat=new THREE.MeshStandardMaterial({map:coinFaceTex,color:0xffffff,emissive:0x493000,metalness:.35,roughness:.4});
+const coinMat=[coinEdgeMat,coinFaceMat,coinFaceMat];
 const bombMat=new THREE.MeshStandardMaterial({color:0xff2b4a,emissive:0xaa0020,metalness:.3,roughness:.4});
+const trainStripeTex=(()=>{const c=document.createElement('canvas');c.width=256;c.height=32;const x=c.getContext('2d');
+  x.fillStyle='#28374d';x.fillRect(0,0,256,32);x.fillStyle='#657c94';x.fillRect(0,0,256,3);x.fillStyle='#101c33';x.fillRect(0,26,256,6);
+  for(let i=0;i<16;i++){const xx=i*16;x.fillStyle=i%2?'#b4dbe5':'#8bb4c7';x.fillRect(xx+2,8,10,9);x.fillStyle='#394e62';x.fillRect(xx+3,19,9,2)}
+  const t=new THREE.CanvasTexture(c);t.needsUpdate=true;return t})();
+const trainStripeMat=new THREE.MeshLambertMaterial({map:trainStripeTex});
+const trainStripeGeo=new THREE.PlaneGeometry(7.85,.34);
 const TOP=3.4;
 
 // Trem estilizado em lote: janelas, portas, rodas e frente detalhada.
@@ -638,7 +742,10 @@ const trainGeos=[0xe74c6f,0x3b8bea,0x2fbf8f,0x9b59d6].map(c=>{
     });
     [-2.7,2.7].forEach(z=>parts.push({g:wheelGeo,c:0x202a3e,x:side*1.02,y:.35,z},
       {g:wheelGeo,c:0xb0c0cc,x:side*1.10,y:.35,z,sx:.12,sy:.55,sz:.55}));
-    parts.push({g:UBOX,c:0xffedc7,x:side*1.055,y:1.34,z:0,sx:.025,sy:.12,sz:7.7});
+    parts.push({g:UBOX,c:0xffedc7,x:side*1.055,y:1.34,z:0,sx:.025,sy:.12,sz:7.7},
+      {g:UBOX,c:0xeafaff,x:side*1.075,y:2.48,z:-1.8,sx:.018,sy:.055,sz:.8,rz:side*.08},
+      {g:UBOX,c:0xeafaff,x:side*1.075,y:2.48,z:2.2,sx:.018,sy:.055,sz:.8,rz:side*.08},
+      {g:UBOX,c:0x6e8091,x:side*1.07,y:1.56,z:0,sx:.035,sy:.12,sz:7.6});
   });
   return mergeList(parts);
 });
@@ -671,6 +778,7 @@ function getObsMesh(type){
       m=new THREE.Group();
       const body=freeze(new THREE.Mesh(trainGeos[0],VLM));
       m.add(body,freeze(new THREE.Mesh(trainLightGeo,VBM)));
+      [-1,1].forEach(side=>{const stripe=new THREE.Mesh(trainStripeGeo,trainStripeMat);stripe.position.set(side*1.08,.72,0);stripe.rotation.y=side*Math.PI/2;m.add(freeze(stripe))});
       const ramp=freeze(new THREE.Mesh(rampGeo,VLM));m.add(ramp);m.userData.ramp=ramp;
       m.userData.body=body;
     }else m=new THREE.Mesh(type==='low'?lowGeo:highGeo,VLM);
@@ -803,10 +911,39 @@ let growthArmed=false,growthEnabled=false,growthTime=-1,trampsActive=false,tramp
 let cutStart=0,cutTarget=null,cutCamStart=new THREE.Vector3(),cutLookStart=new THREE.Vector3(),cutDest=new THREE.Vector3(),cutLookDest=new THREE.Vector3();
 function beginCutscene(target,now){cutTarget=target;cutStart=now;cutCamStart.copy(cam.position);cutLookStart.copy(look);cutDest.set(target.m.position.x+3,target.base+3.1,target.m.position.z+6);cutLookDest.set(target.m.position.x,target.base+.3,target.m.position.z);state='cutscene';giant.visible=false;flyingTramp.visible=false;$('cutMsg').style.display='block';$('growthNotice').style.display='none'}
 function playCutscene(now){const elapsed=Math.max(0,(now-cutStart)/1000);const msg=$('cutMsg');
-  if(elapsed<3){const p=Math.min(1,elapsed/1.25),smooth=p*p*(3-2*p);cam.position.copy(cutCamStart).lerp(cutDest,smooth);look.copy(cutLookStart).lerp(cutLookDest,smooth);msg.innerHTML='🎬 Olha o trampolim!<br><small>Jogo pausado</small>'}
-  else if(elapsed<8){const left=Math.ceil(8-elapsed),p=Math.max(0,Math.min(1,(elapsed-6.7)/1.3)),smooth=p*p*(3-2*p);cam.position.copy(cutDest).lerp(cutCamStart,smooth);look.copy(cutLookDest).lerp(cutLookStart,smooth);msg.innerHTML='▶ O jogo despausa em <b>'+left+'</b>';}
+  if(elapsed<3){const p=Math.min(1,elapsed/1.25),smooth=p*p*(3-2*p);cam.position.copy(cutCamStart).lerp(cutDest,smooth);look.copy(cutLookStart).lerp(cutLookDest,smooth);msg.innerHTML='Olha o trampolim!<br><small>Jogo pausado</small>'}
+  else if(elapsed<6){const left=Math.ceil(6-elapsed),p=Math.max(0,Math.min(1,(elapsed-4.7)/1.3)),smooth=p*p*(3-2*p);cam.position.copy(cutDest).lerp(cutCamStart,smooth);look.copy(cutLookDest).lerp(cutLookStart,smooth);msg.innerHTML='▶ O jogo despausa em <b>'+left+'</b>';}
   else{cam.position.copy(cutCamStart);look.copy(cutLookStart);msg.style.display='none';state='play';last=now;cutTarget=null}
   cam.lookAt(look);ren.render(scene,cam);
+}
+// Cenário cinematográfico reutilizado: não cria objetos a cada evento.
+const nukeScene=new THREE.Group();nukeScene.visible=false;scene.add(nukeScene);
+const nukeMat=(color)=>new THREE.MeshLambertMaterial({color});
+const nukeBox=(parent,w,h,d,x,y,z,color)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),nukeMat(color));m.position.set(x,y,z);parent.add(m);return m};
+const factory=new THREE.Group();nukeScene.add(factory);factory.position.set(15,0,-23);
+nukeBox(factory,12,7,10,0,3.5,0,0x596482);nukeBox(factory,12.4,.5,10.4,0,7.1,0,0x3a435c);
+nukeBox(factory,4,5,.15,0,2.7,5.08,0x313a50);
+for(let i=-2;i<=2;i++){nukeBox(factory,1.2,1.5,.14,i*2.1,4.4,5.1,0x8ac9dc);nukeBox(factory,1.2,.08,.2,i*2.1,4.4,5.2,0xd9f6ff)}
+nukeBox(factory,2,3,2,-4,8.5,-2,0x737d90);nukeBox(factory,2.4,.35,2.4,-4,10,-2,0x39435b);
+const hatchL=nukeBox(factory,3.6,.3,4,-1.8,7.45,0,0xeab94b),hatchR=nukeBox(factory,3.6,.3,4,1.8,7.45,0,0xeab94b);
+for(let i=-2;i<=2;i++){nukeBox(hatchL,.35,.03,3.5,i*.65, .18,0,0x424457);nukeBox(hatchR,.35,.03,3.5,i*.65,.18,0,0x424457)}
+const missile=new THREE.Group();nukeScene.add(missile);
+const missileBody=new THREE.Mesh(new THREE.CylinderGeometry(.65,.8,3.3,12),nukeMat(0xd9e5e7));missile.add(missileBody);
+const nose=new THREE.Mesh(new THREE.ConeGeometry(.65,1.15,12),nukeMat(0xe35c49));nose.position.y=2.2;missile.add(nose);
+const band=new THREE.Mesh(new THREE.CylinderGeometry(.81,.81,.35,12),nukeMat(0xf2c046));band.position.y=-.7;missile.add(band);
+for(let i=0;i<4;i++){const fin=nukeBox(missile,.16,1.1,1.2,0,-1.25,0,0x4b576c);fin.rotation.y=i*Math.PI/2;fin.position.set(Math.sin(i*Math.PI/2)*.6,-1.25,Math.cos(i*Math.PI/2)*.6)}
+const nukeFlash=new THREE.Mesh(new THREE.SphereGeometry(1,12,8),new THREE.MeshBasicMaterial({color:0xffc960,transparent:true,opacity:.7,depthWrite:false}));nukeScene.add(nukeFlash);nukeFlash.visible=false;
+let nukeStart=0,nukeFog=null;
+const nukeCameraStart=new THREE.Vector3(),nukeLookStart=new THREE.Vector3();
+function hideNuke(){nukeScene.visible=false;nukeFlash.visible=false;if(nukeFog!==null){scene.fog=nukeFog;nukeFog=null}}
+function beginNuke(now){nukeStart=now;nukeCameraStart.copy(cam.position);nukeLookStart.copy(look);nukeFog=scene.fog;scene.fog=null;nukeScene.visible=true;hatchL.position.x=-1.8;hatchR.position.x=1.8;missile.visible=true;missile.position.set(15,7,-23);missile.rotation.set(0,0,0);nukeFlash.visible=false;state='nukeCutscene';$('growthNotice').style.display='none';$('cutMsg').style.display='block'}
+function playNuke(now){const e=Math.max(0,(now-nukeStart)/1000),msg=$('cutMsg');
+ if(e<3){const p=Math.min(1,e/1.2),sm=p*p*(3-2*p);cam.position.copy(nukeCameraStart).lerp(new THREE.Vector3(29,14,-5),sm);look.copy(nukeLookStart).lerp(new THREE.Vector3(15,5,-23),sm);let door=Math.max(0,Math.min(1,(e-1)/1.7));hatchL.position.x=-1.8-door*2;hatchR.position.x=1.8+door*2;msg.innerHTML='A fábrica está abrindo o teto<br><small>Jogo pausado</small>'}
+ else if(e<5){let q=(e-3)/2;missile.position.set(15,7+q*15,-23);cam.position.set(27,11+q*13,-5);look.copy(missile.position);msg.innerHTML='A Nuke está decolando<br><small>Jogo pausado</small>'}
+ else if(e<8){let q=(e-5)/3;missile.rotation.z=Math.PI;missile.position.set(15*(1-q),22-(q*q)*20,-23+q*11);cam.position.set(missile.position.x+10,missile.position.y+5,missile.position.z+12);look.copy(missile.position);msg.innerHTML='A Nuke está descendo nos trilhos<br><small>Jogo pausado</small>'}
+ else if(e<11){missile.visible=false;nukeFlash.visible=e<9.2;nukeFlash.position.set(0,1,-12);let q=Math.min(1,(e-8)/1.2);nukeFlash.scale.setScalar(1+q*4);nukeFlash.material.opacity=.7*(1-q);let r=Math.max(0,Math.min(1,(e-9.7)/1.3));r=r*r*(3-2*r);cam.position.lerpVectors(new THREE.Vector3(10,7,0),nukeCameraStart,r);look.lerpVectors(new THREE.Vector3(0,1,-12),nukeLookStart,r);msg.innerHTML='O jogo despausa em <b>'+Math.ceil(11-e)+'</b>'}
+ else{cam.position.copy(nukeCameraStart);look.copy(nukeLookStart);hideNuke();msg.style.display='none';state='play';last=now}
+ cam.lookAt(look);ren.render(scene,cam)
 }
 let wasAir=false,squash=0,slideP=0,surfP=0,dodgeTilt=0,flipT=0,cheerT=0,hitT=0,overT=0,blinkT=2.2,wardTab='skin';
 const $=id=>document.getElementById(id),elSc=$('sc'),elCo=$('co'),elBn=$('bn'),elBd=$('bd'),elDiz=$('diz'),elOv=$('ov'),elHud=$('hud'),elRing=$('bdRing'),elRec=$('recTag'),elScPill=$('scPill');
@@ -822,7 +959,7 @@ function openShop(){$('ward').style.display='none';updBank();$('shopMsg').textCo
 $('openShop').onclick=openShop;$('bank').onclick=openShop;$('closeShop').onclick=()=>$('shop').style.display='none';
 function buy(k,price){if(bankCoins<price){$('shopMsg').textContent='Moedas insuficientes. Corra e colete mais!';return}bankCoins-=price;stock[k]++;saveEconomy();updBank();$('shopMsg').textContent='Compra concluída! Item guardado no estoque.'}
 $('buyBoard').onclick=()=>buy('board',100);$('buyJet').onclick=()=>buy('jet',150);
-function showBest(){for(const k in best){const e=$('b-'+k);if(e)e.textContent='🏆 '+best[k]+' m'}}showBest();
+function showBest(){for(const k in best){const e=$('b-'+k);if(e)e.textContent=''+best[k]+' m'}}showBest();
 
 const _wht=new THREE.Color(0xffffff),hexCss=n=>'#'+n.toString(16).padStart(6,'0');
 function swStyle(tex,col,tall){
@@ -865,7 +1002,7 @@ function renderWard(){
     const btn=document.createElement('button');
     btn.className='w-item'+(sel[wardTab]===idx?' on':'');
     const tx=isSk?it.jTex:it.tex,col=isSk?it.jacket:it.top;
-    btn.innerHTML=`<i class="w-sw" style="${swStyle(tx,col,!isSk)}"></i><span class="w-meta"><span>${it.n}</span>${tx?'<small>✨ Textura</small>':''}</span>`;
+    btn.innerHTML=`<i class="w-sw" style="${swStyle(tx,col,!isSk)}"></i><span class="w-meta"><span>${it.n}</span>${tx?'<small>Textura</small>':''}</span>`;
     btn.onclick=()=>{sel[wardTab]=idx;(isSk?applySkin:applyBoard)(idx,true);saveSel();renderWard()};
     g.appendChild(btn);
   });
@@ -880,7 +1017,7 @@ elBd.onpointerdown=e=>{e.stopPropagation();act('B')};$('jetBtn').onpointerdown=e
 $('pauseBtn').onclick=e=>{e.stopPropagation();togglePause()};
 $('resBtn').onclick=()=>togglePause(false);
 $('rstBtn').onclick=()=>{$('pauseOv').style.display='none';reset()};
-$('menuBtn').onclick=()=>{$('pauseOv').style.display='none';showLobby('NICO RUNNER','Escolha um modo e corra! 🌇')};
+$('menuBtn').onclick=()=>{$('pauseOv').style.display='none';showLobby('NICO RUNNER','')};
 $('againBtn').onclick=()=>reset();
 
 function togglePause(force){
@@ -902,7 +1039,7 @@ function resetPose(){
 }
 function reset(){
   $('ward').style.display='none';$('shop').style.display='none';$('pauseOv').style.display='none';clearAll();resetPose();
-  growthEnabled=false;growthTime=-1;trampsActive=false;giant.visible=false;flyingTramp.visible=false;cutTarget=null;$('cutMsg').style.display='none';throwTarget=null;thrownDone=false;$('growthNotice').style.display='none';
+  hideNuke();growthEnabled=false;growthTime=-1;trampsActive=false;giant.visible=false;flyingTramp.visible=false;cutTarget=null;$('cutMsg').style.display='none';throwTarget=null;thrownDone=false;$('growthNotice').style.display='none';
   jetUsed=false;$('jetBtn').disabled=false;
   dizzy=invul=boardT=jetT=shake=0;runBoards=1;boards=1+stock.board;hero.visible=true;speed=18;dist=0;coinCount=0;lane=1;y=0;vy=0;slide=0;gY=0;lavaT=0;camY=0;
   pSc=pCo=pBdOp=-1;pBn='';pRec=false;elRec.style.display='none';elScPill.classList.remove('rec');elRing.style.strokeDashoffset='245';
@@ -914,18 +1051,18 @@ function reset(){
 
 function showLobby(ti,m,canReplay){
   clearAll();resetPose();
-  growthEnabled=false;growthTime=-1;trampsActive=false;giant.visible=false;flyingTramp.visible=false;cutTarget=null;$('cutMsg').style.display='none';throwTarget=null;thrownDone=false;$('growthNotice').style.display='none';
+  hideNuke();growthEnabled=false;growthTime=-1;trampsActive=false;giant.visible=false;flyingTramp.visible=false;cutTarget=null;$('cutMsg').style.display='none';throwTarget=null;thrownDone=false;$('growthNotice').style.display='none';
   state='menu';lane=1;y=0;vy=0;slide=0;gY=0;camY=0;
   segs.forEach(g=>g.userData.lava.visible=false);scene.fog.color.set(0xffc59a);
   elHud.style.visibility='hidden';elBd.style.visibility='hidden';$('jetBtn').style.visibility='hidden';hero.jet.visible=false;jetT=0;elDiz.style.display='none';pDizVis=false;hero.visible=true;dizzy=invul=boardT=0;
-  $('t').textContent=ti;$('m').innerHTML=m;$('againBtn').style.display=canReplay?'inline-block':'none';elOv.style.display='flex'}
+  $('t').textContent=ti;$('m').innerHTML=m;$('againBtn').style.display=canReplay?'inline-block':'none';elOv.style.display='flex';const title=$('t');title.classList.remove('title-enter');if(ti==='NICO RUNNER'){void title.offsetWidth;title.classList.add('title-enter')}}
 
 function die(why){
   state='over';overT=0;shake=.55;
   const dInt=dist|0,isNew=dInt>best[mode];
   if(isNew){best[mode]=dInt;try{localStorage.setItem('nico-best',JSON.stringify(best))}catch(e){}showBest()}
-  const ti=why==='coin'?'☠️ MOEDA!':why==='lava'?'🌋 LAVA!':'💥 BATEU!';
-  const m=(isNew?'🎉 <b>NOVO RECORDE!</b> · ':'')+'Distância: <b>'+dInt+' m</b>'+(mode==='nocoin'?'':' · 🪙 <b>'+coinCount+'</b>');
+  const ti=why==='coin'?'MOEDA!':why==='lava'?'LAVA!':'BATEU!';
+  const m=(isNew?'<b>NOVO RECORDE!</b> · ':'')+'Distância: <b>'+dInt+' m</b>'+(mode==='nocoin'?'':' · <b>'+coinCount+'</b>');
   setTimeout(()=>{if(state==='over')showLobby(ti,m,true)},850)}
 
 document.querySelectorAll('.mode').forEach(b=>b.onclick=()=>{mode=b.dataset.m;reset()});
@@ -960,6 +1097,7 @@ let last=performance.now(),fpsAcc=0,fpsN=0;
 function loop(now){requestAnimationFrame(loop);
   if(state==='pause')return;
   if(state==='cutscene'){last=now;playCutscene(now);return}
+  if(state==='nukeCutscene'){last=now;playNuke(now);return}
   const raw=(now-last)/1000,dt=Math.min(raw,.05);last=now;t+=dt;
   if(raw<.25){fpsAcc+=raw;if(++fpsN>=90){const avg=fpsN/fpsAcc;fpsAcc=fpsN=0;
     if(avg<48&&dprCap>1){dprCap=Math.max(1,dprCap-.25);ren.setPixelRatio(dprCap);ren.setSize(innerWidth,innerHeight)}}}
@@ -972,10 +1110,10 @@ function loop(now){requestAnimationFrame(loop);
     for(let i=0;i<NSEG;i++){const s=segs[i];s.position.z+=d;if(s.position.z>SEG*1.5)s.position.z-=SEG*NSEG}
     for(let i=0;i<obs.length;i++)obs[i].m.position.z+=d;
     for(let i=tramps.length-1;i>=0;i--){const tr=tramps[i];tr.m.position.z+=d;if(tr.m.position.z>12){poolGrp.remove(tr.m);tramps.splice(i,1)}}
-    if(globalEventStart!==null&&growthTime<0){const elapsed=(performance.now()-globalEventStart)/1000;if(elapsed>=0){growthTime=0;throwTarget=null;thrownDone=false;globalEventStart=null}else{$('growthNotice').style.display='block';$('growthNotice').textContent='🌍 Evento global em '+Math.ceil(-elapsed)+'s'}}
+    if(globalEventStart!==null&&(globalEventType==='nuke'||growthTime<0)){const elapsed=(performance.now()-globalEventStart)/1000;if(elapsed>=0){globalEventStart=null;if(globalEventType==='nuke'){beginNuke(now);return}growthTime=0;throwTarget=null;thrownDone=false}else{$('growthNotice').style.display='block';$('growthNotice').textContent='Evento global em '+Math.ceil(-elapsed)+'s'}}
     if(growthTime>=0&&growthTime<10){
       growthTime+=dt;const notice=$('growthNotice');notice.style.display='block';
-      notice.textContent=growthTime<4?'✨ Nico gigante está chegando!':growthTime<7?'🟦 Nico lançou um trampolim!':'🚀 Nico gigante está voando!';
+      notice.textContent=growthTime<4?'Nico gigante está chegando!':growthTime<7?'Nico lançou um trampolim!':'Nico gigante está voando!';
       if(growthTime>=4&&!throwTarget&&!thrownDone)throwTarget=pickThrowTarget();
       // O alvo acompanha os trilhos enquanto o trampolim está no ar.
       if(throwTarget&&!thrownDone)throwTarget.z+=d;
@@ -985,7 +1123,7 @@ function loop(now){requestAnimationFrame(loop);
         }
         thrownDone=true;trampsActive=true;flyingTramp.visible=false;if(landed){beginCutscene(landed,now);return}
       }
-      if(growthTime>=10){giant.visible=false;flyingTramp.visible=false;notice.textContent='🟦 Trampolins liberados!'}
+      if(growthTime>=10){giant.visible=false;flyingTramp.visible=false;notice.textContent='Trampolins liberados!'}
     }else if(trampsActive&&growthTime>=10){growthTime+=dt;if(growthTime>13)$('growthNotice').style.display='none'}
     const cr=dt*5;for(let i=0;i<coins.length;i++){const m=coins[i].m;m.position.z+=d;m.rotation.y+=cr}
     for(let i=drops.length-1;i>=0;i--){const drop=drops[i];drop.m.position.z+=d;drop.m.rotation.y+=dt*2;drop.m.position.y+=(Math.sin(t*4+i)*.002);if(drop.m.position.z>10){poolGrp.remove(drop.m);drops.splice(i,1)}else if(drop.lane===lane&&Math.abs(drop.m.position.z)<1&&Math.abs(drop.m.position.y-y-1)<1.5){stock[drop.kind]++;boards=runBoards+stock.board;saveEconomy();updBank();poolGrp.remove(drop.m);drops.splice(i,1)}}
@@ -1142,7 +1280,7 @@ function loop(now){requestAnimationFrame(loop);
 
   const stVis=dizzy>0&&state==='play';stars.visible=stVis;if(stVis)stars.rotation.y+=dt*7;
   if(stVis!==pDizVis){pDizVis=stVis;elDiz.style.display=stVis?'block':'none'}
-  if(stVis){const dt2=dizzy.toFixed(1);if(dt2!==pDizTxt){pDizTxt=dt2;elDiz.textContent='😵 Tonto! '+dt2+'s — outra batida e acabou'}}
+  if(stVis){const dt2=dizzy.toFixed(1);if(dt2!==pDizTxt){pDizTxt=dt2;elDiz.textContent='Tonto! '+dt2+'s — outra batida e acabou'}}
   hero.visible=state!=='play'||invul<=0||Math.floor(t*14)%2===0;
 
   // Cachecol reage à velocidade, vento e queda vertical!
@@ -1183,29 +1321,30 @@ const sb=window.supabase?window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBL
 let accountUser=null,accountIsAdmin=false,authRevision=0;
 async function accountApi(path,body,authenticated=false){
   if(!sb)throw Error('Não foi possível carregar o Supabase. Verifique sua conexão.');
-  const method=path==='/api/admin/check'?'nico_is_admin':body===undefined?'nico_read_event':'nico_start_event';
+  const method=path==='/api/admin/check'?'nico_is_admin':body===undefined?'nico_read_event':'nico_start_typed_event';
   if(authenticated&&!accountUser)throw Error('Entre com sua conta.');
-  const {data,error}=await sb.rpc(method);
+  const {data,error}=await sb.rpc(method,method==='nico_start_typed_event'?{p_type:body.type||'growth'}:undefined);
   if(error)throw Error(error.message||'Não foi possível concluir.');
   return method==='nico_is_admin'?{admin:data===true}:data;
 }
-function accountView(){const u=accountUser;$('accountBtn').textContent=u?'👤 '+(u.user_metadata?.full_name||u.email||'Conta'):'👤 Entrar';$('adminBtn').style.display=accountIsAdmin?'inline-block':'none';$('gameAdmin').style.display=accountIsAdmin?'inline-block':'none';$('emailForm').style.display=u?'none':'block';$('logoutBtn').style.display=u?'inline-block':'none';$('accountIntro').textContent=u?'Conectado como '+(u.email||'usuário')+(accountIsAdmin?' · administrador':''):'Entre ou crie sua conta para jogar com seu perfil.'}
+function accountView(){const u=accountUser;$('accountLabel').textContent=u?(u.user_metadata?.full_name||u.email||'Conta'):'Entrar';$('adminBtn').style.display=accountIsAdmin?'inline-flex':'none';$('gameAdmin').style.display=accountIsAdmin?'inline-flex':'none';$('emailForm').style.display=u?'none':'block';$('logoutBtn').style.display=u?'inline-block':'none';$('accountIntro').textContent=u?'Conectado como '+(u.email||'usuário')+(accountIsAdmin?' · administrador':''):'Entre ou crie sua conta para jogar com seu perfil.'}
 async function changeAuth(user){const rev=++authRevision;accountUser=user;accountIsAdmin=false;accountView();if(!user)$('adminOverlay').style.display='none';if(user){try{const result=await accountApi('/api/admin/check',undefined,true);if(rev!==authRevision)return;accountIsAdmin=result.admin===true;accountView()}catch(e){if(rev===authRevision)$('accountMsg').textContent='Não foi possível verificar o acesso de administrador.'}}}
 $('accountBtn').onclick=()=>{$('accountMsg').textContent='';$('accountOverlay').style.display='flex'};$('closeAccount').onclick=()=>$('accountOverlay').style.display='none';
 function accountErr(e){const message=e.message||'';return message.includes('Invalid login credentials')?'E-mail ou senha incorretos.':message.includes('Email not confirmed')?'Confirme seu e-mail antes de entrar.':message.includes('provider is not enabled')?'O login Google ainda precisa ser ativado no Supabase.':message||'Confira a conexão e tente novamente.'}
 $('emailForm').onsubmit=async e=>{e.preventDefault();if(!sb){$('accountMsg').textContent='Supabase indisponível.';return}try{$('accountMsg').textContent='Entrando...';const {error}=await sb.auth.signInWithPassword({email:$('emailInput').value.trim(),password:$('passInput').value});if(error)throw error;$('passInput').value='';$('accountMsg').textContent='Login realizado!'}catch(err){$('accountMsg').textContent=accountErr(err)}};
 $('signupBtn').onclick=async()=>{if(!$('emailForm').reportValidity())return;if(!sb){$('accountMsg').textContent='Supabase indisponível.';return}try{$('accountMsg').textContent='Criando conta...';const {data,error}=await sb.auth.signUp({email:$('emailInput').value.trim(),password:$('passInput').value,options:{emailRedirectTo:location.origin+location.pathname}});if(error)throw error;$('passInput').value='';$('accountMsg').textContent=data.session?'Conta criada!':'Confira seu e-mail e confirme a conta antes de entrar.'}catch(err){$('accountMsg').textContent=accountErr(err)}};
 $('logoutBtn').onclick=async()=>{try{const {error}=await sb.auth.signOut();if(error)throw error;$('adminOverlay').style.display='none';$('accountMsg').textContent='Você saiu da conta.'}catch(e){$('accountMsg').textContent='Não foi possível sair.'}};
-function openEventPanel(){if(!accountIsAdmin)return;$('growthStatus').textContent='';$('adminOverlay').style.display='flex'}$('adminBtn').onclick=openEventPanel;$('gameAdmin').onclick=openEventPanel;
+function openEventPanel(){if(!accountIsAdmin)return;$('growthStatus').textContent='';$('nukeStatus').textContent='';$('adminOverlay').style.display='flex'}$('adminBtn').onclick=openEventPanel;$('gameAdmin').onclick=openEventPanel;
 $('closeAdmin').onclick=()=>$('adminOverlay').style.display='none';
 if(sb){sb.auth.onAuthStateChange((_event,session)=>{setTimeout(()=>changeAuth(session?.user||null),0)});}else $('accountMsg').textContent='Supabase indisponível. Verifique a conexão.';
-let seenGlobalId=0,globalEventStart=null;
-function receiveEvent(data){const ev=data.event;if(!ev||ev.id===seenGlobalId)return;seenGlobalId=ev.id;const age=data.server_time-ev.start_at;if(age>20)return;globalEventStart=performance.now()+(ev.start_at-data.server_time)*1000;if(state==='play'||state==='pause'){growthTime=-1;trampsActive=false}else $('growthStatus').textContent='Evento enviado! Entre em uma corrida para participar.'}
+let seenGlobalId=0,globalEventStart=null,globalEventType='growth';
+function receiveEvent(data){const ev=data.event;if(!ev||ev.id===seenGlobalId)return;seenGlobalId=ev.id;const age=data.server_time-ev.start_at;if(age>20)return;globalEventType=ev.type==='nuke'?'nuke':'growth';globalEventStart=performance.now()+(ev.start_at-data.server_time)*1000;if(state==='play'||state==='pause'||state==='cutscene'||state==='nukeCutscene'){if(state==='play'||state==='pause'){growthTime=-1;trampsActive=false}}else $('growthStatus').textContent='Evento enviado! Entre em uma corrida para participar.'}
 async function pollGlobalEvent(){try{receiveEvent(await accountApi('/api/event'))}catch(e){/* servidor indisponível: tenta de novo */}}
 setInterval(pollGlobalEvent,1000);pollGlobalEvent();
-$('growthToggle').onclick=async()=>{const button=$('growthToggle');button.disabled=true;$('growthStatus').textContent='Enviando evento...';try{const result=await accountApi('/api/event',{},true);receiveEvent(result);$('growthStatus').textContent='Evento enviado a todos neste servidor! Começa em 5 segundos.'}catch(e){$('growthStatus').textContent='Não foi possível iniciar: '+e.message}finally{button.disabled=false}};
+$('growthToggle').onclick=async()=>{const button=$('growthToggle');button.disabled=true;$('growthStatus').textContent='Enviando evento...';try{const result=await accountApi('/api/event',{type:'growth'},true);receiveEvent(result);$('growthStatus').textContent='Evento enviado a todos neste servidor! Começa em 5 segundos.'}catch(e){$('growthStatus').textContent='Não foi possível iniciar: '+e.message}finally{button.disabled=false}};
+$('nukeToggle').onclick=async()=>{const button=$('nukeToggle');button.disabled=true;$('nukeStatus').textContent='Enviando evento...';try{const result=await accountApi('/api/event',{type:'nuke'},true);receiveEvent(result);$('nukeStatus').textContent='Nuke enviada! Começa em 5 segundos.'}catch(e){$('nukeStatus').textContent='Não foi possível iniciar: '+e.message}finally{button.disabled=false}};
 accountView();
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5be39bc8ead2746',t:'MTc5NDkxMzE2MQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5be39bc8ead2746',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5be821a69f9b5fe',t:'MTc5NDkxNjEyNQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5be821a69f9b5fe',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
