@@ -212,7 +212,7 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
 <div class="shop-row"><span class="emoji"><svg class="ui-icon" aria-hidden="true"><use href="#icon-board"></use></svg></span><div class="details"><strong>Prancha extra</strong><small>Proteção por 15 s · estoque: <b id="shopBoards">0</b></small></div><button id="buyBoard">100 moedas</button></div>
 <div class="shop-row"><span class="emoji"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rocket"></use></svg></span><div class="details"><strong>Jetpack</strong><small>Voe por 8 s · 1 uso por partida · estoque: <b id="shopJets">0</b></small></div><button id="buyJet">150 moedas</button></div><div id="shopMsg" aria-live="polite"></div></div></div>
 <div class="account-overlay" id="accountOverlay"><div class="account-card"><div class="shop-head"><h2>Sua conta</h2><button class="w-close" id="closeAccount" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><p id="accountIntro">Entre ou crie sua conta para jogar com seu perfil.</p><form id="emailForm"><label for="nameInput">Nome de jogador <small>(somente para criar conta)</small></label><input id="nameInput" type="text" maxlength="20" autocomplete="nickname" placeholder="Como quer aparecer no jogo"><label for="emailInput">E-mail</label><input id="emailInput" type="email" autocomplete="email" required><label for="passInput">Senha</label><input id="passInput" type="password" minlength="6" autocomplete="current-password" required><div class="actions"><button type="submit">Entrar</button><button id="signupBtn" type="button" class="btn-sec">Criar conta</button></div></form><form id="chooseNameForm" style="display:none"><label for="chooseName">Nome de jogador</label><input id="chooseName" type="text" minlength="2" maxlength="20" autocomplete="nickname" placeholder="Escolha seu nome" required><p>Use de 2 a 20 letras, números, espaços, hífen ou sublinhado. Não use seu e-mail.</p><div class="actions"><button type="submit" id="saveNameBtn">Salvar nome</button></div></form><div class="actions"><button id="logoutBtn" type="button" class="btn-sec" style="display:none">Sair da conta</button></div><div class="account-error" id="accountMsg" aria-live="polite"></div><p>As moedas, o estoque e os recordes ainda ficam salvos neste navegador.</p></div></div>
-<div class="account-overlay" id="adminOverlay"><div class="account-card"><div class="shop-head"><h2><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg> Painel admin</h2><button class="w-close" id="closeAdmin" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><div class="admin-feature"><strong><svg class="ui-icon" aria-hidden="true"><use href="#icon-spark"></use></svg> Crescimento + trampolins</strong><p>Painel exclusivo do administrador: inicie o evento para todos conectados a este servidor. Em 5 segundos, um Nico gigante voa pelo centro, cresce e lança um trampolim. A câmera mostra onde caiu com o jogo pausado; depois há contagem de 3 segundos!</p><button id="growthToggle">Iniciar evento global</button><div id="growthStatus" class="account-error"></div></div><div class="admin-feature"><strong>Operação Nuke</strong><p>A câmera mostra a fábrica, a abertura do teto e a nuke descendo até os trilhos. Após a animação, a corrida volta com contagem de 3 segundos.</p><button id="nukeToggle">Iniciar evento Nuke</button><div id="nukeStatus" class="account-error" aria-live="polite"></div></div><p>Apenas a conta autorizada pode iniciar os eventos globais.</p></div></div>
+<div class="account-overlay" id="adminOverlay"><div class="account-card"><div class="shop-head"><h2><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg> Painel admin</h2><button class="w-close" id="closeAdmin" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><div class="admin-feature"><strong><svg class="ui-icon" aria-hidden="true"><use href="#icon-spark"></use></svg> Crescimento + trampolins</strong><p>Painel exclusivo do administrador: inicie o evento para todos conectados a este servidor. Em 5 segundos, um Nico gigante voa pelo centro, cresce e lança um trampolim. A câmera mostra onde caiu com o jogo pausado; depois há contagem de 3 segundos! O evento dura 1 minuto de corrida; depois uma nave recolhe os trampolins.</p><button id="growthToggle">Iniciar evento global</button><div id="growthStatus" class="account-error"></div></div><div class="admin-feature"><strong>Operação Nuke</strong><p>A câmera mostra a fábrica, a abertura do teto e a nuke descendo até os trilhos. Após a animação, a corrida volta com contagem de 3 segundos.</p><button id="nukeToggle">Iniciar evento Nuke</button><div id="nukeStatus" class="account-error" aria-live="polite"></div></div><p>Apenas a conta autorizada pode iniciar os eventos globais.</p></div></div>
 <div id="pauseOv">
   <div class="p-card">
     <h2>Jogo Pausado</h2>
@@ -955,8 +955,8 @@ const BD=[
 /* ---------- Estado, UI e Animações ---------- */
 const look=new THREE.Vector3(0,1.7,-9),lookL=new THREE.Vector3(0,.6,0),lookP=new THREE.Vector3();cam.position.set(0,2,5.2);
 let dizzy=0,invul=0,boardT=0,boards=1,shake=0,mode='normal',gY=0,lavaT=0,camY=0,state='menu',speed=0,dist=0,coinCount=0,lane=1,y=0,vy=0,slide=0,t=0;
-let jetT=0,runBoards=1,drops=[],jetCamBlend=0,jetCamFollow=false,jetUsed=false;
-let growthArmed=false,growthEnabled=false,growthTime=-1,trampsActive=false,tramps=[];
+let jetT=0,runBoards=1,drops=[],jetCamBlend=0,jetCamFollow=false,jetUsed=false,previousRampTrain=null;
+let growthArmed=false,growthEnabled=false,growthTime=-1,trampsActive=false,tramps=[],trampTimeLeft=0;
 let cutStart=0,cutTarget=null,cutCamStart=new THREE.Vector3(),cutLookStart=new THREE.Vector3(),cutDest=new THREE.Vector3(),cutLookDest=new THREE.Vector3();
 function beginCutscene(target,now){cutTarget=target;cutStart=now;cutCamStart.copy(cam.position);cutLookStart.copy(look);cutDest.set(target.m.position.x+3,target.base+3.1,target.m.position.z+6);cutLookDest.set(target.m.position.x,target.base+.3,target.m.position.z);state='cutscene';giant.visible=false;flyingTramp.visible=false;$('cutMsg').style.display='block';$('growthNotice').style.display='none'}
 function playCutscene(now){const elapsed=Math.max(0,(now-cutStart)/1000);const msg=$('cutMsg');
@@ -964,6 +964,39 @@ function playCutscene(now){const elapsed=Math.max(0,(now-cutStart)/1000);const m
   else if(elapsed<6){const left=Math.ceil(6-elapsed),p=Math.max(0,Math.min(1,(elapsed-4.7)/1.3)),smooth=p*p*(3-2*p);cam.position.copy(cutDest).lerp(cutCamStart,smooth);look.copy(cutLookDest).lerp(cutLookStart,smooth);msg.innerHTML='▶ O jogo despausa em <b>'+left+'</b>';}
   else{cam.position.copy(cutCamStart);look.copy(cutLookStart);msg.style.display='none';state='play';last=now;cutTarget=null}
   cam.lookAt(look);ren.render(scene,cam);
+}
+// Nave alienígena reutilizada para recolher os trampolins ao fim do evento.
+const ufoScene=new THREE.Group();scene.add(ufoScene);ufoScene.visible=false;
+const ufoShip=new THREE.Group();ufoScene.add(ufoShip);
+const ufoHull=new THREE.Mesh(new THREE.SphereGeometry(2.5,16,10),new THREE.MeshLambertMaterial({color:0x677eab}));ufoHull.scale.set(1,.27,1);ufoShip.add(ufoHull);
+const ufoTop=new THREE.Mesh(new THREE.SphereGeometry(1.05,14,10),new THREE.MeshLambertMaterial({color:0x87e7df,transparent:true,opacity:.9}));ufoTop.position.y=.5;ufoTop.scale.y=.65;ufoShip.add(ufoTop);
+const ufoRing=new THREE.Mesh(new THREE.TorusGeometry(2.1,.12,7,24),new THREE.MeshBasicMaterial({color:0x9cf9ef}));ufoRing.rotation.x=Math.PI/2;ufoShip.add(ufoRing);
+const ufoLampGeo=new THREE.SphereGeometry(.18,8,6),ufoLampMat=new THREE.MeshBasicMaterial({color:0xffe982});for(let i=0;i<8;i++){let a=i*Math.PI/4,m=new THREE.Mesh(ufoLampGeo,ufoLampMat);m.position.set(Math.cos(a)*2.1,-.1,Math.sin(a)*2.1);ufoShip.add(m)}
+const ufoBeam=new THREE.Mesh(new THREE.CylinderGeometry(.55,2.4,8,20,1,true),new THREE.MeshBasicMaterial({color:0x77fbe1,transparent:true,opacity:.27,depthWrite:false,side:THREE.DoubleSide}));ufoScene.add(ufoBeam);ufoBeam.visible=false;
+const ufoGhost=new THREE.Mesh(trampGeo,VLM);ufoScene.add(ufoGhost);ufoGhost.visible=false;
+let ufoStart=0,ufoTarget=null,ufoItems=[],ufoHidden=[];const ufoCamStart=new THREE.Vector3(),ufoLookStart=new THREE.Vector3();
+function hideUfo(){ufoScene.visible=false;ufoBeam.visible=false;ufoGhost.visible=false;for(const [mesh,visible] of ufoHidden)mesh.visible=visible;ufoHidden=[];ufoItems=[];ufoTarget=null}
+function beginUfo(now){
+  trampTimeLeft=0;trampsActive=false;growthTime=-1;giant.visible=false;flyingTramp.visible=false;
+  ufoStart=now;ufoCamStart.copy(cam.position);ufoLookStart.copy(look);ufoItems=tramps.map(tr=>({tr,y:tr.m.position.y,scale:tr.m.scale.clone()}));
+  ufoTarget=tramps.filter(tr=>tr.m.position.z< -3&&tr.m.position.z> -32).sort((a,b)=>Math.abs(a.m.position.z+12)-Math.abs(b.m.position.z+12))[0]||null;
+  const px=ufoTarget?ufoTarget.m.position.x:0,pz=ufoTarget?ufoTarget.m.position.z:-12,base=ufoTarget?ufoTarget.base:(mode==='lava'?TOP:0);
+  ufoScene.position.set(px,base,pz);ufoShip.position.set(0,13,0);ufoBeam.position.set(0,6,0);ufoBeam.visible=false;ufoGhost.visible=!ufoTarget;ufoGhost.position.set(0,0,0);ufoGhost.scale.set(1,1,1);
+  ufoHidden=[];for(const seg of segs)for(const mesh of seg.userData.cinematicObstacles){ufoHidden.push([mesh,mesh.visible]);mesh.visible=false}
+  ufoScene.visible=true;state='ufoCutscene';$('growthNotice').style.display='none';$('cutMsg').style.display='block';
+}
+function playUfo(now){const e=Math.max(0,(now-ufoStart)/1000),msg=$('cutMsg'),base=ufoScene.position.y,x=ufoScene.position.x,z=ufoScene.position.z;
+ if(e<5){const p=Math.min(1,e/1.1),sm=p*p*(3-2*p);cam.position.copy(ufoCamStart).lerp(new THREE.Vector3(x+4,base+7,z+13),sm);look.copy(ufoLookStart).lerp(new THREE.Vector3(x,base+4,z),sm);
+   ufoShip.position.y=13-Math.min(1,e/1.8)*4+Math.sin(e*3)*.12;ufoShip.rotation.y=e*.7;ufoBeam.visible=e>=1.5;
+   const lift=Math.max(0,Math.min(1,(e-1.8)/2.6));ufoBeam.material.opacity=.25*(1-Math.max(0,(e-4.5)*2));
+   for(const item of ufoItems){item.tr.m.position.y=item.y+lift*8;item.tr.m.scale.copy(item.scale).multiplyScalar(1-lift*.75)}
+   if(ufoGhost.visible){ufoGhost.position.y=lift*8;ufoGhost.scale.setScalar(1-lift*.75)}
+   msg.innerHTML='A nave está abduzindo os trampolins!<br><small>Jogo pausado</small>';
+ }else if(e<8){for(const tr of tramps)poolGrp.remove(tr.m);tramps.length=0;ufoItems=[];ufoGhost.visible=false;ufoBeam.visible=false;ufoShip.position.y=9+(e-5)*7;
+   const p=Math.max(0,Math.min(1,(e-6.7)/1.3)),sm=p*p*(3-2*p);cam.position.lerpVectors(new THREE.Vector3(x+4,base+7,z+13),ufoCamStart,sm);look.lerpVectors(new THREE.Vector3(x,base+4,z),ufoLookStart,sm);
+   msg.innerHTML='O jogo despausa em <b>'+Math.ceil(8-e)+'</b>';
+ }else{for(const tr of tramps)poolGrp.remove(tr.m);tramps.length=0;cam.position.copy(ufoCamStart);look.copy(ufoLookStart);hideUfo();msg.style.display='none';state='play';last=now}
+ cam.lookAt(look);ren.render(scene,cam);
 }
 // Cenário cinematográfico reutilizado: não cria objetos a cada evento.
 const nukeScene=new THREE.Group();nukeScene.visible=false;scene.add(nukeScene);
@@ -1104,8 +1137,8 @@ function resetPose(){
 }
 function reset(){
   $('ward').style.display='none';$('shop').style.display='none';$('pauseOv').style.display='none';clearAll();resetPose();
-  hideNuke();growthEnabled=false;growthTime=-1;trampsActive=false;giant.visible=false;flyingTramp.visible=false;cutTarget=null;$('cutMsg').style.display='none';throwTarget=null;thrownDone=false;$('growthNotice').style.display='none';
-  jetUsed=false;$('jetBtn').disabled=false;
+  hideNuke();hideUfo();growthEnabled=false;growthTime=-1;trampsActive=false;trampTimeLeft=0;giant.visible=false;flyingTramp.visible=false;cutTarget=null;$('cutMsg').style.display='none';throwTarget=null;thrownDone=false;$('growthNotice').style.display='none';
+  jetUsed=false;previousRampTrain=null;$('jetBtn').disabled=false;
   dizzy=invul=boardT=jetT=shake=0;runBoards=1;boards=1+stock.board;hero.visible=true;speed=18;dist=0;coinCount=0;lane=1;y=0;vy=0;slide=0;gY=0;lavaT=0;camY=0;
   pSc=pCo=pBdOp=-1;pBn='';pRec=false;elRec.style.display='none';elScPill.classList.remove('rec');elRing.style.strokeDashoffset='245';
   const lv=mode==='lava';segs.forEach(g=>g.userData.lava.visible=lv);scene.fog.color.set(lv?0xe0603a:0xffc59a);
@@ -1116,7 +1149,7 @@ function reset(){
 
 function showLobby(ti,m,canReplay){
   clearAll();resetPose();
-  hideNuke();growthEnabled=false;growthTime=-1;trampsActive=false;giant.visible=false;flyingTramp.visible=false;cutTarget=null;$('cutMsg').style.display='none';throwTarget=null;thrownDone=false;$('growthNotice').style.display='none';
+  hideNuke();hideUfo();growthEnabled=false;growthTime=-1;trampsActive=false;trampTimeLeft=0;giant.visible=false;flyingTramp.visible=false;cutTarget=null;$('cutMsg').style.display='none';throwTarget=null;thrownDone=false;$('growthNotice').style.display='none';
   state='menu';lane=1;y=0;vy=0;slide=0;gY=0;camY=0;
   segs.forEach(g=>g.userData.lava.visible=false);scene.fog.color.set(0xffc59a);
   elHud.style.visibility='hidden';elBd.style.visibility='hidden';$('jetBtn').style.visibility='hidden';hero.jet.visible=false;jetT=0;elDiz.style.display='none';pDizVis=false;hero.visible=true;dizzy=invul=boardT=0;
@@ -1163,6 +1196,7 @@ function loop(now){requestAnimationFrame(loop);
   if(state==='pause')return;
   if(state==='cutscene'){last=now;playCutscene(now);return}
   if(state==='nukeCutscene'){last=now;playNuke(now);return}
+  if(state==='ufoCutscene'){last=now;playUfo(now);return}
   const raw=(now-last)/1000,dt=Math.min(raw,.05);last=now;t+=dt;
   if(raw<.25){fpsAcc+=raw;if(++fpsN>=90){const avg=fpsN/fpsAcc;fpsAcc=fpsN=0;
     if(avg<48&&dprCap>1){dprCap=Math.max(1,dprCap-.25);ren.setPixelRatio(dprCap);ren.setSize(innerWidth,innerHeight)}}}
@@ -1175,7 +1209,8 @@ function loop(now){requestAnimationFrame(loop);
     for(let i=0;i<NSEG;i++){const s=segs[i];s.position.z+=d;if(s.position.z>SEG*1.5)s.position.z-=SEG*NSEG}
     for(let i=0;i<obs.length;i++){const o=obs[i];o.m.position.z+=d+(o.moveSpeed||0)*dt;}
     for(let i=tramps.length-1;i>=0;i--){const tr=tramps[i];tr.m.position.z+=d;if(tr.m.position.z>12){poolGrp.remove(tr.m);tramps.splice(i,1)}}
-    if(globalEventStart!==null&&(globalEventType==='nuke'||growthTime<0)){const elapsed=(performance.now()-globalEventStart)/1000;if(elapsed>=0){globalEventStart=null;if(globalEventType==='nuke'){beginNuke(now);return}growthTime=0;throwTarget=null;thrownDone=false}else{$('growthNotice').style.display='block';$('growthNotice').textContent='Evento global em '+Math.ceil(-elapsed)+'s'}}
+    if(globalEventStart!==null&&(globalEventType==='nuke'||growthTime<0)){const elapsed=(performance.now()-globalEventStart)/1000;if(elapsed>=0){globalEventStart=null;if(globalEventType==='nuke'){beginNuke(now);return}growthTime=0;trampTimeLeft=60;throwTarget=null;thrownDone=false}else{$('growthNotice').style.display='block';$('growthNotice').textContent='Evento global em '+Math.ceil(-elapsed)+'s'}}
+    if(trampTimeLeft>0){trampTimeLeft=Math.max(0,trampTimeLeft-dt);if(trampTimeLeft<=0){beginUfo(now);return}}
     if(growthTime>=0&&growthTime<10){
       growthTime+=dt;const notice=$('growthNotice');notice.style.display='block';
       notice.textContent=growthTime<4?'Nico gigante está chegando!':growthTime<7?'Nico lançou um trampolim!':'Nico gigante está voando!';
@@ -1189,20 +1224,31 @@ function loop(now){requestAnimationFrame(loop);
         thrownDone=true;trampsActive=true;flyingTramp.visible=false;if(landed){beginCutscene(landed,now);return}
       }
       if(growthTime>=10){giant.visible=false;flyingTramp.visible=false;notice.textContent='Trampolins liberados!'}
-    }else if(trampsActive&&growthTime>=10){growthTime+=dt;if(growthTime>13)$('growthNotice').style.display='none'}
+    }else if(trampsActive&&growthTime>=10){growthTime+=dt;const notice=$('growthNotice');notice.style.display='block';notice.textContent='Trampolins: '+Math.ceil(trampTimeLeft)+' s'}
     const cr=dt*5;for(let i=0;i<coins.length;i++){const m=coins[i].m;m.position.z+=d;m.rotation.y+=cr}
     for(let i=drops.length-1;i>=0;i--){const drop=drops[i];drop.m.position.z+=d;drop.m.rotation.y+=dt*2;drop.m.position.y+=(Math.sin(t*4+i)*.002);if(drop.m.position.z>10){poolGrp.remove(drop.m);drops.splice(i,1)}else if(drop.lane===lane&&Math.abs(drop.m.position.z)<1&&Math.abs(drop.m.position.y-y-1)<1.5){stock[drop.kind]++;boards=runBoards+stock.board;saveEconomy();updBank();poolGrp.remove(drop.m);drops.splice(i,1)}}
     if(mode==='lava'){nz[0]+=d;nz[1]+=d;nz[2]+=d;lavaSpawn()}else{nextZ+=d;while(nextZ>-170)spawnRow()}
     if(jetT>0)jetT=Math.max(0,jetT-dt);dizzy=Math.max(0,dizzy-dt);invul=Math.max(0,invul-dt);if(boardT>0)boardT=Math.max(0,boardT-dt);
-    const previousGround=gY;gY=0;
+    const previousGround=gY,lastRampTrain=previousRampTrain;previousRampTrain=null;gY=0;
     if(mode!=='lava'&&jetT<=0){for(const o of obs){
       if(o.broken||o.type!=='train'||o.lane!==lane||Math.abs(hero.position.x-LANES[o.lane])>1)continue;
       const localZ=-o.m.position.z;
       if(o.ramp&&localZ>=4&&localZ<=8.8){const rampY=TOP*(8.8-localZ)/4.8;
-        if(y>=rampY-1.6&&(vy<=0||y<=previousGround+.15))gY=Math.max(gY,rampY);
-      }else if(Math.abs(localZ)<=4.15&&y>=TOP-.6&&vy<=0)gY=Math.max(gY,TOP);
+        if(y>=rampY-1.6&&(vy<=0||y<=previousGround+.15)){gY=Math.max(gY,rampY);if(y<=rampY+.15)previousRampTrain=o}
+      }else if(Math.abs(localZ)<=4.35&&vy<=0){
+        // Transição da rampa ao teto: continua sobre o mesmo trem entre quadros.
+        const fromRamp=lastRampTrain===o&&localZ<4&&y>=previousGround-.15&&previousGround>=TOP-1.1;
+        if(y>=TOP-.02||fromRamp)gY=Math.max(gY,TOP);
+      }
     }}
     if(mode==='lava'&&jetT<=0)for(let i=0;i<obs.length;i++){const o=obs[i];if(o.type!=='train'||o.broken||o.lane!==lane||Math.abs(o.m.position.z)>4.35)continue;if(y>=TOP-.6)gY=TOP;else{explodeTrain(o);return die('crash')}}
+    // Pousar sobre uma barreira é diferente de bater de frente.
+    // Só oferece apoio se os pés já estiverem acima do topo, evitando subir pela lateral.
+    if(jetT<=0&&vy<=0){for(const o of obs){
+      if(o.type==='train'||o.broken||o.lane!==lane||Math.abs(hero.position.x-LANES[o.lane])>1||Math.abs(o.m.position.z)>o.depth/2+.35)continue;
+      const top=(o.base||0)+(o.type==='low'?.84:1.875);
+      if(y>=top-.02)gY=Math.max(gY,top);
+    }}
     if(jetT>0){y+=(7-y)*Math.min(1,dt*3);vy=0}else{vy-=38*dt;y+=vy*dt}if(y<=gY){y=gY;if(vy<0)vy=0}
     const grd=y<=gY+.01;
     if(wasAir&&grd)squash=-.24; // squash elástico ao pousar!
@@ -1215,11 +1261,11 @@ function loop(now){requestAnimationFrame(loop);
       if(o.lane!==lane||Math.abs(z)>o.depth/2+.35||Math.abs(hero.position.x-LANES[o.lane])>1)continue;
       if(o.hit||o.broken)continue;
       if(o.type==='train'&&o.ramp&&-z>=4&&y>=gY-.1)continue;
-      if((o.type==='train'&&y<3.3)||(o.type==='low'&&y<.9)||(o.type==='high'&&!sliding&&y<1.6)){if(o.type==='train')explodeTrain(o);if(hit(o))return}}
+      if((o.type==='train'&&y<TOP-.02)||(o.type==='low'&&y<.82)||(o.type==='high'&&!sliding&&y<1.855)){if(o.type==='train')explodeTrain(o);if(hit(o))return}}
     if(mode==='lava'&&jetT<=0){for(const o of obs){
       if(o.type==='train'||o.base!==TOP||o.hit||o.lane!==lane||Math.abs(o.m.position.z)>o.depth/2+.35||Math.abs(hero.position.x-LANES[o.lane])>1)continue;
       const roofY=y-TOP;
-      if((o.type==='low'&&roofY<.9)||(o.type==='high'&&!sliding&&roofY<1.6)){if(hit(o))return}
+      if((o.type==='low'&&roofY<.82)||(o.type==='high'&&!sliding&&roofY<1.855)){if(hit(o))return}
     }}
     if(jetT<=0&&vy<=0){for(const tr of tramps){
       if(!tr.used&&tr.lane===lane&&Math.abs(tr.m.position.z)<1.35&&Math.abs(hero.position.x-LANES[tr.lane])<1&&y>=tr.base-.1&&y<=tr.base+.55){
@@ -1417,7 +1463,7 @@ function openEventPanel(){if(!accountIsAdmin)return;$('growthStatus').textConten
 $('closeAdmin').onclick=()=>$('adminOverlay').style.display='none';
 if(sb){sb.auth.onAuthStateChange((_event,session)=>{setTimeout(()=>changeAuth(session?.user||null),0)});}else $('accountMsg').textContent='Supabase indisponível. Verifique a conexão.';
 let seenGlobalId=0,globalEventStart=null,globalEventType='growth';
-function receiveEvent(data){const ev=data.event;if(!ev||ev.id===seenGlobalId)return;seenGlobalId=ev.id;const age=data.server_time-ev.start_at;if(age>20)return;globalEventType=ev.type==='nuke'?'nuke':'growth';globalEventStart=performance.now()+(ev.start_at-data.server_time)*1000;if(state==='play'||state==='pause'||state==='cutscene'||state==='nukeCutscene'){if(state==='play'||state==='pause'){growthTime=-1;trampsActive=false}}else $('growthStatus').textContent='Evento enviado! Entre em uma corrida para participar.'}
+function receiveEvent(data){const ev=data.event;if(!ev||ev.id===seenGlobalId)return;seenGlobalId=ev.id;const age=data.server_time-ev.start_at;if(age>20)return;globalEventType=ev.type==='nuke'?'nuke':'growth';globalEventStart=performance.now()+(ev.start_at-data.server_time)*1000;if(state==='play'||state==='pause'||state==='cutscene'||state==='nukeCutscene'||state==='ufoCutscene'){if(state==='play'||state==='pause'){growthTime=-1;trampsActive=false}}else $('growthStatus').textContent='Evento enviado! Entre em uma corrida para participar.'}
 async function pollGlobalEvent(){try{receiveEvent(await accountApi('/api/event'))}catch(e){/* servidor indisponível: tenta de novo */}}
 setInterval(pollGlobalEvent,1000);pollGlobalEvent();
 $('growthToggle').onclick=async()=>{const button=$('growthToggle');button.disabled=true;$('growthStatus').textContent='Enviando evento...';try{const result=await accountApi('/api/event',{type:'growth'},true);receiveEvent(result);$('growthStatus').textContent='Evento enviado a todos neste servidor! Começa em 5 segundos.'}catch(e){$('growthStatus').textContent='Não foi possível iniciar: '+e.message}finally{button.disabled=false}};
@@ -1425,5 +1471,5 @@ $('nukeToggle').onclick=async()=>{const button=$('nukeToggle');button.disabled=t
 accountView();
 </script>
 
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5bf17eb3b16e0e2',t:'MTc5NDkyMjI2Mg=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5bf17eb3b16e0e2',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
