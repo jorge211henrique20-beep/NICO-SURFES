@@ -201,8 +201,8 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
 @media(max-width:560px){.top-left{gap:4px}.fullscreen-btn{width:37px;height:37px;border-radius:11px}.fullscreen-btn .ui-icon{width:17px;height:17px}.top-bar{flex-wrap:wrap;row-gap:5px}}@media(max-width:370px){.fullscreen-btn{width:34px;height:37px}.top-left{gap:3px}}
 
 /* Cronômetro do Sem Moedas centralizado e mais legível. */
-#safeTimeStat{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 108px);transform:translateX(-50%);padding:8px 15px;gap:8px;border-radius:14px;background:linear-gradient(135deg,#252c4cf2,#161c35f2);box-shadow:0 8px 24px #080c2466,inset 0 1px #ffffff22;font-size:17px;border:1px solid #ffe2a45c}#safeTimeStat small{font-size:10px;white-space:nowrap}#safeTimeValue{font-size:19px;line-height:1;font-variant-numeric:tabular-nums}
-@media(max-width:560px){#safeTimeStat{top:calc(env(safe-area-inset-top,0px) + 108px);padding:7px 12px;font-size:15px}#safeTimeValue{font-size:17px}#safeTimeStat small{font-size:9px}}
+#safeTimeStat{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 15px);transform:translateX(-50%);padding:8px 15px;gap:8px;border-radius:14px;background:linear-gradient(135deg,#252c4cf2,#161c35f2);box-shadow:0 8px 24px #080c2466,inset 0 1px #ffffff22;font-size:17px;border:1px solid #ffe2a45c}#safeTimeStat small{font-size:10px;white-space:nowrap}#safeTimeValue{font-size:19px;line-height:1;font-variant-numeric:tabular-nums}
+@media(max-width:560px){#safeTimeStat{top:calc(env(safe-area-inset-top,0px) + 15px);padding:7px 12px;font-size:15px}#safeTimeValue{font-size:17px}#safeTimeStat small{font-size:9px}}
 </style>
 </head>
 <body>
@@ -235,7 +235,7 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
   </div>
 </div>
 
-<div id="statsHud"><span class="stat-mini"><small>FPS</small><b id="fpsValue">--</b></span><span class="stat-mini no-coin" id="safeTimeStat" style="display:none"><small>SEM MOEDAS</small><b id="safeTimeValue">0:00</b></span></div>
+<div id="statsHud"><span class="stat-mini"><small>FPS</small><b id="fpsValue">--</b></span><span class="stat-mini no-coin" id="safeTimeStat" style="display:none"><b id="safeTimeValue">0:00</b></span></div>
 <div id="fullscreenNotice" role="status" aria-live="polite"></div><div id="sceneFlash"></div><div id="cutMsg"></div><div id="diz"></div><div id="growthNotice"></div>
 <button id="bd" style="visibility:hidden" aria-label="Ativar prancha" title="Ativar Prancha (Espaço duplo / B / Shift)">
   <svg viewBox="0 0 84 84"><circle id="bdRing" cx="42" cy="42" r="39"/></svg>
@@ -1764,5 +1764,5 @@ $('openRanking').onclick=()=>{$('rankingOverlay').style.display='flex';refreshRa
 accountView();
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5c2e3b43ef46451',t:'MTc5NDk2MjA2Ng=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5c2e3b43ef46451',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5c2ea3a7f22d105',t:'MTc5NDk2MjMzMw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5c2ea3a7f22d105',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
