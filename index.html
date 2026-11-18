@@ -203,6 +203,121 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
 /* Cronômetro do Sem Moedas centralizado e mais legível. */
 #safeTimeStat{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 15px);transform:translateX(-50%);padding:8px 15px;gap:8px;border-radius:14px;background:linear-gradient(135deg,#252c4cf2,#161c35f2);box-shadow:0 8px 24px #080c2466,inset 0 1px #ffffff22;font-size:17px;border:1px solid #ffe2a45c}#safeTimeStat small{font-size:10px;white-space:nowrap}#safeTimeValue{font-size:19px;line-height:1;font-variant-numeric:tabular-nums}
 @media(max-width:560px){#safeTimeStat{top:calc(env(safe-area-inset-top,0px) + 15px);padding:7px 12px;font-size:15px}#safeTimeValue{font-size:17px}#safeTimeStat small{font-size:9px}}
+
+/* Lobby renovado: painéis leves, destaque para os modos e o personagem 3D. */
+#ov{background:linear-gradient(180deg,rgba(10,15,39,.9),rgba(13,18,45,.32) 18%,transparent 43%,rgba(12,16,39,.3) 64%,rgba(8,13,32,.96));}
+#ov .top-bar{max-width:1040px}
+#ov .top-actions button,#ov .bank,#ov #fullscreenLobby{border:1px solid #ffffff3d;background:linear-gradient(145deg,#343b61ed,#1b2344ed);box-shadow:0 4px 0 #0b1029aa,0 10px 24px #0b102a55;color:#f8f8ff}
+#ov .bank{color:#ffe08b;border-color:#ffd77a66}
+#ov .shop-btn{background:linear-gradient(130deg,#ffdb83,#ffa666);color:#31213d;border-color:#fff1c88c}
+#ov .ward-btn{background:linear-gradient(130deg,#7765e0,#bd67c7);border-color:#d9caff88}
+#ov .lobby-kicker{background:#171f42d9;border:1px solid #a8caff55;color:#c8e8ff;letter-spacing:.2em;box-shadow:0 5px 18px #080d2a44}
+#ov #t{color:#fffaf1;letter-spacing:-.055em;text-shadow:0 3px 0 #ff9b67,0 6px 0 #b14d68,0 12px 30px #090d27bb}
+#ov .pn{max-width:940px;background:linear-gradient(145deg,#202b50f5,#151b38f5);border:1px solid #a9c7ff45;box-shadow:0 24px 60px #070b20bb,inset 0 1px #ffffff2a;border-radius:25px}
+#ov .pill{background:linear-gradient(130deg,#ffffff10,#ffffff06);border:1px solid #cad8ff2e}
+#ov .ar{background:#ffffff14;border-color:#ffffff1e}
+#ov .panel-heading{color:#cedcf4}
+#ov .mode{background:linear-gradient(145deg,#303b62,#212a4a);border:1px solid #ffffff35;box-shadow:0 5px 0 #080d26aa,0 10px 22px #080d2455,inset 0 1px #ffffff25}
+#ov .mode[data-m="normal"]{border-color:#ffc96a80}#ov .mode[data-m="nocoin"]{border-color:#ff8d9c80}#ov .mode[data-m="lava"]{border-color:#ff9e6980}
+#ov .mode[data-m="normal"] .ic{background:linear-gradient(140deg,#ffd677,#ff9554);color:#45254a}
+#ov .mode[data-m="nocoin"] .ic{background:linear-gradient(140deg,#ff94aa,#d94979);color:#fff}
+#ov .mode[data-m="lava"] .ic{background:linear-gradient(140deg,#ffb572,#e35a46);color:#fff}
+#ov .mode .play-label{background:#ffffff17;color:#fff;border:1px solid #ffffff39;box-shadow:none}
+#ov .mode:hover .play-label{background:#ffffffed;color:#263050}
+#ov .mode em{background:#101735a3;color:#e5edff}
+#ov .keys{color:#c1cce3}
+@media(max-width:560px){#ov .pn{border-radius:20px}#ov .mode{box-shadow:0 3px 0 #080d2688,inset 0 1px #ffffff20}#ov .top-actions button,#ov .bank,#ov #fullscreenLobby{box-shadow:0 3px 0 #0b102999}}
+@media(prefers-reduced-motion:reduce){#ov .mode,#ov .top-actions button{transition:none}}
+
+
+/* Seleção de visual fica no vestiário; tela de fim de corrida. */
+#ov .sel{display:none}
+#deathOverlay{position:fixed;inset:0;z-index:35;display:none;align-items:center;justify-content:center;padding:16px;background:#080b20c9;box-sizing:border-box;pointer-events:auto}
+.death-card{box-sizing:border-box;width:min(360px,100%);padding:28px;border-radius:22px;text-align:center;background:linear-gradient(145deg,#303455,#171c37);border:1px solid #ffffff38;box-shadow:0 24px 70px #0009,inset 0 1px #ffffff24;color:#fff}
+.death-card h2{margin:0 0 10px;font-size:30px}.death-card p{color:#d5dbed;line-height:1.45}.death-card .death-actions{display:grid;gap:10px;margin-top:20px}.death-card button{width:100%;border-radius:13px;font-size:16px;padding:13px}.death-card #reviveBtn{background:linear-gradient(135deg,#ffcc70,#ff8a61);color:#2d2441}.death-card #deathBackBtn{background:#ffffff18;border:1px solid #ffffff32;box-shadow:none}.death-card .rank-run-notice{min-height:0;margin:8px 0;font-size:12px}
+
+/* Cabeçalho do lobby e atalhos principais. */
+#ov .hd{top:-14px}
+#ov #accountBtn,#ov #openShop,#ov #openWard{min-height:44px;padding:8px 15px;gap:8px;border-radius:14px;font-size:13px;font-weight:850;letter-spacing:.01em;box-shadow:0 4px 0 #0d112eb3,0 10px 22px #080e2855,inset 0 1px #ffffff55}
+#ov #accountBtn{background:linear-gradient(135deg,#3b5279,#283458);border-color:#b6d9ff66;color:#f5fbff}
+#ov #openShop{background:linear-gradient(135deg,#ffe49a,#ffb66b);border-color:#fff0bd;color:#452c3d}
+#ov #openWard{background:linear-gradient(135deg,#8e7ae9,#c66cca);border-color:#e3c5ff88;color:#fff}
+#ov #accountBtn .ui-icon,#ov #openShop .ui-icon,#ov #openWard .ui-icon{width:20px;height:20px}
+#ov #accountBtn:hover,#ov #openShop:hover,#ov #openWard:hover{filter:brightness(1.1);transform:translateY(-2px)}
+#ov #accountBtn:active,#ov #openShop:active,#ov #openWard:active{transform:translateY(2px);box-shadow:0 1px 0 #0d112eb3}
+@media(max-width:560px){#ov .hd{top:-8px}#ov #accountBtn,#ov #openShop,#ov #openWard{min-height:38px;padding:7px 8px;gap:4px;font-size:11px;border-radius:11px}#ov #accountBtn .ui-icon,#ov #openShop .ui-icon,#ov #openWard .ui-icon{width:15px;height:15px}}
+@media(max-width:370px){#ov #accountBtn,#ov #openShop,#ov #openWard{padding:7px 5px;gap:3px;font-size:10px}}
+@media(max-height:650px){#ov .hd{top:0}}
+
+
+/* Lobby: hierarquia de arcade, com espaço para a cena 3D. */
+#ov{background:linear-gradient(180deg,#101935ed 0%,#16213eaa 14%,#101a3108 35%,#10162a18 52%,#0c132edb 76%,#0b1028fa 100%)}
+#ov .top-bar{max-width:1000px}
+#ov .top-left,#ov .top-actions{gap:8px}
+#ov .top-actions button,#ov .bank,#ov #fullscreenLobby{min-height:44px;border-radius:13px;box-shadow:0 4px 0 #080f25bb,0 9px 23px #080d254d,inset 0 1px #ffffff42}
+#ov .bank{background:linear-gradient(135deg,#343453,#252742);border-color:#ffd87481;font-size:15px;padding:9px 13px}
+#ov .hd{top:-14px}
+#ov .lobby-kicker{padding:6px 13px;color:#ddedff;background:#152747df;border:1px solid #83c9ff78;box-shadow:0 5px 0 #07132c55;letter-spacing:.17em}
+#ov #t{font-size:clamp(42px,8vw,78px);color:#fffdf4;letter-spacing:-.055em;text-shadow:0 3px 0 #ffb364,0 6px 0 #dc6c66,0 10px 0 #803d68,0 17px 28px #0c1028bb}
+#ov .pn{max-width:940px;padding:18px;background:linear-gradient(145deg,#253556f7,#18233ff7 55%,#181b36f7);border:1px solid #b4d2ff55;border-radius:24px;box-shadow:0 7px 0 #090e23b8,0 25px 60px #050b20bb,inset 0 1px #ffffff30}
+#ov .rank-row{margin:0 0 13px;align-items:end;justify-content:space-between}
+#ov .lobby-section-title{min-width:0;flex:1;text-align:left}
+#ov .lobby-eyebrow{display:block;color:#8fc8ff;letter-spacing:.17em;font-size:10px;font-weight:900;margin-bottom:4px}
+#ov .panel-heading{display:block;margin:0;color:#fff;font-size:20px;letter-spacing:-.02em;line-height:1.15;text-transform:none}
+#ov .panel-heading:after{display:none}
+#ov .rank-button{min-height:38px;padding:9px 13px;border-radius:12px;color:#fff1cd;background:#75603b66;border:1px solid #f6cf7899;box-shadow:inset 0 1px #ffffff25;font-size:12px}
+#ov .rank-button:hover{background:#9c794b99}
+#ov .grid{gap:11px}
+#ov .mode{min-height:142px;padding:14px!important;grid-template-columns:46px minmax(0,1fr);grid-template-rows:46px auto;gap:10px;border-radius:17px;position:relative;overflow:hidden;box-shadow:0 5px 0 #080d22aa,0 10px 25px #070d204d,inset 0 1px #ffffff2a}
+#ov .mode[data-m="normal"]{background:linear-gradient(140deg,#704a3c,#463448);border-color:#ffd28c88}
+#ov .mode[data-m="nocoin"]{background:linear-gradient(140deg,#6c3b5e,#3b2c4d);border-color:#ff9eb188}
+#ov .mode[data-m="lava"]{background:linear-gradient(140deg,#71413d,#442d45);border-color:#ffb18888}
+#ov .mode .ic{width:46px;height:46px;border-radius:13px;border:1px solid #ffffff75;box-shadow:0 3px 0 #18112855,inset 0 1px #ffffff70}
+#ov .mode .nm{font-size:17px;letter-spacing:-.02em;color:#fff}
+#ov .mode small{font-size:11px;line-height:1.3;color:#fff;opacity:.9}
+#ov .mode em{color:#fff0d1;background:#16152e88;border:1px solid #ffffff20;border-radius:8px}
+#ov .mode .play-label{background:#fff5e3;color:#36283c;border:1px solid #fff;border-radius:9px;box-shadow:0 3px 0 #15142a55}
+#ov .mode:hover{filter:brightness(1.1);transform:translateY(-3px)}
+#ov .mode:hover .play-label{background:#fff;color:#30213c}
+#ov .keys{margin-top:13px;color:#b9c8df}
+@media(max-width:560px){
+ #ov .top-left,#ov .top-actions{gap:4px}#ov .top-actions button,#ov .bank,#ov #fullscreenLobby{min-height:38px}#ov .bank{font-size:12px;padding:7px 8px}
+ #ov .pn{padding:11px;border-radius:19px}#ov .rank-row{margin-bottom:8px}#ov .lobby-eyebrow{font-size:8px;margin-bottom:3px}#ov .panel-heading{font-size:16px}#ov .rank-button{min-height:32px;font-size:10px;padding:6px 9px}
+ #ov .grid{gap:7px}#ov .mode{min-height:58px;padding:7px 9px!important;grid-template-columns:39px minmax(0,1fr) auto auto;grid-template-rows:auto;gap:8px;border-radius:13px}#ov .mode .ic{width:38px;height:38px;border-radius:10px}#ov .mode .nm{font-size:14px}#ov .mode small{font-size:10px}#ov .mode .play-label{font-size:10px;padding:6px 8px}#ov .keys{margin-top:8px}
+}
+@media(max-width:370px){#ov .mode{grid-template-columns:36px minmax(0,1fr) auto;gap:6px}#ov .mode .ic{width:35px;height:35px}#ov .mode em{display:none}#ov .mode small{font-size:9px}}
+@media(max-height:650px){#ov .pn{padding:9px 11px}#ov .lobby-eyebrow{display:none}#ov .panel-heading{font-size:15px}#ov .rank-row{margin-bottom:6px}#ov .mode{min-height:46px}#ov .keys{display:none}#ov .hd{top:0}}
+
+
+/* Placar global: pódio visual e lista legível em celular. */
+.rank-overlay{padding:16px;background:#060c20df;backdrop-filter:blur(5px)}
+.rank-card{width:min(520px,100%);max-height:min(88vh,760px);padding:22px;border-radius:24px;background:linear-gradient(155deg,#283758,#1a2440 55%,#151a33);border:1px solid #c5dfff45;box-shadow:0 26px 75px #050817c9,inset 0 1px #ffffff2e}
+.rank-topline{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.rank-tag{color:#9ccfff;font-size:10px;font-weight:900;letter-spacing:.18em}
+.rank-card .w-close{flex:none;width:36px;height:36px;background:#ffffff12;border:1px solid #ffffff2b}
+.rank-hero{display:flex;align-items:center;gap:15px;padding:17px 0 15px}
+.rank-hero-icon{display:grid;place-items:center;width:64px;height:64px;flex:none;border-radius:19px;color:#49334a;background:linear-gradient(145deg,#ffe6a3,#ffb965);border:1px solid #fff0c5;box-shadow:0 5px 0 #a75f3a99,0 10px 23px #0b102f70}
+.rank-hero-icon .ui-icon{width:32px;height:32px}
+.rank-hero-label{font-size:9px;color:#b8c8e2;font-weight:900;letter-spacing:.15em}
+.rank-card h2{margin:3px 0 0;font-size:27px;letter-spacing:-.04em;line-height:1.1;color:#fff}
+.rank-desc{margin:6px 0 0;font-size:12px;line-height:1.4;color:#cbd8ec}
+.rank-info{background:#91c4ff10;border:1px solid #9dd4ff33;border-radius:11px;color:#c9dbf1;font-size:11px;line-height:1.4;padding:9px 11px}
+.rank-list-head{margin:17px 5px 8px;color:#93a9cb;font-size:9px;letter-spacing:.12em}
+.ranking-list{gap:7px;max-height:38vh;overflow-y:auto;overscroll-behavior:contain;padding:1px 3px 4px 1px;scrollbar-color:#8ca5c8 #ffffff10;scrollbar-width:thin}
+.rank-item{grid-template-columns:36px minmax(0,1fr) auto;gap:11px;padding:10px 11px;border-radius:13px;background:#ffffff0a;border:1px solid #ffffff20}
+.rank-place{width:34px;height:34px;border-radius:10px;background:#ffffff14;color:#d2def2;font-size:13px}
+.rank-item:first-child{background:linear-gradient(100deg,#ffcf7730,#ffcf770b);border-color:#ffdb847d}.rank-item:first-child .rank-place{background:linear-gradient(145deg,#ffe4a0,#ffba63);color:#493129}
+.rank-item:nth-child(2){border-color:#c7dbed55;background:#d0e3fa12}.rank-item:nth-child(2) .rank-place{background:#d4e1eb;color:#344354}
+.rank-item:nth-child(3){border-color:#dfab8055;background:#eeb58a12}.rank-item:nth-child(3) .rank-place{background:#d9a97d;color:#493129}
+.rank-name{font-size:14px;color:#f7f9ff}.rank-time{font-size:14px;color:#ffe4a2;white-space:nowrap}
+.rank-status{margin:12px 2px;color:#b8c9e3;font-size:11px}
+.rank-refresh{width:100%;min-height:41px;margin-top:2px;padding:10px 14px;background:#ffffff12;border:1px solid #ffffff35;border-radius:12px;color:#f4f7ff;box-shadow:none;font-size:12px}
+.rank-refresh:hover{background:#ffffff24}.rank-refresh:focus-visible,.rank-card .w-close:focus-visible{outline:3px solid #ffe5a0;outline-offset:3px}
+@media(max-width:560px){.rank-card{padding:16px;border-radius:20px}.rank-hero{gap:12px;padding:12px 0}.rank-hero-icon{width:54px;height:54px;border-radius:15px}.rank-hero-icon .ui-icon{width:27px;height:27px}.rank-card h2{font-size:23px}.rank-desc{font-size:11px}.ranking-list{max-height:34vh}.rank-item{padding:8px 9px}.rank-info{font-size:10px}}
+@media(max-height:600px){.rank-card{padding:13px}.rank-hero{padding:8px 0}.rank-hero-icon{width:46px;height:46px}.rank-info{padding:6px 9px}.rank-list-head{margin:10px 4px 5px}.ranking-list{max-height:29vh}.rank-status{margin:7px 2px}}
+
+
+#ov #bank{cursor:default;box-sizing:border-box}#ov #bank:hover{transform:none;filter:none}
 </style>
 </head>
 <body>
@@ -237,16 +352,16 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
 
 <div id="statsHud"><span class="stat-mini"><small>FPS</small><b id="fpsValue">--</b></span><span class="stat-mini no-coin" id="safeTimeStat" style="display:none"><b id="safeTimeValue">0:00</b></span></div>
 <div id="fullscreenNotice" role="status" aria-live="polite"></div><div id="sceneFlash"></div><div id="cutMsg"></div><div id="diz"></div><div id="growthNotice"></div>
-<button id="bd" style="visibility:hidden" aria-label="Ativar prancha" title="Ativar Prancha (Espaço duplo / B / Shift)">
+<button id="bd" style="visibility:hidden" aria-label="Ativar prancha" title="Ativar Prancha (E / Espaço duplo)">
   <svg viewBox="0 0 84 84"><circle id="bdRing" cx="42" cy="42" r="39"/></svg>
   <svg class="ui-icon" aria-hidden="true"><use href="#icon-board"></use></svg><span class="equip-label">PRANCHA</span><small id="bn">1</small>
 </button>
 
 <button id="shieldBtn" style="visibility:hidden" aria-label="Ativar escudo" title="Ativar escudo (Q)"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg><span class="equip-label">ESCUDO</span><small id="shieldCount">0</small></button>
-<button id="jetBtn" style="visibility:hidden" aria-label="Ativar jetpack" title="Ativar jetpack (J)"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rocket"></use></svg><span class="equip-label">JETPACK</span><small id="jn">0</small></button>
+<button id="jetBtn" style="visibility:hidden" aria-label="Ativar jetpack" title="Ativar jetpack (R)"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rocket"></use></svg><span class="equip-label">JETPACK</span><small id="jn">0</small></button>
 <div id="ov">
   <div class="top-bar">
-    <div class="top-left"><button class="bank" id="bank" title="Abrir loja"><i class="coin-icon"></i><span id="bankValue">0</span></button><button id="fullscreenLobby" class="fullscreen-btn" title="Tela cheia" aria-label="Ativar tela cheia" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use id="fullIconLobby" href="#icon-fullscreen"></use></svg></button></div>
+    <div class="top-left"><span class="bank" id="bank" aria-label="Quantidade de moedas"><i class="coin-icon" aria-hidden="true"></i><span id="bankValue">0</span></span><button id="fullscreenLobby" class="fullscreen-btn" title="Tela cheia" aria-label="Ativar tela cheia" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use id="fullIconLobby" href="#icon-fullscreen"></use></svg></button></div>
     <div class="top-actions"><button id="accountBtn"><svg class="ui-icon" aria-hidden="true"><use href="#icon-user"></use></svg><span id="accountLabel">Entrar</span></button><button id="adminBtn"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg> Admin</button><button class="shop-btn" id="openShop"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shop"></use></svg> Loja</button><button class="ward-btn" id="openWard"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shirt"></use></svg> Vestiário</button></div>
   </div>
   <div class="hd">
@@ -255,7 +370,7 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
     <div class="sub-row">
       <span id="m"></span>
       <button id="againBtn">↻ Jogar de Novo</button>
-    </div><p id="rankRunNotice" class="rank-run-notice" aria-live="polite"></p>
+    </div>
   </div>
   <div class="pn">
     <div class="sel">
@@ -270,13 +385,13 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
         <button class="ar" aria-label="Próxima prancha" data-k="board" data-d="1">›</button>
       </div>
     </div>
-    <div class="rank-row"><div class="panel-heading">ESCOLHA SUA CORRIDA</div><button type="button" id="openRanking" class="rank-button"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rank"></use></svg> Ranking</button></div>
+    <div class="rank-row"><div class="lobby-section-title"><span class="lobby-eyebrow">PRONTO PARA JOGAR?</span><div class="panel-heading">Escolha sua corrida</div></div><button type="button" id="openRanking" class="rank-button"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rank"></use></svg> Ranking</button></div>
     <div class="grid">
       <button class="mode" data-m="normal" style="--c1:#ffb703;--c2:#ff6a3d"><span class="ic"><svg class="ui-icon" aria-hidden="true"><use href="#icon-run"></use></svg></span><span class="mode-txt"><span class="nm">Normal</span><small>Corra, desvie e pegue moedas</small></span><em id="b-normal"></em><span class="play-label">JOGAR ›</span></button>
       <button class="mode" data-m="nocoin" style="--c1:#ff4d6d;--c2:#9b1d4a"><span class="ic"><svg class="ui-icon" aria-hidden="true"><use href="#icon-danger"></use></svg></span><span class="mode-txt"><span class="nm">Sem Moedas</span><small>Pegou uma moeda? Morreu!</small></span><em id="b-nocoin"></em><span class="play-label">JOGAR ›</span></button>
       <button class="mode" data-m="lava" style="--c1:#ff8a1f;--c2:#c2260f"><span class="ic"><svg class="ui-icon" aria-hidden="true"><use href="#icon-lava"></use></svg></span><span class="mode-txt"><span class="nm">Chão é Lava</span><small>Corra só em cima dos trens</small></span><em id="b-lava"></em><span class="play-label">JOGAR ›</span></button>
     </div>
-    <div class="keys">← → pista · ↑ pular · ↓ deslizar · B/Shift prancha · J jetpack · Q escudo · P pausar · no celular, deslize</div>
+    <div class="keys">← → pista · ↑ pular · ↓ deslizar · E prancha · R jetpack · Q escudo · P pausar · no celular, deslize</div>
   </div>
 </div>
 
@@ -309,7 +424,7 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
   </form>
 </div>
 
-<div id="rankingOverlay" class="rank-overlay" role="dialog" aria-modal="true" aria-labelledby="rankTitle"><div class="rank-card"><div class="shop-head"><div><span class="section-kicker">PLACAR GLOBAL</span><h2 id="rankTitle"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rank"></use></svg> Sem Moedas</h2></div><button class="w-close" id="closeRanking" aria-label="Fechar ranking"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><p class="rank-desc">Maior tempo sobrevivendo sem pegar moedas. Entre na conta antes da corrida para participar.</p><div class="rank-list-head"><span>POSIÇÃO / JOGADOR</span><span>TEMPO</span></div><div id="rankingList" class="ranking-list" aria-live="polite"></div><p id="rankingStatus" class="rank-status" aria-live="polite"></p><button id="refreshRanking" type="button" class="rank-refresh">Atualizar ranking</button></div></div>
+<div id="rankingOverlay" class="rank-overlay" role="dialog" aria-modal="true" aria-labelledby="rankTitle"><div class="rank-card"><div class="rank-topline"><span class="rank-tag">PLACAR GLOBAL</span><button class="w-close" id="closeRanking" aria-label="Fechar ranking"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><div class="rank-hero"><div class="rank-hero-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rank"></use></svg></div><div><span class="rank-hero-label">DESAFIO</span><h2 id="rankTitle">Sem Moedas</h2><p class="rank-desc">Sobreviva sem pegar moedas e conquiste seu lugar no placar.</p></div></div><div class="rank-info">Entre na conta antes da corrida para participar.</div><div class="rank-list-head"><span>POSIÇÃO / JOGADOR</span><span>MELHOR TEMPO</span></div><div id="rankingList" class="ranking-list" aria-live="polite"></div><p id="rankingStatus" class="rank-status" aria-live="polite"></p><button id="refreshRanking" type="button" class="rank-refresh">Atualizar ranking</button></div></div>
 <div id="shop"><div class="shop-card"><div class="shop-head"><div><span class="section-kicker">PREPARE A CORRIDA</span><h2><svg class="ui-icon" aria-hidden="true"><use href="#icon-shop"></use></svg> Loja</h2></div><button class="w-close" id="closeShop" aria-label="Fechar loja"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div>
 <p class="shop-sub">Use moedas para comprar itens de uso único. Eles ficam guardados neste aparelho até você ativá-los.</p>
 <div class="bank"><i class="coin-icon"></i><span id="shopBalance">0</span></div>
@@ -317,6 +432,7 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
 <div class="shop-row"><span class="emoji"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rocket"></use></svg></span><div class="details"><strong>Jetpack</strong><small>Voe por 8 s · 1 uso por partida · estoque: <b id="shopJets">0</b></small></div><button id="buyJet">150 moedas</button></div><div class="shop-row"><span class="emoji"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg></span><div class="details"><strong>Escudo</strong><small>Contra trens e barreiras por 8 s · estoque: <b id="shopShields">0</b></small></div><button id="buyShield">100 moedas</button></div><div id="shopMsg" aria-live="polite"></div></div></div>
 <div class="account-overlay" id="accountOverlay"><div class="account-card"><div class="shop-head"><h2>Crie sua conta ou entre</h2><button class="w-close" id="closeAccount" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><p id="accountIntro">Entre ou crie sua conta para jogar com seu perfil.</p><form id="emailForm"><label for="nameInput">Nome de jogador <small>(somente para criar conta)</small></label><input id="nameInput" type="text" maxlength="20" autocomplete="nickname" placeholder="Como quer aparecer no jogo"><label for="emailInput">E-mail</label><input id="emailInput" type="email" autocomplete="email" required><label for="passInput">Senha</label><input id="passInput" type="password" minlength="6" autocomplete="current-password" required><div class="actions"><button type="submit">Entrar</button><button id="signupBtn" type="button" class="btn-sec">Criar conta</button></div></form><form id="chooseNameForm" style="display:none"><label for="chooseName">Nome de jogador</label><input id="chooseName" type="text" minlength="2" maxlength="20" autocomplete="nickname" placeholder="Escolha seu nome" required><p>Use de 2 a 20 letras, números, espaços, hífen ou sublinhado. Não use seu e-mail.</p><div class="actions"><button type="submit" id="saveNameBtn">Salvar nome</button></div></form><div class="actions"><button id="logoutBtn" type="button" class="btn-sec" style="display:none">Sair da conta</button></div><div class="account-error" id="accountMsg" aria-live="polite"></div><p>As moedas, o estoque e os recordes ainda ficam salvos neste navegador.</p></div></div>
 <div class="account-overlay" id="adminOverlay"><div class="account-card"><div class="shop-head"><h2><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg> Painel admin</h2><button class="w-close" id="closeAdmin" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><div class="admin-feature"><strong><svg class="ui-icon" aria-hidden="true"><use href="#icon-spark"></use></svg> Crescimento + trampolins</strong><p>Painel exclusivo do administrador: inicie o evento para todos conectados a este servidor. Em 5 segundos, um Nico gigante voa pelo centro, cresce e lança um trampolim. A câmera mostra onde caiu com o jogo pausado; depois há contagem de 3 segundos! O evento dura 1 minuto de corrida; depois uma nave recolhe os trampolins.</p><button id="growthToggle">Iniciar evento global</button><div id="growthStatus" class="account-error"></div></div><div class="admin-feature"><strong>Operação Nuke</strong><p>A câmera mostra a fábrica, a abertura do teto e a nuke descendo até os trilhos. Após a animação, a corrida volta com contagem de 3 segundos.</p><button id="nukeToggle">Iniciar evento Nuke</button><div id="nukeStatus" class="account-error" aria-live="polite"></div></div><div class="admin-feature"><strong>Gerenciar jogadores</strong><p>Selecione uma conta para enviar moedas ou alterar o acesso ao painel. Contas com nomes iguais são diferenciadas pelo código.</p><label for="adminPlayer">Jogador</label><select id="adminPlayer" style="width:100%;padding:11px;border-radius:12px;background:#131328;color:white;border:1px solid #ffffff40;font-size:15px"><option value="">Carregando jogadores...</option></select><div class="actions"><button type="button" id="reloadPlayers" class="btn-sec">Atualizar lista</button></div><label for="giftAmount">Quantidade de moedas</label><input id="giftAmount" type="number" min="1" max="1000000" step="1" value="100"><div class="actions"><button type="button" id="giveCoins">Dar moedas</button><button type="button" id="grantAdmin" class="btn-sec">Dar acesso admin</button><button type="button" id="revokeAdmin" class="btn-sec">Remover acesso</button></div><div class="account-error" id="manageStatus" aria-live="polite"></div><p>Somente o administrador principal pode alterar acessos. Administradores autorizados podem iniciar eventos e dar moedas.</p></div></div></div>
+<div id="deathOverlay" role="dialog" aria-modal="true" aria-labelledby="deathTitle"><div class="death-card"><h2 id="deathTitle">Você morreu</h2><p id="deathDetails"></p><p id="rankRunNotice" class="rank-run-notice" aria-live="polite"></p><div class="death-actions"><button id="reviveBtn" type="button">Renascer</button><button id="deathBackBtn" type="button">Voltar ao lobby</button></div></div></div>
 <div id="pauseOv">
   <div class="p-card">
     <h2>Jogo Pausado</h2>
@@ -1299,7 +1415,7 @@ function deferEconomySave(){if(!economySaveTimer)economySaveTimer=setTimeout(()=
 addEventListener('pagehide',saveEconomy);
 function updBank(){$('bankValue').textContent=bankCoins;$('shopBalance').textContent=bankCoins;$('shopBoards').textContent=stock.board;$('shopJets').textContent=stock.jet;$('shopShields').textContent=stock.shield}updBank();
 function openShop(){if(wardTab==='edit')leaveSkinEditor();$('ward').style.display='none';updBank();$('shopMsg').textContent='';$('shop').style.display='flex'}
-$('openShop').onclick=openShop;$('bank').onclick=openShop;$('closeShop').onclick=()=>$('shop').style.display='none';
+$('openShop').onclick=openShop;$('closeShop').onclick=()=>$('shop').style.display='none';
 function buy(k,price){if(bankCoins<price){$('shopMsg').textContent='Moedas insuficientes. Corra e colete mais!';return}bankCoins-=price;stock[k]++;saveEconomy();updBank();$('shopMsg').textContent='Compra concluída! Item guardado no estoque.'}
 $('buyBoard').onclick=()=>buy('board',100);$('buyJet').onclick=()=>buy('jet',150);$('buyShield').onclick=()=>buy('shield',100);
 function showBest(){for(const k in best){const e=$('b-'+k);if(e)e.textContent=''+best[k]+' m'}}showBest();
@@ -1405,7 +1521,7 @@ function resetPose(){
 let rankRunUser=null,rankRunRecorded=false,rankRunSerial=0;
 function reset(){
   rankRunSerial++;rankRunRecorded=false;rankRunUser=mode==='nocoin'&&accountUser&&playerName(accountUser)?accountUser.id:null;$('rankRunNotice').textContent='';$('rankingOverlay').style.display='none';
-  leaveSkinEditor();if(wardTab==='edit')wardTab='skin';$('ward').style.display='none';$('shop').style.display='none';$('pauseOv').style.display='none';clearAll();resetPose();
+  leaveSkinEditor();if(wardTab==='edit')wardTab='skin';$('ward').style.display='none';$('shop').style.display='none';$('pauseOv').style.display='none';$('deathOverlay').style.display='none';clearAll();resetPose();
   hideNuke();hideUfo();hideTrampLanding();$('sceneFlash').style.opacity='0';growthEnabled=false;growthTime=-1;trampsActive=false;trampTimeLeft=0;giant.visible=false;flyingTramp.visible=false;cutTarget=null;$('cutMsg').style.display='none';throwTarget=null;thrownDone=false;$('growthNotice').style.display='none';
   jetUsed=false;previousRampTrain=null;touchGesture=null;lastTap=0;noCoinSafeLane=1;safeCoinSeconds=0;safeCoinShown=-1;$('jetBtn').disabled=false;
   dizzy=invul=boardT=shieldT=jetT=shake=0;shieldAura.visible=false;runBoards=1;boards=1+stock.board;hero.visible=true;speed=18;dist=0;coinCount=0;lane=1;y=0;vy=0;slide=0;gY=0;lavaT=0;camY=0;
@@ -1417,7 +1533,7 @@ function reset(){
   state='play';elOv.style.display='none';elHud.style.visibility='visible';elBd.style.visibility='visible';$('jetBtn').style.visibility='visible';$('shieldBtn').style.visibility='visible'}
 
 function showLobby(ti,m,canReplay){
-  clearAll();resetPose();
+  $('deathOverlay').style.display='none';clearAll();resetPose();
   hideNuke();hideUfo();hideTrampLanding();$('sceneFlash').style.opacity='0';growthEnabled=false;growthTime=-1;trampsActive=false;trampTimeLeft=0;giant.visible=false;flyingTramp.visible=false;cutTarget=null;$('cutMsg').style.display='none';throwTarget=null;thrownDone=false;$('growthNotice').style.display='none';
   state='menu';lane=1;y=0;vy=0;slide=0;gY=0;camY=0;
   segs.forEach(g=>g.userData.lava.visible=false);scene.fog.color.set(0xffc59a);
@@ -1431,7 +1547,9 @@ function die(why){
   if(isNew){best[mode]=dInt;try{localStorage.setItem('nico-best',JSON.stringify(best))}catch(e){}showBest()}
   const ti=why==='coin'?'MOEDA!':why==='lava'?'LAVA!':'BATEU!';
   const m=(isNew?'<b>NOVO RECORDE!</b> · ':'')+'Distância: <b>'+dInt+' m</b>'+(mode==='nocoin'?'':' · <b>'+coinCount+'</b>');
-  setTimeout(()=>{if(state==='over')showLobby(ti,m,true)},850)}
+  $('deathDetails').innerHTML=m;setTimeout(()=>{if(state==='over'){$('deathOverlay').style.display='flex';$('reviveBtn').focus?.()}},850)}
+$('deathBackBtn').onclick=()=>{if(state==='over')showLobby('NICO RUNNER','')};
+$('reviveBtn').onclick=()=>{if(state!=='over')return;$('deathOverlay').style.display='none';for(const o of obs)freeObs(o);obs.length=0;for(const c of coins)freeCoin(c);coins.length=0;resetPose();lane=1;y=0;vy=0;slide=0;gY=0;camY=0;dizzy=0;invul=2;shake=0;hitT=0;boardT=shieldT=jetT=0;shieldAura.visible=false;hero.jet.visible=false;previousRampTrain=null;touchGesture=null;noCoinSafeLane=1;if(mode==='lava'){[12,4,-4,-12].forEach(z=>addTrainTop(1,z));nz=[-8-Math.random()*6,-19,-8-Math.random()*6];y=gY=camY=TOP;lavaSpawn()}else{nextZ=-60;while(nextZ>-170)spawnRow()}hero.visible=true;elDiz.style.display='none';pDizVis=false;state='play';last=performance.now()};
 
 document.querySelectorAll('.mode').forEach(b=>b.onclick=()=>{mode=b.dataset.m;reset()});
 function act(a){
@@ -1446,8 +1564,8 @@ function act(a){
 }
 addEventListener('keydown',e=>{if(e.key==='Escape'&&fullscreenActive())return;if(studioIntroActive){if(e.key==='Escape'||e.key==='Enter')closeStudioIntro();return}if($('accountOverlay').style.display==='flex'){if(e.key==='Escape')$('accountOverlay').style.display='none';return}if(e.target&&/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName))return;const k=e.key.toLowerCase();
   if(k==='escape'&&$('rankingOverlay').style.display==='flex'){$('rankingOverlay').style.display='none';return}if(k==='escape'&&$('shop').style.display==='flex'){$('shop').style.display='none';return}if(k==='escape'||k==='p'){if(state==='play'||state==='pause')togglePause();else if($('ward').style.display==='block'){$('closeWard').onclick()}return}
-  if(state==='menu'){if(k==='arrowleft')cyc('skin',-1);else if(k==='arrowright')cyc('skin',1);else if(k==='arrowup')cyc('board',1);else if(k==='arrowdown')cyc('board',-1)}
-  if(k==='b'||k==='e'||k==='shift')act('B');if(k==='j')act('J');if(k==='q')act('Q');
+  if(state==='menu'&&$('ward').style.display==='block'){if(k==='arrowleft')cyc('skin',-1);else if(k==='arrowright')cyc('skin',1);else if(k==='arrowup')cyc('board',1);else if(k==='arrowdown')cyc('board',-1)}
+  if(k==='e')act('B');if(k==='r')act('J');if(k==='q')act('Q');
   if(k==='arrowleft'||k==='a')act('L');else if(k==='arrowright'||k==='d')act('R');
   else if(k==='arrowup'||k==='w'||k===' ')act('U');else if(k==='arrowdown'||k==='s')act('D');
   else if(k==='enter'&&state==='menu')reset()});
@@ -1562,7 +1680,7 @@ function loop(now){requestAnimationFrame(loop);
       const isR=best[mode]>0&&dInt>best[mode];if(isR!==pRec){pRec=isR;elRec.style.display=isR?'inline-block':'none';elScPill.classList.toggle('rec',isR)}}
     if(mode!=='nocoin'&&coinCount!==pCo){pCo=coinCount;$('coinCount').textContent=coinCount}
     $('shieldCount').textContent=shieldT>0?Math.ceil(shieldT)+'s':stock.shield;$('shieldBtn').style.opacity=(shieldT>0||stock.shield>0)?1:.45;
-    $('jn').textContent=jetT>0?Math.ceil(jetT)+'s':jetUsed?'usado':stock.jet;$('jetBtn').disabled=jetUsed&&jetT<=0;$('jetBtn').title=jetUsed?'Jetpack: uma utilização por partida':'Ativar jetpack (J)';$('jetBtn').style.opacity=(jetT>0||(!jetUsed&&stock.jet>0))?1:.45;
+    $('jn').textContent=jetT>0?Math.ceil(jetT)+'s':jetUsed?'usado':stock.jet;$('jetBtn').disabled=jetUsed&&jetT<=0;$('jetBtn').title=jetUsed?'Jetpack: uma utilização por partida':'Ativar jetpack (R)';$('jetBtn').style.opacity=(jetT>0||(!jetUsed&&stock.jet>0))?1:.45;
     const bnTxt=boardT>0?Math.ceil(boardT)+'s':''+boards;if(bnTxt!==pBn){pBn=bnTxt;elBn.textContent=bnTxt}
     if(boardT>0)elRing.style.strokeDashoffset=''+(245*(1-boardT/15)).toFixed(1);else if(pBdOp!==2)elRing.style.strokeDashoffset='245';
     const bdOp=boardT>0?2:(boards>0?1:.45);if(bdOp!==pBdOp){pBdOp=bdOp;elBd.style.opacity=bdOp===.45?.45:1}
