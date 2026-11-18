@@ -199,6 +199,10 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
 
 .top-left{display:flex;align-items:center;gap:7px;min-width:0}.fullscreen-btn{pointer-events:auto;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;flex:none;padding:0;border-radius:13px;color:#fff;background:#252c49e8;border:1px solid #ffffff40;box-shadow:0 5px 0 #10172e77,0 9px 20px #090d2540,inset 0 1px #ffffff25}.fullscreen-btn .ui-icon{width:19px;height:19px}.fullscreen-btn:hover{filter:brightness(1.13)}.fullscreen-btn:active{transform:translateY(3px);box-shadow:0 2px 0 #10172e77}.fullscreen-btn:focus-visible{outline:3px solid #fff2aa;outline-offset:3px}#fullscreenNotice{display:none;position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 110px);transform:translateX(-50%);z-index:60;box-sizing:border-box;width:max-content;max-width:calc(100vw - 28px);padding:10px 15px;border:1px solid #ffffff45;border-radius:13px;background:#1c233eef;color:#fff;text-align:center;font-size:12px;font-weight:700;box-shadow:0 8px 25px #0006;pointer-events:none}
 @media(max-width:560px){.top-left{gap:4px}.fullscreen-btn{width:37px;height:37px;border-radius:11px}.fullscreen-btn .ui-icon{width:17px;height:17px}.top-bar{flex-wrap:wrap;row-gap:5px}}@media(max-width:370px){.fullscreen-btn{width:34px;height:37px}.top-left{gap:3px}}
+
+/* Cronômetro do Sem Moedas centralizado e mais legível. */
+#safeTimeStat{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 108px);transform:translateX(-50%);padding:8px 15px;gap:8px;border-radius:14px;background:linear-gradient(135deg,#252c4cf2,#161c35f2);box-shadow:0 8px 24px #080c2466,inset 0 1px #ffffff22;font-size:17px;border:1px solid #ffe2a45c}#safeTimeStat small{font-size:10px;white-space:nowrap}#safeTimeValue{font-size:19px;line-height:1;font-variant-numeric:tabular-nums}
+@media(max-width:560px){#safeTimeStat{top:calc(env(safe-area-inset-top,0px) + 108px);padding:7px 12px;font-size:15px}#safeTimeValue{font-size:17px}#safeTimeStat small{font-size:9px}}
 </style>
 </head>
 <body>
@@ -1144,7 +1148,7 @@ for(let i=0;i<12;i++){const dot=new THREE.Mesh(trampParticleGeo,trampParticleMat
 const cutOriginalScale=new THREE.Vector3(1,1,1);
 function hideTrampLanding(){trampLandingFx.visible=false;if(cutTarget&&cutTarget.m)cutTarget.m.scale.copy(cutOriginalScale)}
 let cutStart=0,cutTarget=null,cutCamStart=new THREE.Vector3(),cutLookStart=new THREE.Vector3(),cutDest=new THREE.Vector3(),cutLookDest=new THREE.Vector3();
-function beginCutscene(target,now){cutTarget=target;cutOriginalScale.copy(target.m.scale);cutStart=now;trampLandingFx.position.set(target.m.position.x,target.base,target.m.position.z);trampLandingFx.visible=true;cutCamStart.copy(cam.position);cutLookStart.copy(look);cutDest.set(target.m.position.x+3,target.base+3.1,target.m.position.z+6);cutLookDest.set(target.m.position.x,target.base+.3,target.m.position.z);state='cutscene';giant.visible=false;flyingTramp.visible=false;$('adminOverlay').style.display='none';$('cutMsg').innerHTML='Olha o trampolim!<br><small>Jogo pausado</small>';$('cutMsg').style.display='block';$('growthNotice').style.display='none'}
+function beginCutscene(target,now){cutTarget=target;cutOriginalScale.copy(target.m.scale);cutStart=now;trampLandingFx.position.set(target.m.position.x,target.base,target.m.position.z);trampLandingFx.visible=true;cutCamStart.copy(cam.position);cutLookStart.copy(look);cutDest.set(target.m.position.x+3,target.base+3.1,target.m.position.z+6);cutLookDest.set(target.m.position.x,target.base+.3,target.m.position.z);state='cutscene';$('safeTimeStat').style.visibility='hidden';giant.visible=false;flyingTramp.visible=false;$('adminOverlay').style.display='none';$('cutMsg').innerHTML='Olha o trampolim!<br><small>Jogo pausado</small>';$('cutMsg').style.display='block';$('growthNotice').style.display='none'}
 function playCutscene(now){const elapsed=Math.max(0,(now-cutStart)/1000),msg=$('cutMsg');
   if(elapsed<3){const p=Math.min(1,elapsed/1.25),smooth=p*p*(3-2*p);
     const settle=Math.max(0,1-elapsed/1.3),bounce=Math.sin(elapsed*13)*settle*.18;
@@ -1154,7 +1158,7 @@ function playCutscene(now){const elapsed=Math.max(0,(now-cutStart)/1000),msg=$('
     const orbit=Math.min(1,elapsed/2.8);cam.position.copy(cutCamStart).lerp(cutDest,smooth);cam.position.x+=Math.sin(orbit*Math.PI)*.45;cam.position.y+=Math.sin(orbit*Math.PI)*.18;
     look.copy(cutLookStart).lerp(cutLookDest,smooth);msg.innerHTML='Olha o trampolim!<br><small>Jogo pausado</small>';
   }else if(elapsed<6){hideTrampLanding();const left=Math.ceil(6-elapsed),p=Math.max(0,Math.min(1,(elapsed-4.7)/1.3)),smooth=p*p*(3-2*p);cam.position.copy(cutDest).lerp(cutCamStart,smooth);look.copy(cutLookDest).lerp(cutLookStart,smooth);msg.innerHTML='O jogo despausa em <b>'+left+'</b>';}
-  else{cam.position.copy(cutCamStart);look.copy(cutLookStart);hideTrampLanding();msg.style.display='none';state='play';last=now;cutTarget=null}
+  else{cam.position.copy(cutCamStart);look.copy(cutLookStart);hideTrampLanding();msg.style.display='none';state='play';$('safeTimeStat').style.visibility='visible';last=now;cutTarget=null}
   cam.lookAt(look);ren.render(scene,cam);
 }
 // Os lotes da cidade desabam e se reconstroem, sem criar novas geometrias.
@@ -1196,7 +1200,7 @@ function beginUfo(now){
     unit.ship.position.set(item.tr.m.position.x-px,item.tr.base-base+13,item.tr.m.position.z-pz);
     unit.beam.position.set(item.tr.m.position.x-px,item.tr.base-base+6,item.tr.m.position.z-pz)}
   ufoHidden=prepareCinematicCity();
-  ufoScene.visible=true;state='ufoCutscene';$('growthNotice').style.display='none';$('cutMsg').style.display='block';
+  ufoScene.visible=true;state='ufoCutscene';$('safeTimeStat').style.visibility='hidden';$('growthNotice').style.display='none';$('cutMsg').style.display='block';
 }
 function playUfo(now){const e=Math.max(0,(now-ufoStart)/1000),msg=$('cutMsg'),base=ufoScene.position.y,x=ufoScene.position.x,z=ufoScene.position.z;animateCinematicCity(ufoHidden,e,8);
  if(e<5){const p=Math.min(1,e/1.1),sm=p*p*(3-2*p);cam.position.copy(ufoCamStart).lerp(new THREE.Vector3(x+4,base+9,z+18),sm);look.copy(ufoLookStart).lerp(new THREE.Vector3(x,base+4,z-10),sm);
@@ -1210,7 +1214,7 @@ function playUfo(now){const e=Math.max(0,(now-ufoStart)/1000),msg=$('cutMsg'),ba
    for(const item of ufoItems)if(item.unit){item.unit.beam.visible=false;item.unit.ship.position.y=item.tr.base-base+9+(e-5)*7}
    const p=Math.max(0,Math.min(1,(e-6.7)/1.3)),sm=p*p*(3-2*p);cam.position.lerpVectors(new THREE.Vector3(x+4,base+9,z+18),ufoCamStart,sm);look.lerpVectors(new THREE.Vector3(x,base+4,z-10),ufoLookStart,sm);
    msg.innerHTML='O jogo despausa em <b>'+Math.ceil(8-e)+'</b>';
- }else{for(const tr of tramps)poolGrp.remove(tr.m);tramps.length=0;cam.position.copy(ufoCamStart);look.copy(ufoLookStart);hideUfo();msg.style.display='none';state='play';last=now}
+ }else{for(const tr of tramps)poolGrp.remove(tr.m);tramps.length=0;cam.position.copy(ufoCamStart);look.copy(ufoLookStart);hideUfo();msg.style.display='none';state='play';$('safeTimeStat').style.visibility='visible';last=now}
  cam.lookAt(look);ren.render(scene,cam);
 }
 // Cenário cinematográfico reutilizado: não cria objetos a cada evento.
@@ -1251,7 +1255,7 @@ const nukePlume=new THREE.Group();nukeScene.add(nukePlume);nukePlume.position.se
 let nukeStart=0,nukeFog=null,nukeHidden=[];
 const nukeCameraStart=new THREE.Vector3(),nukeLookStart=new THREE.Vector3();
 function hideNuke(){restoreCinematicCity(nukeHidden);nukeHidden=[];nukeScene.visible=false;nukeFlash.visible=false;shockwave.visible=false;nukePlume.visible=false;exhaust.visible=false;for(const piece of nukeDebris)piece.visible=false;$('sceneFlash').style.opacity='0';if(nukeFog!==null){scene.fog=nukeFog;nukeFog=null}}
-function beginNuke(now){nukeHidden=prepareCinematicCity();nukeStart=now;nukeCameraStart.copy(cam.position);nukeLookStart.copy(look);nukeFog=scene.fog;scene.fog=null;nukeScene.visible=true;hatchL.position.x=-1.8;hatchR.position.x=1.8;missile.visible=true;missile.position.set(32,17.5,-65);missile.rotation.set(0,0,0);nukeFlash.visible=false;shockwave.visible=false;nukePlume.visible=false;exhaust.visible=false;for(const piece of nukeDebris)piece.visible=false;$('sceneFlash').style.opacity='0';state='nukeCutscene';$('growthNotice').style.display='none';$('cutMsg').style.display='block'}
+function beginNuke(now){nukeHidden=prepareCinematicCity();nukeStart=now;nukeCameraStart.copy(cam.position);nukeLookStart.copy(look);nukeFog=scene.fog;scene.fog=null;nukeScene.visible=true;hatchL.position.x=-1.8;hatchR.position.x=1.8;missile.visible=true;missile.position.set(32,17.5,-65);missile.rotation.set(0,0,0);nukeFlash.visible=false;shockwave.visible=false;nukePlume.visible=false;exhaust.visible=false;for(const piece of nukeDebris)piece.visible=false;$('sceneFlash').style.opacity='0';state='nukeCutscene';$('safeTimeStat').style.visibility='hidden';$('growthNotice').style.display='none';$('cutMsg').style.display='block'}
 function playNuke(now){const e=Math.max(0,(now-nukeStart)/1000),msg=$('cutMsg');animateCinematicCity(nukeHidden,e,11);
  if(e<3){const p=Math.min(1,e/1.2),sm=p*p*(3-2*p);cam.position.copy(nukeCameraStart).lerp(new THREE.Vector3(68,33,-20),sm);look.copy(nukeLookStart).lerp(new THREE.Vector3(32,13,-65),sm);let door=Math.max(0,Math.min(1,(e-1)/1.7));hatchL.position.x=-1.8-door*2;hatchR.position.x=1.8+door*2;msg.innerHTML='A fábrica está abrindo o teto<br><small>Jogo pausado</small>'}
  else if(e<5){let q=(e-3)/2,sm=q*q*(3-2*q);missile.position.set(32,17.5+sm*37.5,-65);exhaust.visible=true;exhaust.scale.y=.8+Math.sin(e*22)*.12;cam.position.set(68,33+sm*26,-20);look.copy(missile.position);msg.innerHTML='A Nuke está decolando<br><small>Jogo pausado</small>'}
@@ -1265,7 +1269,7 @@ function playNuke(now){const e=Math.max(0,(now-nukeStart)/1000),msg=$('cutMsg');
    let r=Math.max(0,Math.min(1,(e-9.7)/1.3));r=r*r*(3-2*r);cam.position.lerpVectors(new THREE.Vector3(0,23,18),nukeCameraStart,r);look.lerpVectors(new THREE.Vector3(0,5,-12),nukeLookStart,r);
    const tremor=Math.max(0,1-(e-8)/2.1);cam.position.x+=Math.sin((e-8)*62)*tremor*.85;cam.position.y+=Math.cos((e-8)*71)*tremor*.5;
    msg.innerHTML='Impacto! O jogo despausa em <b>'+Math.ceil(11-e)+'</b>'}
- else{cam.position.copy(nukeCameraStart);look.copy(nukeLookStart);hideNuke();msg.style.display='none';state='play';last=now}
+ else{cam.position.copy(nukeCameraStart);look.copy(nukeLookStart);hideNuke();msg.style.display='none';state='play';$('safeTimeStat').style.visibility='visible';last=now}
  cam.lookAt(look);ren.render(scene,cam)
 }
 let wasAir=false,squash=0,slideP=0,surfP=0,dodgeTilt=0,flipT=0,cheerT=0,hitT=0,overT=0,blinkT=2.2,wardTab='skin';
@@ -1407,7 +1411,7 @@ function reset(){
   dizzy=invul=boardT=shieldT=jetT=shake=0;shieldAura.visible=false;runBoards=1;boards=1+stock.board;hero.visible=true;speed=18;dist=0;coinCount=0;lane=1;y=0;vy=0;slide=0;gY=0;lavaT=0;camY=0;
   pSc=pCo=pBdOp=-1;pBn='';pRec=false;elRec.style.display='none';elScPill.classList.remove('rec');elRing.style.strokeDashoffset='245';
   const lv=mode==='lava';segs.forEach(g=>g.userData.lava.visible=lv);scene.fog.color.set(lv?0xe0603a:0xffc59a);
-  $('coinCount').textContent=mode==='nocoin'?'perigo':'0';$('statsHud').style.display='flex';$('safeTimeStat').style.display=mode==='nocoin'?'inline-flex':'none';$('safeTimeValue').textContent='0:00';
+  $('coinCount').textContent=mode==='nocoin'?'perigo':'0';$('statsHud').style.display='flex';$('safeTimeStat').style.display=mode==='nocoin'?'inline-flex':'none';$('safeTimeValue').textContent='0:00';$('safeTimeStat').style.visibility='visible';
   if(lv){[12,4,-4,-12].forEach(z=>addTrainTop(1,z));nz=[-8-Math.random()*6,-19,-8-Math.random()*6];y=gY=camY=TOP;lavaSpawn()}
   else{nextZ=-60;while(nextZ>-170)spawnRow()}
   state='play';elOv.style.display='none';elHud.style.visibility='visible';elBd.style.visibility='visible';$('jetBtn').style.visibility='visible';$('shieldBtn').style.visibility='visible'}
@@ -1760,5 +1764,5 @@ $('openRanking').onclick=()=>{$('rankingOverlay').style.display='flex';refreshRa
 accountView();
 </script>
 
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5c2dcc53e46210c',t:'MTc5NDk2MTc4Mg=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5c2dcc53e46210c',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a5c2e3b43ef46451',t:'MTc5NDk2MjA2Ng=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a5c2e3b43ef46451',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
