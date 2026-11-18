@@ -335,10 +335,66 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
 .mp-card h2{margin:0;font-size:23px}.mp-card p{color:#cbd8eb;font-size:13px;line-height:1.4}.mp-header{display:flex;justify-content:space-between;align-items:center;gap:10px}.mp-list{display:grid;gap:7px;max-height:30vh;overflow:auto;touch-action:pan-y}.mp-player{display:flex;align-items:center;gap:8px;padding:9px;border:1px solid #ffffff24;border-radius:12px;background:#ffffff0a}.mp-player span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.mp-card button:not(.w-close){font-size:12px;padding:9px 12px;border-radius:10px}.mp-player button{background:#359999}.mp-actions{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}.mp-modes button{background:linear-gradient(135deg,#edab5d,#d36077)}.mp-status{min-height:18px;color:#ffe1a7!important}.mp-invite{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 14px);transform:translateX(-50%);width:min(380px,calc(100vw - 24px));box-sizing:border-box;z-index:60;display:none;pointer-events:auto;padding:14px;border-radius:16px;border:1px solid #92e2ed88;background:#18243cf5;box-shadow:0 10px 35px #0009;color:white}.mp-invite strong{display:block}.mp-invite p{font-size:12px;margin:6px 0}.mp-invite button{font-size:12px;padding:8px 12px;margin-right:5px}.mp-small{font-size:11px;color:#a9b9d3}
 @media(max-height:650px){.mp-open{margin-top:6px;min-height:34px;padding:7px}.mp-card{padding:14px}.mp-list{max-height:25vh}}
 
+
+/* Escolha de cenário sem substituir os modos de corrida. */
+.map-selector{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 0 10px;padding:8px 10px;background:#ffffff0b;border:1px solid #c6e8ff30;border-radius:12px;color:#e5efff;font-size:11px;font-weight:800}.map-selector span{white-space:nowrap}.map-buttons{display:flex;gap:5px}.map-buttons button{min-height:31px;padding:6px 11px;border-radius:9px;font-size:11px;background:#ffffff14;border:1px solid #ffffff22;box-shadow:none;color:#dce8fa}.map-buttons button.on{background:#d9f5ff;color:#23415b;border-color:#fff;box-shadow:0 2px 0 #94bdc7}.map-buttons button:focus-visible{outline:2px solid #fff1a8;outline-offset:2px}
+@media(max-width:560px){.map-selector{margin-bottom:7px;padding:5px 7px;font-size:10px}.map-buttons button{min-height:28px;padding:5px 9px;font-size:10px}}
+@media(max-height:650px){.map-selector{margin-bottom:5px;padding:4px 6px}.map-buttons button{min-height:26px;padding:4px 8px}}
+
+
+/* Identidade natalina para todos os controles, sem imagens externas. */
+:root{--natal-red:#aa2b40;--natal-red-dark:#6d1b30;--natal-green:#206c50;--natal-gold:#f4d18a;--natal-snow:#fff5e5}
+button{background:linear-gradient(145deg,#bb3548,#842339)!important;color:#fffaf0!important;border:1px solid #f4ce8a99!important;box-shadow:inset 0 1px #fff8,0 3px 0 #501727,0 7px 16px #1a0b133d!important}
+button:not(:disabled):hover{filter:brightness(1.12)}
+button:not(:disabled):focus-visible{outline:3px solid #fff0aa!important;outline-offset:2px}
+button:disabled{opacity:.48!important;filter:saturate(.55);cursor:not-allowed}
+#ov .top-actions button,#ov #fullscreenLobby,#ov .rank-button{background:linear-gradient(145deg,#a93245,#762138)!important;color:#fff8e9!important;border-color:#f5d998aa!important}
+#ov #openShop,#ov #openWard,#openMultiplayer,#ov .mode[data-m="nocoin"],#shieldBtn,#reviveBtn,.shop-row button,.w-tab.on,.map-buttons button.on,.mp-modes button:nth-child(2){background:linear-gradient(145deg,#318266,#17503e)!important;border-color:#f5d994bb!important;color:#fff9e9!important;box-shadow:inset 0 1px #fff7,0 3px 0 #123d30,0 7px 16px #0a261b55!important}
+#ov .mode[data-m="normal"],#ov .mode[data-m="lava"]{background:linear-gradient(145deg,#bb3447,#7d2034)!important;color:#fff9ed!important;border-color:#f6db9baa!important}
+#ov .mode .ic{background:#fff4dc30;border-color:#fff1c977;color:#fff9ed}
+#ov .mode .play-label{background:#fff1d4;color:#79283a;box-shadow:0 2px 0 #4a1b28}
+#ov .mode em{background:#2b1728a8;color:#fff8e9}
+#ov .pn,#ward,.shop-card,.account-card,.rank-card,.death-card,.mp-card,.p-card{background:linear-gradient(150deg,#213d35fa,#17312dfb 56%,#231b2dfa)!important;border:1px solid #eac98588!important;box-shadow:0 20px 55px #071c19aa,inset 0 1px #fff3!important;color:#fff9ee}
+#ov .pn{border-top:3px solid #fff2db!important}
+#ov .bank,.h-pill{background:linear-gradient(145deg,#285e4af2,#183d37f2)!important;border-color:#eacb8299!important;color:#fff7e9!important}
+#ov #t{color:#fff8e8;text-shadow:0 3px 0 #a12e41,0 7px 24px #3c101c99}
+#ov .lobby-eyebrow,.section-kicker,.rank-hero-label{color:#f3d18b!important}
+#ov .panel-heading,.keys{color:#f5e8d6!important}
+.map-selector,.w-tabs,.shop-row,.admin-feature,.mp-player{background:#08271e66!important;border-color:#e9cd8b55!important;color:#fff9eb}
+.w-item{background:linear-gradient(145deg,#356d56,#204c3e)!important;color:#fff9ef!important}
+.w-item.on{background:linear-gradient(145deg,#ae3d4b,#732a39)!important;border:2px solid #ffdf8e!important}
+.w-meta small,.ward-title p,.shop-sub,.mp-card p,.death-card p{color:#e5e9d7!important}
+.w-tab:not(.on),.map-buttons button:not(.on),.w-close,.btn-sec{background:linear-gradient(145deg,#405b4e,#283e36)!important;border-color:#e2cc9b88!important}
+#studioSkip{color:#fffaf0!important}
+@media(prefers-reduced-motion:reduce){button{transition:none!important}}
+
+
+/* Ícones vetoriais natalinos locais, sem alterar textos ou controles. */
+.natal-icon{display:inline-block;width:16px;height:16px;vertical-align:-3px;flex:none;color:#f5d99e;pointer-events:none}
+#mapChristmas .natal-icon{width:14px;height:14px;color:inherit}#openMultiplayer .natal-icon{width:17px;height:17px;color:#ffe4ac;margin-right:4px}
+.panel-heading .natal-icon,.section-kicker .natal-icon,.rank-tag .natal-icon{width:14px;height:14px;margin-right:3px;color:#f5d99e}
+@media(max-width:560px){.panel-heading .natal-icon{width:12px;height:12px}#mapChristmas .natal-icon{width:12px;height:12px}}
+
+/* Quatro categorias acessíveis também em telas pequenas. */
+.w-tabs{max-width:100%;overflow-x:auto;touch-action:pan-x;scrollbar-width:thin}
+.w-tab{flex:0 0 auto}
+
+/* Cartões mostram o modelo, não apenas uma amostra de textura. */
+.w-grid{grid-template-columns:repeat(auto-fill,minmax(122px,1fr))!important}
+.w-item{display:flex;flex-direction:column;align-items:stretch;text-align:center;gap:6px;min-height:0!important}
+.w-thumb{display:block;flex:none;width:100%;height:94px;border-radius:10px;background-color:#0b2d27a6;background-position:center;background-repeat:no-repeat;background-size:contain;box-shadow:inset 0 1px 8px #061a1655}
+.w-meta{display:block;min-height:30px}.w-meta span{display:block;line-height:1.15}.w-meta small{display:block;margin-top:2px}
+@media(max-width:560px){.w-grid{grid-template-columns:repeat(auto-fill,minmax(98px,1fr))!important}.w-thumb{height:78px}.w-item{padding:7px;font-size:11px}}
+
+/* Cadeado sobre a miniatura do personagem enquanto a skin estiver bloqueada. */
+.w-thumb{position:relative}
+.w-thumb.is-locked::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='8' y='19' width='32' height='25' rx='5' fill='%23f8d385' stroke='%237b4b29' stroke-width='2'/%3E%3Cpath d='M15 19v-6a9 9 0 0 1 18 0v6' fill='none' stroke='%23fff0bd' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='29' r='3' fill='%2366372d'/%3E%3Cpath d='M24 31v5' stroke='%2366372d' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") center / 38px 38px no-repeat,rgba(9,20,18,.58)}
+
+#dropNotice{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 118px);transform:translate(-50%,8px);z-index:14;pointer-events:none;opacity:0;padding:9px 16px;border:1px solid #f6daa1;border-radius:13px;background:#173d34ec;color:#fff6df;font-size:13px;font-weight:900;box-shadow:0 5px 18px #0008;transition:opacity .2s,transform .2s;white-space:nowrap}#dropNotice.show{opacity:1;transform:translate(-50%,0)}#dropNotice.drop-jet{background:#783821ef}#dropNotice.drop-board{background:#164d69ef}#dropNotice.drop-shield{background:#166149ef}
 </style>
 </head>
 <body>
-<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/></symbol><symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 20 6v5c0 5-3.4 8.2-8 10-4.6-1.8-8-5-8-10V6z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="icon-shop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16l-1-6H5zM5 10v10h14V10M9 20v-6h6v6"/></symbol><symbol id="icon-shirt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 4 4 2 4-2 5 4-3 4-2-1v9H8v-9l-2 1-3-4z"/></symbol><symbol id="icon-board" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M7 18h2m6 0h2M7 15v3m10-3v3"/></symbol><symbol id="icon-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15c-2-2-2-5 0-8 2-2 5-3 8-3 0 3-1 6-3 8-2 2-5 4-5 3zM9 9 5 10 4 14l4-1m6 1-1 4-4 2 1-4"/><circle cx="13.5" cy="7.5" r="1"/><path d="m6 18-2 2"/></symbol><symbol id="icon-run" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="4" r="2"/><path d="m12 8 3 2 3 1m-6-3-3 3-3 1m6-4-2 5 4 3 1 4m-5-7-3 3-3 1"/></symbol><symbol id="icon-danger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 10 18H2zM12 9v5m0 3h.01"/></symbol><symbol id="icon-lava" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 9 9l3 4 3-4 6 11zM9 4l1 2m4-3-1 3m5-2-2 3"/></symbol><symbol id="icon-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7z"/></symbol><symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19"/></symbol><symbol id="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M9 5v14M15 5v14"/></symbol><symbol id="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M8 4v16l12-8z"/></symbol><symbol id="icon-rank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v4c0 4-2 6-4 6S8 12 8 8zM8 6H4v1c0 3 2 4 4 4m8-5h4v1c0 3-2 4-4 4M12 14v4m-4 2h8"/></symbol><symbol id="icon-fullscreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></symbol><symbol id="icon-exit-fullscreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v5H4m11-5v5h5m-5 11v-5h5M9 20v-5H4"/></symbol></defs></svg>
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="natal-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3M12 14v3"/></symbol><symbol id="natal-gift" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v10H4zM3 7h18v3H3zM12 7v13M12 7c-2 0-5-.2-5-2.4C7 2.2 10.8 3.2 12 7Zm0 0c2 0 5-.2 5-2.4C17 2.2 13.2 3.2 12 7Z"/></symbol><symbol id="natal-tree" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 6.5 9h2L5 14h2l-3 4h16l-3-4h2l-3.5-5h2L12 2ZM10 18v3h4v-3M9 12h.01M15 15h.01M13 8h.01"/></symbol><symbol id="natal-snow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M3.34 7l17.32 10M3.34 17 20.66 7M9 4l3 3 3-3M9 20l3-3 3 3M4 10l4-1-1-4M20 14l-4 1 1 4M4 14l4 1-1 4M20 10l-4-1 1-4"/></symbol><symbol id="natal-cane" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M10 21h4V8a3 3 0 0 1 6 0h2a5 5 0 0 0-10 0v13ZM10 16l4 2m-4-7 4 2M12.5 5l3 3m1.5-5 2 3"/></symbol><symbol id="natal-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 17h12l-1.5-2V10a4.5 4.5 0 0 0-9 0v5zM10 19a2 2 0 0 0 4 0M12 5V3"/></symbol><symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 21v-1a7 7 0 0 1 14 0v1"/></symbol><symbol id="icon-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 20 6v5c0 5-3.4 8.2-8 10-4.6-1.8-8-5-8-10V6z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="icon-shop" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16l-1-6H5zM5 10v10h14V10M9 20v-6h6v6"/></symbol><symbol id="icon-shirt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m8 4 4 2 4-2 5 4-3 4-2-1v9H8v-9l-2 1-3-4z"/></symbol><symbol id="icon-board" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="6" rx="3"/><path d="M7 18h2m6 0h2M7 15v3m10-3v3"/></symbol><symbol id="icon-rocket" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15c-2-2-2-5 0-8 2-2 5-3 8-3 0 3-1 6-3 8-2 2-5 4-5 3zM9 9 5 10 4 14l4-1m6 1-1 4-4 2 1-4"/><circle cx="13.5" cy="7.5" r="1"/><path d="m6 18-2 2"/></symbol><symbol id="icon-run" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="15" cy="4" r="2"/><path d="m12 8 3 2 3 1m-6-3-3 3-3 1m6-4-2 5 4 3 1 4m-5-7-3 3-3 1"/></symbol><symbol id="icon-danger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 10 18H2zM12 9v5m0 3h.01"/></symbol><symbol id="icon-lava" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20 9 9l3 4 3-4 6 11zM9 4l1 2m4-3-1 3m5-2-2 3"/></symbol><symbol id="icon-spark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.7 6.3L20 11l-6.3 1.7L12 19l-1.7-6.3L4 11l6.3-1.7z"/></symbol><symbol id="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5 5 19"/></symbol><symbol id="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M9 5v14M15 5v14"/></symbol><symbol id="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M8 4v16l12-8z"/></symbol><symbol id="icon-rank" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v4c0 4-2 6-4 6S8 12 8 8zM8 6H4v1c0 3 2 4 4 4m8-5h4v1c0 3-2 4-4 4M12 14v4m-4 2h8"/></symbol><symbol id="icon-fullscreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"/></symbol><symbol id="icon-exit-fullscreen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4v5H4m11-5v5h5m-5 11v-5h5M9 20v-5H4"/></symbol></defs></svg>
 <div id="studioIntro" role="region" aria-label="Apresentação da Light Studios BR">
   <div class="studio-sky" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="studio-brand">
@@ -368,18 +424,18 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
 </div>
 
 <div id="statsHud"><span class="stat-mini"><small>FPS</small><b id="fpsValue">--</b></span><span class="stat-mini no-coin" id="safeTimeStat" style="display:none"><b id="safeTimeValue">0:00</b></span></div>
-<div id="fullscreenNotice" role="status" aria-live="polite"></div><div id="sceneFlash"></div><div id="cutMsg"></div><div id="diz"></div><div id="growthNotice"></div>
+<div id="dropNotice" role="status" aria-live="polite"></div><div id="fullscreenNotice" role="status" aria-live="polite"></div><div id="sceneFlash"></div><div id="cutMsg"></div><div id="diz"></div><div id="growthNotice"></div>
 <button id="bd" style="visibility:hidden" aria-label="Ativar prancha" title="Ativar Prancha (E / Espaço duplo)">
   <svg viewBox="0 0 84 84"><circle id="bdRing" cx="42" cy="42" r="39"/></svg>
-  <svg class="ui-icon" aria-hidden="true"><use href="#icon-board"></use></svg><span class="equip-label">PRANCHA</span><small id="bn">1</small>
+  <svg class="ui-icon" aria-hidden="true"><use href="#icon-board"></use></svg><span class="equip-label" id="boardLabel">PRANCHA</span><small id="bn">1</small>
 </button>
 
-<button id="shieldBtn" style="visibility:hidden" aria-label="Ativar escudo" title="Ativar escudo (Q)"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg><span class="equip-label">ESCUDO</span><small id="shieldCount">0</small></button>
-<button id="jetBtn" style="visibility:hidden" aria-label="Ativar jetpack" title="Ativar jetpack (R)"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rocket"></use></svg><span class="equip-label">JETPACK</span><small id="jn">0</small></button>
+<button id="shieldBtn" style="visibility:hidden" aria-label="Ativar escudo" title="Ativar escudo (Q)"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg><span class="equip-label" id="shieldLabel">ESCUDO</span><small id="shieldCount">0</small></button>
+<button id="jetBtn" style="visibility:hidden" aria-label="Ativar jetpack" title="Ativar jetpack (R)"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rocket"></use></svg><span class="equip-label" id="jetLabel">JETPACK</span><small id="jn">0</small></button>
 <div id="ov">
   <div class="top-bar">
     <div class="top-left"><span class="bank" id="bank" aria-label="Quantidade de moedas"><i class="coin-icon" aria-hidden="true"></i><span id="bankValue">0</span></span><button id="fullscreenLobby" class="fullscreen-btn" title="Tela cheia" aria-label="Ativar tela cheia" aria-pressed="false"><svg class="ui-icon" aria-hidden="true"><use id="fullIconLobby" href="#icon-fullscreen"></use></svg></button></div>
-    <div class="top-actions"><button id="accountBtn"><svg class="ui-icon" aria-hidden="true"><use href="#icon-user"></use></svg><span id="accountLabel">Entrar</span></button><button id="adminBtn"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg> Admin</button><button class="shop-btn" id="openShop"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shop"></use></svg> Loja</button><button class="ward-btn" id="openWard"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shirt"></use></svg> Vestiário</button></div>
+    <div class="top-actions"><button id="accountBtn"><svg class="ui-icon" aria-hidden="true"><use href="#icon-user"></use></svg><span id="accountLabel">Entrar</span></button><button id="adminBtn"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg> Admin</button><button class="shop-btn" id="openShop"><svg class="ui-icon" aria-hidden="true"><use href="#natal-gift"></use></svg> Loja</button><button class="ward-btn" id="openWard"><svg class="ui-icon" aria-hidden="true"><use href="#natal-cane"></use></svg> Vestiário</button></div>
   </div>
   <div class="hd">
     
@@ -402,53 +458,37 @@ button:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,.25)}
         <button class="ar" aria-label="Próxima prancha" data-k="board" data-d="1">›</button>
       </div>
     </div>
-    <div class="rank-row"><div class="lobby-section-title"><span class="lobby-eyebrow">PRONTO PARA JOGAR?</span><div class="panel-heading">Escolha sua corrida</div></div><button type="button" id="openRanking" class="rank-button"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rank"></use></svg> Ranking</button></div>
+    <div class="map-selector"><span>CENÁRIO</span><div class="map-buttons" role="group" aria-label="Escolher cenário"><button type="button" id="mapNormal" aria-pressed="false">Cidade</button><button type="button" id="mapChristmas" aria-pressed="true"><svg class="natal-icon" aria-hidden="true"><use href="#natal-tree"></use></svg> Natal</button></div></div><div class="rank-row"><div class="lobby-section-title"><span class="lobby-eyebrow">PRONTO PARA JOGAR?</span><div class="panel-heading"><svg class="natal-icon" aria-hidden="true"><use href="#natal-snow"></use></svg> Escolha sua corrida</div></div><button type="button" id="openRanking" class="rank-button"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rank"></use></svg> Ranking</button></div>
     <div class="grid">
       <button class="mode" data-m="normal" style="--c1:#ffb703;--c2:#ff6a3d"><span class="ic"><svg class="ui-icon" aria-hidden="true"><use href="#icon-run"></use></svg></span><span class="mode-txt"><span class="nm">Normal</span><small>Corra, desvie e pegue moedas</small></span><em id="b-normal"></em><span class="play-label">JOGAR ›</span></button>
       <button class="mode" data-m="nocoin" style="--c1:#ff4d6d;--c2:#9b1d4a"><span class="ic"><svg class="ui-icon" aria-hidden="true"><use href="#icon-danger"></use></svg></span><span class="mode-txt"><span class="nm">Sem Moedas</span><small>Pegou uma moeda? Morreu!</small></span><em id="b-nocoin"></em><span class="play-label">JOGAR ›</span></button>
       <button class="mode" data-m="lava" style="--c1:#ff8a1f;--c2:#c2260f"><span class="ic"><svg class="ui-icon" aria-hidden="true"><use href="#icon-lava"></use></svg></span><span class="mode-txt"><span class="nm">Chão é Lava</span><small>Corra só em cima dos trens</small></span><em id="b-lava"></em><span class="play-label">JOGAR ›</span></button>
     </div>
-    <button id="openMultiplayer" class="mp-open" type="button">Jogar com um amigo</button><div class="keys">← → pista · ↑ pular · ↓ deslizar · E prancha · R jetpack · Q escudo · P pausar · no celular, deslize</div>
+    <button id="openMultiplayer" class="mp-open" type="button"><svg class="natal-icon" aria-hidden="true"><use href="#natal-bell"></use></svg> Jogar com um amigo</button><div class="keys">← → pista · ↑ pular · ↓ deslizar · E prancha · R jetpack · Q escudo · P pausar · no celular, deslize</div>
   </div>
 </div>
 
 <div id="ward">
-  <div class="ward-title"><div><span class="section-kicker">SEU ESTILO</span><h2>Vestiário</h2><p>Escolha seu visual para a próxima corrida.</p></div></div>
+  <div class="ward-title"><div><span class="section-kicker"><svg class="natal-icon" aria-hidden="true"><use href="#natal-snow"></use></svg> SEU ESTILO</span><h2>Vestiário</h2><p>Escolha seu visual para a próxima corrida.</p></div></div>
   <div class="w-hd">
     <div class="w-tabs">
       <button class="w-tab on" data-wt="skin"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shirt"></use></svg> Skins</button>
       <button class="w-tab" data-wt="board"><svg class="ui-icon" aria-hidden="true"><use href="#icon-board"></use></svg> Pranchas</button>
-      <button class="w-tab" data-wt="edit"><svg class="ui-icon" aria-hidden="true"><use href="#icon-spark"></use></svg> Criar skin</button>
+      <button class="w-tab" data-wt="jet"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rocket"></use></svg> Jetpack</button>
     </div>
     <button class="w-close" id="closeWard" aria-label="Fechar vestiário"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button>
   </div>
   <div class="w-grid" id="wardGrid"></div>
-  <form id="skinEditor" style="display:none" autocomplete="off">
-    <div class="edit-top"><div><strong id="editorHeading">Crie sua skin</strong><small>Veja as mudanças no Nico acima.</small></div><button type="button" id="newCustomSkin" class="edit-secondary">Nova</button></div>
-    <label class="edit-field">Nome da skin<input id="skinName" type="text" maxlength="20" placeholder="Minha skin"></label>
-    <div class="color-grid">
-      <label>Cabelo<input type="color" id="colorHair" value="#2ec4b6"></label>
-      <label>Jaqueta<input type="color" id="colorJacket" value="#ffc933"></label>
-      <label>Calça<input type="color" id="colorPants" value="#2d3a6e"></label>
-      <label>Detalhes<input type="color" id="colorTrim" value="#ff6a3d"></label>
-      <label>Acessório<input type="color" id="colorAcc" value="#ff4d6d"></label>
-    </div>
-    <div class="edit-options"><label class="edit-field">Estampa da jaqueta<select id="skinPattern"><option value="">Cor lisa</option><option value="flames">Chamas</option><option value="ice">Gelo</option><option value="check">Xadrez</option><option value="cyber">Cyber</option><option value="galaxy">Galáxia</option><option value="rainbow">Arco-íris</option><option value="tiger">Tigre</option><option value="zebra">Zebra</option><option value="camo">Camuflagem</option></select></label>
-    <label class="edit-field">Acessório<select id="skinAccessory"><option value="">Nenhum</option><option value="cap">Boné</option><option value="visor">Visor</option><option value="ears">Orelhas</option><option value="crown">Coroa</option><option value="band">Faixa</option><option value="horns">Chifres</option><option value="halo">Auréola</option><option value="astro">Antena</option></select></label></div>
-    <p class="edit-note">As estampas usam suas próprias cores. Você pode salvar até 8 skins neste aparelho.</p>
-    <div class="edit-actions"><button type="submit" id="saveCustomSkin">Salvar e equipar</button><button type="button" id="deleteCustomSkin" class="edit-secondary" style="display:none">Excluir</button></div>
-    <div id="skinEditorMsg" class="edit-msg" role="status" aria-live="polite"></div>
-  </form>
 </div>
 
-<div id="rankingOverlay" class="rank-overlay" role="dialog" aria-modal="true" aria-labelledby="rankTitle"><div class="rank-card"><div class="rank-topline"><span class="rank-tag">PLACAR GLOBAL</span><button class="w-close" id="closeRanking" aria-label="Fechar ranking"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><div class="rank-hero"><div class="rank-hero-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rank"></use></svg></div><div><span class="rank-hero-label">DESAFIO</span><h2 id="rankTitle">Sem Moedas</h2><p class="rank-desc">Sobreviva sem pegar moedas e conquiste seu lugar no placar.</p></div></div><div class="rank-info">Entre na conta antes da corrida para participar.</div><div class="rank-list-head"><span>POSIÇÃO / JOGADOR</span><span>MELHOR TEMPO</span></div><div id="rankingList" class="ranking-list" aria-live="polite"></div><p id="rankingStatus" class="rank-status" aria-live="polite"></p><button id="refreshRanking" type="button" class="rank-refresh">Atualizar ranking</button></div></div>
-<div id="shop"><div class="shop-card"><div class="shop-head"><div><span class="section-kicker">PREPARE A CORRIDA</span><h2><svg class="ui-icon" aria-hidden="true"><use href="#icon-shop"></use></svg> Loja</h2></div><button class="w-close" id="closeShop" aria-label="Fechar loja"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div>
+<div id="rankingOverlay" class="rank-overlay" role="dialog" aria-modal="true" aria-labelledby="rankTitle"><div class="rank-card"><div class="rank-topline"><span class="rank-tag"><svg class="natal-icon" aria-hidden="true"><use href="#natal-snow"></use></svg> PLACAR GLOBAL</span><button class="w-close" id="closeRanking" aria-label="Fechar ranking"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><div class="rank-hero"><div class="rank-hero-icon"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rank"></use></svg></div><div><span class="rank-hero-label">DESAFIO</span><h2 id="rankTitle">Sem Moedas</h2><p class="rank-desc">Sobreviva sem pegar moedas e conquiste seu lugar no placar.</p></div></div><div class="rank-info">Entre na conta antes da corrida para participar.</div><div class="rank-list-head"><span>POSIÇÃO / JOGADOR</span><span>MELHOR TEMPO</span></div><div id="rankingList" class="ranking-list" aria-live="polite"></div><p id="rankingStatus" class="rank-status" aria-live="polite"></p><button id="refreshRanking" type="button" class="rank-refresh">Atualizar ranking</button></div></div>
+<div id="shop"><div class="shop-card"><div class="shop-head"><div><span class="section-kicker"><svg class="natal-icon" aria-hidden="true"><use href="#natal-gift"></use></svg> PREPARE A CORRIDA</span><h2><svg class="ui-icon" aria-hidden="true"><use href="#natal-gift"></use></svg> Loja</h2></div><button class="w-close" id="closeShop" aria-label="Fechar loja"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div>
 <p class="shop-sub">Use moedas para comprar itens de uso único. Eles ficam guardados neste aparelho até você ativá-los.</p>
 <div class="bank"><i class="coin-icon"></i><span id="shopBalance">0</span></div>
 <div class="shop-row"><span class="emoji"><svg class="ui-icon" aria-hidden="true"><use href="#icon-board"></use></svg></span><div class="details"><strong>Prancha extra</strong><small>Proteção por 15 s · estoque: <b id="shopBoards">0</b></small></div><button id="buyBoard">100 moedas</button></div>
 <div class="shop-row"><span class="emoji"><svg class="ui-icon" aria-hidden="true"><use href="#icon-rocket"></use></svg></span><div class="details"><strong>Jetpack</strong><small>Voe por 8 s · 1 uso por partida · estoque: <b id="shopJets">0</b></small></div><button id="buyJet">150 moedas</button></div><div class="shop-row"><span class="emoji"><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg></span><div class="details"><strong>Escudo</strong><small>Contra trens e barreiras por 8 s · estoque: <b id="shopShields">0</b></small></div><button id="buyShield">100 moedas</button></div><div id="shopMsg" aria-live="polite"></div></div></div>
-<div class="account-overlay" id="accountOverlay"><div class="account-card"><div class="shop-head"><h2>Crie sua conta ou entre</h2><button class="w-close" id="closeAccount" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><p id="accountIntro">Entre ou crie sua conta para jogar com seu perfil.</p><form id="emailForm"><label for="nameInput">Nome de jogador <small>(somente para criar conta)</small></label><input id="nameInput" type="text" maxlength="20" autocomplete="nickname" placeholder="Como quer aparecer no jogo"><label for="emailInput">E-mail</label><input id="emailInput" type="email" autocomplete="email" required><label for="passInput">Senha</label><input id="passInput" type="password" minlength="6" autocomplete="current-password" required><div class="actions"><button type="submit">Entrar</button><button id="signupBtn" type="button" class="btn-sec">Criar conta</button></div></form><form id="chooseNameForm" style="display:none"><label for="chooseName">Nome de jogador</label><input id="chooseName" type="text" minlength="2" maxlength="20" autocomplete="nickname" placeholder="Escolha seu nome" required><p>Use de 2 a 20 letras, números, espaços, hífen ou sublinhado. Não use seu e-mail.</p><div class="actions"><button type="submit" id="saveNameBtn">Salvar nome</button></div></form><div class="actions"><button id="logoutBtn" type="button" class="btn-sec" style="display:none">Sair da conta</button></div><div class="account-error" id="accountMsg" aria-live="polite"></div><p>As moedas, o estoque e os recordes ainda ficam salvos neste navegador.</p></div></div>
-<div class="account-overlay" id="adminOverlay"><div class="account-card"><div class="shop-head"><h2><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg> Painel admin</h2><button class="w-close" id="closeAdmin" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><div class="admin-feature"><strong><svg class="ui-icon" aria-hidden="true"><use href="#icon-spark"></use></svg> Crescimento + trampolins</strong><p>Painel exclusivo do administrador: inicie o evento para todos conectados a este servidor. Em 5 segundos, um Nico gigante voa pelo centro, cresce e lança um trampolim. A câmera mostra onde caiu com o jogo pausado; depois há contagem de 3 segundos! O evento dura 1 minuto de corrida; depois uma nave recolhe os trampolins.</p><button id="growthToggle">Iniciar evento global</button><div id="growthStatus" class="account-error"></div></div><div class="admin-feature"><strong>Operação Nuke</strong><p>A câmera mostra a fábrica, a abertura do teto e a nuke descendo até os trilhos. Após a animação, a corrida volta com contagem de 3 segundos.</p><button id="nukeToggle">Iniciar evento Nuke</button><div id="nukeStatus" class="account-error" aria-live="polite"></div></div><div class="admin-feature"><strong>Gerenciar jogadores</strong><p>Selecione uma conta para enviar moedas ou alterar o acesso ao painel. Contas com nomes iguais são diferenciadas pelo código.</p><label for="adminPlayer">Jogador</label><select id="adminPlayer" style="width:100%;padding:11px;border-radius:12px;background:#131328;color:white;border:1px solid #ffffff40;font-size:15px"><option value="">Carregando jogadores...</option></select><div class="actions"><button type="button" id="reloadPlayers" class="btn-sec">Atualizar lista</button></div><label for="giftAmount">Quantidade de moedas</label><input id="giftAmount" type="number" min="1" max="1000000" step="1" value="100"><div class="actions"><button type="button" id="giveCoins">Dar moedas</button><button type="button" id="grantAdmin" class="btn-sec">Dar acesso admin</button><button type="button" id="revokeAdmin" class="btn-sec">Remover acesso</button></div><div class="account-error" id="manageStatus" aria-live="polite"></div><p>Somente o administrador principal pode alterar acessos. Administradores autorizados podem iniciar eventos e dar moedas.</p></div></div></div>
+<div class="account-overlay" id="accountOverlay"><div class="account-card"><div class="shop-head"><h2>Crie sua conta ou entre</h2><button class="w-close" id="closeAccount" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><p id="accountIntro">Entre ou crie sua conta para jogar com seu perfil.</p><form id="emailForm"><label for="nameInput">Nome de jogador <small>(somente para criar conta)</small></label><input id="nameInput" type="text" maxlength="20" autocomplete="nickname" placeholder="Como quer aparecer no jogo"><label for="emailInput">E-mail</label><input id="emailInput" type="email" autocomplete="email" required><label for="passInput">Senha</label><input id="passInput" type="password" minlength="6" autocomplete="current-password" required><div class="actions"><button type="submit">Entrar</button><button id="signupBtn" type="button" class="btn-sec">Criar conta</button></div></form><form id="chooseNameForm" style="display:none"><label for="chooseName">Nome de jogador</label><input id="chooseName" type="text" minlength="2" maxlength="20" autocomplete="nickname" placeholder="Escolha seu nome" required><p>Use de 2 a 20 letras, números, espaços, hífen ou sublinhado. Não use seu e-mail.</p><div class="actions"><button type="submit" id="saveNameBtn">Salvar nome</button></div></form><div class="actions"><button id="logoutBtn" type="button" class="btn-sec" style="display:none">Sair da conta</button></div><div class="account-error" id="accountMsg" aria-live="polite"></div><p>Moedas, estoque e preferências são vinculados à conta. Entre para sincronizar.</p></div></div>
+<div class="account-overlay" id="adminOverlay"><div class="account-card"><div class="shop-head"><h2><svg class="ui-icon" aria-hidden="true"><use href="#icon-shield"></use></svg> Painel admin</h2><button class="w-close" id="closeAdmin" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><div class="admin-feature"><strong><svg class="ui-icon" aria-hidden="true"><use href="#icon-spark"></use></svg> Crescimento + trampolins</strong><p>Painel exclusivo do administrador: inicie o evento para todos conectados a este servidor. Em 5 segundos, um Nico gigante voa pelo centro, cresce e lança um trampolim. A câmera mostra onde caiu com o jogo pausado; depois há contagem de 3 segundos! O evento dura 1 minuto de corrida; depois uma nave recolhe os trampolins.</p><button id="growthToggle">Iniciar evento global</button><div id="growthStatus" class="account-error"></div></div><div class="admin-feature"><strong>Operação Nuke</strong><p>A câmera mostra a fábrica, a abertura do teto e a nuke descendo até os trilhos. Após a animação, a corrida volta com contagem de 3 segundos.</p><button id="nukeToggle">Iniciar evento Nuke</button><div id="nukeStatus" class="account-error" aria-live="polite"></div></div><div class="admin-feature"><strong>Gerenciar jogadores</strong><p>Selecione uma conta para enviar moedas ou alterar o acesso ao painel. Contas com nomes iguais são diferenciadas pelo código.</p><label for="adminPlayer">Jogador</label><select id="adminPlayer" style="width:100%;padding:11px;border-radius:12px;background:#131328;color:white;border:1px solid #ffffff40;font-size:15px"><option value="">Carregando jogadores...</option></select><div class="actions"><button type="button" id="reloadPlayers" class="btn-sec">Atualizar lista</button></div><label for="giftAmount">Quantidade de moedas</label><input id="giftAmount" type="number" min="1" max="1000000" step="1" value="100"><div class="actions"><button type="button" id="giveCoins">Dar moedas</button><button type="button" id="giveSanta">Dar Papai Noel</button><button type="button" id="grantAdmin" class="btn-sec">Dar acesso admin</button><button type="button" id="revokeAdmin" class="btn-sec">Remover acesso</button></div><div class="account-error" id="manageStatus" aria-live="polite"></div><p>Somente o administrador principal pode alterar acessos. Administradores autorizados podem iniciar eventos e dar moedas.</p></div></div></div>
 <div id="deathOverlay" role="dialog" aria-modal="true" aria-labelledby="deathTitle"><div class="death-card"><h2 id="deathTitle">Você morreu</h2><p id="deathDetails"></p><p id="rankRunNotice" class="rank-run-notice" aria-live="polite"></p><div class="death-actions"><button id="reviveBtn" type="button">Renascer</button><button id="deathBackBtn" type="button">Voltar ao lobby</button></div></div></div>
 <div id="mpOverlay" class="mp-overlay" role="dialog" aria-modal="true" aria-labelledby="mpTitle"><div class="mp-card"><div class="mp-header"><h2 id="mpTitle">Jogar com um amigo</h2><button class="w-close" id="closeMultiplayer" type="button" aria-label="Fechar"><svg class="ui-icon" aria-hidden="true"><use href="#icon-close"></use></svg></button></div><p>Convide um jogador online. Cada um corre no próprio percurso e pode ver o amigo.</p><div id="mpGroup" style="display:none"><strong id="mpGroupTitle"></strong><p id="mpGroupInfo"></p><div class="mp-actions mp-modes" id="mpModeButtons"><button data-mp-mode="normal">Normal</button><button data-mp-mode="nocoin">Sem Moedas</button><button data-mp-mode="lava">Chão é Lava</button></div><div class="mp-actions"><button id="mpLeave" type="button" class="btn-sec">Sair do grupo</button></div></div><div id="mpLobby"><strong>Jogadores online</strong><p class="mp-small">Selecione alguém para enviar um convite.</p><div id="mpPlayers" class="mp-list"></div></div><p id="mpStatus" class="mp-status" aria-live="polite"></p></div></div><div id="mpInvite" class="mp-invite" role="alert"><strong>Convite para jogar</strong><p id="mpInviteText"></p><button id="mpAccept" type="button">Aceitar</button><button id="mpReject" type="button" class="btn-sec">Recusar</button></div>
 <div id="pauseOv">
@@ -475,7 +515,7 @@ ren.setPixelRatio(dprCap);ren.shadowMap.enabled=true;ren.shadowMap.type=THREE.PC
 document.body.prepend(ren.domElement);
 function resize(){ren.setSize(innerWidth,innerHeight);cam.aspect=innerWidth/innerHeight;cam.fov=innerWidth<innerHeight?84:62;cam.updateProjectionMatrix()}
 addEventListener('resize',resize);resize();
-scene.add(new THREE.HemisphereLight(0xffe2c4,0x6a5acd,0.9));
+const hemi=new THREE.HemisphereLight(0xffe2c4,0x6a5acd,0.9);scene.add(hemi);
 const sun=new THREE.DirectionalLight(0xffcf9a,1);sun.position.set(-8,12,6);sun.castShadow=true;sun.shadow.mapSize.set(512,512);
 Object.assign(sun.shadow.camera,{left:-6,right:6,top:6,bottom:-6,near:4,far:28});scene.add(sun);
 
@@ -627,6 +667,8 @@ NEW_PATTERNS.forEach(([key,bg,a,b],index)=>{PAT_FN[key]=(x,w,h)=>{
   x.fillStyle='rgba(255,255,255,.12)';for(let yy=0;yy<h;yy+=8)x.fillRect(0,yy,w,1);
   x.fillStyle=b;for(let i=0;i<18;i++){let xx=(i*53+11)%w,y=(i*79+17)%h;x.fillRect(xx,y,4+(i%3)*2,4+(i%3)*2)}
 };});
+// Prancha natalina: laço, neve e faixas em textura procedural local.
+PAT_FN.natal=(x,w,h)=>{x.fillStyle='#b62d42';x.fillRect(0,0,w,h);x.fillStyle='#196a50';x.fillRect(0,0,w*.17,h);x.fillRect(w*.83,0,w*.17,h);x.fillStyle='#f8e9d4';for(let y=0;y<h;y+=36){x.beginPath();x.moveTo(w*.17,y);x.lineTo(w*.83,y+20);x.lineTo(w*.83,y+29);x.lineTo(w*.17,y+9);x.closePath();x.fill()}x.fillStyle='#e3bd65';x.fillRect(w*.46,0,w*.08,h);x.fillRect(w*.17,h*.47,w*.66,h*.06);x.fillStyle='#ffffff';for(let i=0;i<16;i++){const px=(i*53+19)%w,py=(i*71+13)%h;x.fillRect(px-1,py-5,2,10);x.fillRect(px-5,py-1,10,2)}x.fillStyle='#ffe3a1';x.fillRect(w*.39,h*.43,w*.22,h*.14);x.fillStyle='#d43b4b';x.fillRect(w*.43,h*.46,w*.14,h*.08)};
 function getPat(name,tall){
   const key=name+(tall?'_b':'');
   if(!patCache[key]){
@@ -765,6 +807,12 @@ function makeHero(){
   const orb=new THREE.Mesh(new THREE.SphereGeometry(.09,10,8),new THREE.MeshBasicMaterial({color:0x4de3ff}));orb.position.set(0,.93,0);astro.add(orb);
   w.accs={ears,crown,band,visor,horns,halo,cap,astro};w.g=g;
 
+  // Acabamentos leves: detalhes no casaco, tênis e fones do Nico.
+  const detailGeo=cGeo('nicoDetailBox',()=>new THREE.BoxGeometry(1,1,1));
+  for(const q of [-1,1]){add(g,detailGeo,0xffe8a0,q*.31,1.16,.35,[.085,.085,.035]);add(g,detailGeo,0xffe8a0,q*.19,.76,.36,[.10,.04,.025]);
+    add(head,detailGeo,0xd5faf6,q*.64,-.02,.01,[.035,.12,.16]);}
+  add(g,detailGeo,0x4b3a7a,0,1.05,.401,[.045,.32,.02]);
+  add(g,detailGeo,0xffe8a0,0,1.17,.414,[.06,.07,.02]);
   // Prancha unificada c/ mapeamento UV contínuo p/ estampas e texturas
   const bd=new THREE.Group(),bdMat=new THREE.MeshToonMaterial({color:0x4de3ff,gradientMap:tone,map:WHITE_TEX});
   const bdEnd=new THREE.CylinderGeometry(.4,.4,.1,16);
@@ -787,6 +835,111 @@ function makeHero(){
   for(let i=0;i<6;i++){const sp=new THREE.Mesh(sparkGeo,sparkMat);bd.add(sp);w.boardSparks.push(sp)}
   w.armL=g.armL;w.armR=g.armR;w.legL=g.legL;w.legR=g.legR;w.head=head;return w}
 const hero=makeHero();scene.add(hero);
+// Personagem alternativo em blocos: Papai Noel com texturas pixeladas locais.
+function santaTexture(draw){const c=document.createElement('canvas');c.width=c.height=32;const ctx=c.getContext('2d');draw(ctx);const tex=new THREE.CanvasTexture(c);tex.magFilter=THREE.NearestFilter;tex.minFilter=THREE.NearestFilter;tex.needsUpdate=true;return tex}
+const santaFaceTex=santaTexture(x=>{x.fillStyle='#efc1a1';x.fillRect(0,0,32,32);x.fillStyle='#f9f5e8';x.fillRect(0,0,32,5);x.fillRect(0,16,5,16);x.fillRect(27,16,5,16);x.fillRect(4,23,24,9);x.fillRect(5,19,8,5);x.fillRect(19,19,8,5);x.fillStyle='#263144';x.fillRect(7,11,4,4);x.fillRect(21,11,4,4);x.fillStyle='#f7f6ed';x.fillRect(8,11,1,1);x.fillRect(22,11,1,1);x.fillStyle='#dca080';x.fillRect(14,15,4,4);x.fillStyle='#b46360';x.fillRect(13,22,6,2)});
+const santaCoatTex=santaTexture(x=>{x.fillStyle='#bd2b3c';x.fillRect(0,0,32,32);x.fillStyle='#d54850';x.fillRect(2,1,28,20);x.fillStyle='#fff5df';x.fillRect(14,0,4,22);x.fillRect(0,28,32,4);x.fillStyle='#27313a';x.fillRect(0,22,32,6);x.fillStyle='#f3ca70';x.fillRect(12,22,8,6);x.fillStyle='#27313a';x.fillRect(14,23,4,3)});
+const santaRedTex=santaTexture(x=>{x.fillStyle='#be3040';x.fillRect(0,0,32,32);x.fillStyle='#d84951';x.fillRect(3,3,25,23);x.fillStyle='#f6eeda';x.fillRect(0,26,32,6)});
+const santaMats={face:new THREE.MeshLambertMaterial({map:santaFaceTex}),coat:new THREE.MeshLambertMaterial({map:santaCoatTex}),red:new THREE.MeshLambertMaterial({map:santaRedTex}),skin:new THREE.MeshLambertMaterial({color:0xefc1a1}),white:new THREE.MeshLambertMaterial({color:0xf9f5e8}),dark:new THREE.MeshLambertMaterial({color:0x282b34}),gold:new THREE.MeshLambertMaterial({color:0xffd378})};
+const santaRig=new THREE.Group();hero.add(santaRig);santaRig.rotation.y=Math.PI;
+function santaBox(parent,material,x,y,z,sx,sy,sz){const m=new THREE.Mesh(UBOX,material);m.position.set(x,y,z);m.scale.set(sx,sy,sz);m.castShadow=true;parent.add(m);return m}
+santaBox(santaRig,santaMats.coat,0,1.02,0,.72,.8,.43);
+const santaHead=new THREE.Group();santaHead.position.y=1.88;santaRig.add(santaHead);
+santaBox(santaHead,[santaMats.skin,santaMats.skin,santaMats.white,santaMats.white,santaMats.face,santaMats.white],0,0,0,.78,.78,.72);
+santaBox(santaHead,santaMats.white,0,.41,0,.86,.15,.8);
+santaBox(santaHead,santaMats.red,0,.59,0,.72,.28,.67);
+santaBox(santaHead,santaMats.red,.13,.8,0,.46,.18,.48);
+santaBox(santaHead,santaMats.white,.32,.86,0,.20,.20,.22);
+function santaLimb(x,y,isArm){const part=new THREE.Group();part.position.set(x,y,0);santaRig.add(part);if(isArm){santaBox(part,santaMats.red,0,-.23,0,.27,.48,.35);santaBox(part,santaMats.white,0,-.48,0,.28,.12,.36);santaBox(part,santaMats.dark,0,-.58,0,.27,.16,.35)}else{santaBox(part,santaMats.red,0,-.2,0,.3,.4,.36);santaBox(part,santaMats.dark,0,-.46,.055,.32,.18,.47)}return part}
+const santaArmL=santaLimb(-.5,1.35,true),santaArmR=santaLimb(.5,1.35,true),santaLegL=santaLimb(-.19,.58,false),santaLegR=santaLimb(.19,.58,false);
+// Acabamentos em relevo sobre a roupa e o gorro do Noel.
+santaBox(santaRig,santaMats.white,0,1.35,.02,.74,.12,.45);
+for(const x of [-.23,.23]){santaBox(santaRig,santaMats.white,x,.88,.229,.15,.045,.025);santaBox(santaRig,santaMats.gold,x,1.18,.23,.055,.055,.025)}
+santaBox(santaRig,santaMats.gold,0,.91,.242,.18,.12,.03);
+santaBox(santaRig,santaMats.dark,0,.91,.26,.095,.06,.02);
+for(const q of [-1,1]){santaBox(santaHead,santaMats.white,q*.30,-.20,.38,.19,.24,.08);santaBox(santaHead,santaMats.white,q*.13,-.27,.39,.20,.16,.08)}
+santaBox(santaHead,santaMats.white,0,-.32,.38,.38,.12,.08);
+const santaJet=hero.jet.clone();santaRig.add(santaJet);santaJet.visible=false;
+// Pilantra: modelo articulado em blocos, vestido de branco.
+const pilantraRig=new THREE.Group();hero.add(pilantraRig);
+const pilMats={white:new THREE.MeshLambertMaterial({color:0xf5f4ef}),light:new THREE.MeshLambertMaterial({color:0xffffff}),shadow:new THREE.MeshLambertMaterial({color:0xd6d7d8}),dark:new THREE.MeshLambertMaterial({color:0x252833}),face:new THREE.MeshLambertMaterial({color:0xe6b58e}),blush:new THREE.MeshLambertMaterial({color:0xcd8d73})};
+santaBox(pilantraRig,pilMats.white,0,1.02,0,.72,.8,.43);
+santaBox(pilantraRig,pilMats.light,0,1.12,.223,.18,.58,.025);
+santaBox(pilantraRig,pilMats.dark,0,1.18,.241,.09,.39,.03);
+santaBox(pilantraRig,pilMats.dark,0,.91,.242,.08,.08,.03);
+for(const x of [-.18,.18]){santaBox(pilantraRig,pilMats.shadow,x,1.32,.23,.16,.10,.025);santaBox(pilantraRig,pilMats.shadow,x,.86,.23,.15,.05,.025)}
+const pilHead=new THREE.Group();pilHead.position.y=1.88;pilantraRig.add(pilHead);
+santaBox(pilHead,pilMats.face,0,0,0,.78,.78,.72);
+for(const x of [-.21,.21]){santaBox(pilHead,pilMats.dark,x,.055,.37,.11,.10,.025);santaBox(pilHead,pilMats.light,x+.015,.07,.386,.025,.025,.012);santaBox(pilHead,pilMats.dark,x,.19,.37,.17,.04,.025)}
+santaBox(pilHead,pilMats.blush,0,-.10,.37,.11,.07,.03);santaBox(pilHead,pilMats.dark,0,-.22,.37,.18,.035,.025);
+santaBox(pilHead,pilMats.white,0,.42,0,1.0,.12,.94);santaBox(pilHead,pilMats.light,0,.63,0,.67,.34,.62);santaBox(pilHead,pilMats.dark,0,.48,0,.69,.08,.64);santaBox(pilHead,pilMats.light,0,.82,0,.68,.05,.63);
+function pilLimb(x,y,arm){const limb=new THREE.Group();limb.position.set(x,y,0);pilantraRig.add(limb);if(arm){santaBox(limb,pilMats.white,0,-.23,0,.27,.48,.35);santaBox(limb,pilMats.face,0,-.53,0,.25,.14,.32)}else{santaBox(limb,pilMats.white,0,-.20,0,.30,.40,.36);santaBox(limb,pilMats.light,0,-.46,.055,.32,.18,.47)}return limb}
+const pilArmL=pilLimb(-.5,1.35,true),pilArmR=pilLimb(.5,1.35,true),pilLegL=pilLimb(-.19,.58,false),pilLegR=pilLimb(.19,.58,false);
+// Lapelas, botões e um lenço de bolso dão acabamento ao terno branco.
+for(const q of [-1,1]){const lapel=santaBox(pilantraRig,pilMats.shadow,q*.15,1.23,.24,.13,.28,.025);lapel.rotation.z=q*.28;santaBox(pilantraRig,pilMats.light,q*.16,.88,.25,.12,.04,.025)}
+santaBox(pilantraRig,pilMats.dark,-.23,1.13,.25,.14,.075,.025);
+santaBox(pilantraRig,pilMats.light,-.23,1.16,.27,.10,.035,.025);
+for(const y of [1.03,.94])santaBox(pilantraRig,pilMats.dark,.075,y,.245,.035,.035,.02);
+for(const q of [-1,1])santaBox(pilHead,pilMats.blush,q*.29,-.13,.35,.10,.055,.02);
+const pilJet=hero.jet.clone();pilantraRig.add(pilJet);pilJet.visible=false;
+// Elfo natalino blocado, com orelhas pontudas, gorro e roupa festiva.
+const elfRig=new THREE.Group();hero.add(elfRig);
+const elfMat={green:new THREE.MeshLambertMaterial({color:0x218259}),light:new THREE.MeshLambertMaterial({color:0x8dcf79}),red:new THREE.MeshLambertMaterial({color:0xc53548}),cream:new THREE.MeshLambertMaterial({color:0xf8e5c2}),skin:new THREE.MeshLambertMaterial({color:0xe9b394}),brown:new THREE.MeshLambertMaterial({color:0x483023}),dark:new THREE.MeshLambertMaterial({color:0x272b30}),gold:new THREE.MeshLambertMaterial({color:0xffd47b})};
+santaBox(elfRig,elfMat.green,0,1.02,0,.72,.8,.43);
+santaBox(elfRig,elfMat.light,0,1.36,.02,.78,.14,.47);
+santaBox(elfRig,elfMat.red,0,.88,.23,.73,.14,.035);
+santaBox(elfRig,elfMat.gold,0,.88,.255,.16,.16,.035);
+for(const y of [1.03,1.17,1.28])santaBox(elfRig,elfMat.gold,0,y,.23,.055,.055,.03);
+const elfHead=new THREE.Group();elfHead.position.y=1.88;elfRig.add(elfHead);
+santaBox(elfHead,elfMat.skin,0,0,0,.74,.74,.68);
+// Pescoço conecta a cabeça à gola e acompanha sua animação.
+santaBox(elfHead,elfMat.skin,0,-.405,0,.30,.17,.28);
+santaBox(elfHead,elfMat.brown,0,.29,-.10,.76,.18,.57);
+for(const x of [-.20,.20]){santaBox(elfHead,elfMat.dark,x,.05,.35,.10,.10,.025);santaBox(elfHead,elfMat.cream,x+.015,.07,.366,.025,.025,.01)}
+santaBox(elfHead,elfMat.red,0,-.18,.35,.16,.035,.02);
+for(const q of [-1,1]){santaBox(elfHead,elfMat.skin,q*.46,.02,0,.19,.19,.19);santaBox(elfHead,elfMat.skin,q*.56,.09,0,.12,.10,.15)}
+santaBox(elfHead,elfMat.red,0,.4,0,.84,.13,.79);santaBox(elfHead,elfMat.green,0,.58,0,.70,.26,.64);santaBox(elfHead,elfMat.green,.10,.79,0,.48,.18,.46);santaBox(elfHead,elfMat.green,.22,.94,0,.27,.15,.28);santaBox(elfHead,elfMat.gold,.27,1.05,0,.17,.17,.18);
+function elfLimb(x,y,arm){const limb=new THREE.Group();limb.position.set(x,y,0);elfRig.add(limb);if(arm){santaBox(limb,elfMat.green,0,-.23,0,.27,.48,.35);santaBox(limb,elfMat.red,0,-.46,0,.28,.10,.36);santaBox(limb,elfMat.skin,0,-.56,0,.25,.15,.32)}else{santaBox(limb,elfMat.red,0,-.20,0,.30,.40,.36);santaBox(limb,elfMat.green,0,-.46,.055,.32,.18,.47);santaBox(limb,elfMat.gold,0,-.44,.30,.12,.10,.06)}return limb}
+const elfArmL=elfLimb(-.5,1.35,true),elfArmR=elfLimb(.5,1.35,true),elfLegL=elfLimb(-.19,.58,false),elfLegR=elfLimb(.19,.58,false);
+// Bordados, bochechas e detalhes do uniforme do elfo.
+for(const q of [-1,1]){santaBox(elfRig,elfMat.cream,q*.18,1.30,.25,.20,.07,.03);santaBox(elfRig,elfMat.gold,q*.23,.77,.23,.08,.08,.025);santaBox(elfHead,elfMat.red,q*.27,-.11,.35,.10,.05,.025)}
+santaBox(elfRig,elfMat.cream,0,.74,.23,.70,.08,.025);
+santaBox(elfHead,elfMat.gold,0,.40,.41,.09,.09,.03);
+const elfJet=hero.jet.clone();elfRig.add(elfJet);elfJet.visible=false;
+let characterModel='nico';
+let santaSelected=characterModel==='santa';
+function setCharacterModel(model){if(!['nico','santa','pilantra','elfo'].includes(model))return;if(model==='santa'&&(!walletReady||!walletBase?.santa))return;if(model==='elfo'&&(!walletReady||!walletBase?.elf))return;characterModel=model;santaSelected=model==='santa';try{localStorage.setItem('nico-character-model',model)}catch(e){}setSantaView(santaSelected);walletPrefs()}
+function setSantaSelected(value){setCharacterModel(value?'santa':'nico')}
+function setSantaView(show){hero.g.visible=characterModel==='nico';santaRig.visible=characterModel==='santa';pilantraRig.visible=characterModel==='pilantra';elfRig.visible=characterModel==='elfo'}
+function animateSanta(){const parts=santaRig.visible?[santaRig,santaHead,santaArmL,santaArmR,santaLegL,santaLegR,santaJet]:pilantraRig.visible?[pilantraRig,pilHead,pilArmL,pilArmR,pilLegL,pilLegR,pilJet]:elfRig.visible?[elfRig,elfHead,elfArmL,elfArmR,elfLegL,elfLegR,elfJet]:null;if(!parts)return;const [rig,head,armL,armR,legL,legR,jet]=parts;rig.position.copy(hero.g.position);rig.rotation.copy(hero.g.rotation);head.rotation.copy(hero.head.rotation);armL.rotation.copy(hero.armL.rotation);armR.rotation.copy(hero.armR.rotation);legL.rotation.copy(hero.legL.rotation);legR.rotation.copy(hero.legR.rotation);jet.visible=hero.jet.visible;jet.rotation.copy(hero.jet.rotation);jet.scale.copy(hero.jet.scale)}
+// Presentes decorativos na traseira da prancha de Natal, sem afetar a física.
+const holidayBoardGifts=new THREE.Group();holidayBoardGifts.visible=false;hero.board.add(holidayBoardGifts);
+const giftBoxGeo=new THREE.BoxGeometry(1,1,1),giftRed=new THREE.MeshLambertMaterial({color:0xd6324c}),giftGreen=new THREE.MeshLambertMaterial({color:0x278762}),giftRibbon=new THREE.MeshLambertMaterial({color:0xffdd8b});
+function boardGift(x,z,size,material){const g=new THREE.Group();g.position.set(x,.05+size*.5,z);holidayBoardGifts.add(g);const box=new THREE.Mesh(giftBoxGeo,material);box.scale.set(size,size,size);g.add(box);const ribbonA=new THREE.Mesh(giftBoxGeo,giftRibbon);ribbonA.scale.set(size*.18,size*1.025,size*1.025);g.add(ribbonA);const ribbonB=new THREE.Mesh(giftBoxGeo,giftRibbon);ribbonB.scale.set(size*1.025,size*1.025,size*.18);g.add(ribbonB);const knot=new THREE.Mesh(giftBoxGeo,giftRibbon);knot.position.y=size*.55;knot.scale.set(size*.28,size*.12,size*.28);g.add(knot)}
+boardGift(-.18,.82,.29,giftRed);boardGift(.20,.95,.25,giftGreen);
+// No mapa de Natal, o voo do jetpack usa um trenó sem alterar a física.
+const flyingSleigh=new THREE.Group();hero.add(flyingSleigh);flyingSleigh.visible=false;
+const flyingSleighParts=[
+ {g:UBOX,c:0x93283c,y:.10,sx:1.22,sy:.24,sz:2.4},
+ {g:UBOX,c:0xc93a46,y:.32,sx:1.27,sy:.30,sz:2.30},
+ {g:UBOX,c:0x734033,y:.52,z:.48,sx:1.0,sy:.17,sz:.62},
+ {g:UBOX,c:0xe5bf70,y:.66,z:1.08,sx:1.18,sy:.14,sz:.13},
+ {g:UBOX,c:0xb73143,y:.64,z:1.06,sx:1.24,sy:.46,sz:.18},
+ {g:UBOX,c:0xe7c572,y:.48,z:-1.15,sx:1.2,sy:.13,sz:.12},
+ ...[-1,1].flatMap(side=>[
+  {g:UBOX,c:0xba3042,x:side*.62,y:.52,z:0,sx:.15,sy:.5,sz:2.26},
+  {g:UBOX,c:0xffd780,x:side*.62,y:.8,z:0,sx:.18,sy:.08,sz:2.28},
+  {g:UBOX,c:0xf5cd6f,x:side*.57,y:-.16,z:0,sx:.11,sy:.12,sz:2.62},
+  {g:UBOX,c:0xffde8c,x:side*.57,y:-.08,z:-1.30,sx:.11,sy:.12,sz:.42,rx:-.5},
+  {g:UBOX,c:0xdab25d,x:side*.57,y:-.02,z:-.7,sx:.10,sy:.3,sz:.10},
+  {g:UBOX,c:0xdab25d,x:side*.57,y:-.02,z:.7,sx:.10,sy:.3,sz:.10}
+ ]),
+ {g:UBOX,c:0x2a9a70,x:-.34,y:.83,z:.82,sx:.35,sy:.32,sz:.35},
+ {g:UBOX,c:0xffdf8f,x:-.34,y:1,z:.82,sx:.36,sy:.03,sz:.08},
+ {g:UBOX,c:0xdb4851,x:.30,y:.85,z:.85,sx:.30,sy:.37,sz:.32},
+ {g:UBOX,c:0xffdf8f,x:.30,y:1.05,z:.85,sx:.31,sy:.03,sz:.08}
+];
+flyingSleigh.add(new THREE.Mesh(mergeList(flyingSleighParts),VLM));
 const shieldAura=new THREE.Group();hero.add(shieldAura);shieldAura.position.y=1.3;shieldAura.visible=false;
 const shieldShell=new THREE.Mesh(new THREE.SphereGeometry(1.35,18,12),new THREE.MeshBasicMaterial({color:0x70f9e5,transparent:true,opacity:.14,depthWrite:false}));shieldAura.add(shieldShell);
 const shieldOutline=new THREE.Mesh(new THREE.TorusGeometry(1.38,.038,7,32),new THREE.MeshBasicMaterial({color:0xa9fff4,transparent:true,opacity:.75}));shieldAura.add(shieldOutline);
@@ -822,6 +975,9 @@ const wt=[0,1,2].map(type=>{const c=document.createElement('canvas');c.width=128
   }
   const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;return t});
 const bldMats=wt.map(t=>new THREE.MeshLambertMaterial({map:t,vertexColors:true,emissive:0x2a1c10}));
+// Janelas quentes do cenário natalino noturno, em materiais compartilhados.
+const winterBuildingMats=[0,1,2].map(type=>{const c=document.createElement('canvas');c.width=128;c.height=256;const x=c.getContext('2d');x.fillStyle=['#a8b9cf','#aeb6cf','#b9c3d6'][type];x.fillRect(0,0,128,256);for(let r=0;r<8;r++){x.fillStyle='rgba(38,50,77,.22)';x.fillRect(0,r*32+29,128,2);for(let q=0;q<4;q++){const px=q*32+5,py=r*32+4;x.fillStyle='#526883';x.fillRect(px-2,py-2,24,24);x.fillStyle=(r+q+type)%3?'#ffdd86':'#fff0b1';x.fillRect(px,py,20,20);x.fillStyle='#fff5cc';x.fillRect(px+2,py+2,5,11);x.fillStyle='#ba8b56';x.fillRect(px+9,py,2,20);x.fillRect(px,py+11,20,2)}}const tex=new THREE.CanvasTexture(c);tex.wrapS=tex.wrapT=THREE.RepeatWrapping;return new THREE.MeshLambertMaterial({map:tex,vertexColors:true,emissive:0x30221d})});
+
 const bcols=[0xffb3a7,0xffd6a5,0xcdb4db,0xa0c4ff,0xbde0fe,0xfdffb6,0xffc8dd];
 const SEG=24,NSEG=7,segs=[],EDGE=L*1.5+.6,RW=L*3+1.2;
 function ctex(w,h,fn,rx,ry){const c=document.createElement('canvas');c.width=w;c.height=h;fn(c.getContext('2d'));const t=new THREE.CanvasTexture(c);t.wrapS=t.wrapT=THREE.RepeatWrapping;t.repeat.set(rx,ry);return t}
@@ -837,9 +993,9 @@ const lavaGeo=new THREE.PlaneGeometry(RW-.2,SEG);lavaGeo.rotateX(-Math.PI/2);
 const gPole=new THREE.CylinderGeometry(.07,.09,4.2,8),gTrunk=new THREE.CylinderGeometry(.15,.2,1.6,8),gChim=new THREE.CylinderGeometry(.5,.5,1.6,10);
 
 function makeSeg(i){
-  const g=new THREE.Group(),lm=[],bm=[],blds=[[],[],[]];
-  const road=new THREE.Mesh(roadGeo,roadMat);road.position.y=-.1;road.receiveShadow=true;g.add(freeze(road));
-  const sw=new THREE.Mesh(swGeo,swMat);sw.receiveShadow=true;g.add(freeze(sw));
+  const g=new THREE.Group(),lm=[],bm=[],blds=[[],[],[]],winterHouses=[],houseLightsA=[],houseLightsB=[];
+  const road=new THREE.Mesh(roadGeo,roadMat);g.userData.road=road;road.position.y=-.1;road.receiveShadow=true;g.add(freeze(road));
+  const sw=new THREE.Mesh(swGeo,swMat);g.userData.sidewalk=sw;sw.receiveShadow=true;g.add(freeze(sw));
   // Leito, dormentes e aço com reflexos: tudo fundido no mesmo lote da cidade.
   LANES.forEach(x=>{
     lm.push({g:UBOX,c:0x454756,x,y:.009,sx:2.34,sy:.018,sz:SEG},
@@ -870,6 +1026,13 @@ function makeSeg(i){
     for(let k=0;k<3;k++){
       const w=4+Math.random()*3,h=9+Math.random()*18,bx=s*(EDGE+4+w/2),bz=-SEG/2+4+k*8;
       blds[(Math.random()*3)|0].push({g:UBOX,c:bcols[(Math.random()*bcols.length)|0],x:bx,y:h/2,z:bz,sx:w,sy:h,sz:6,ux:w/4,uy:h/8});
+      // Coberturas nevadas, acabamentos e cordões de luz nas fachadas.
+      const winterFace=bx-s*(w/2+.2);
+      winterHouses.push({g:UBOX,c:0xf2faff,x:bx,y:h+.56,z:bz,sx:w+.56,sy:.12,sz:6.55},
+        {g:UBOX,c:0xd7eef5,x:winterFace,y:3.8,z:bz,sx:.1,sy:.10,sz:5.6});
+      for(const height of [5,8.3]){winterHouses.push({g:UBOX,c:0x30534e,x:winterFace-s*.08,y:height,z:bz,sx:.06,sy:.05,sz:5.5});
+        for(let light=0;light<8;light++){const target=light%2?houseLightsA:houseLightsB;target.push({g:USPH_LO,c:[0xffdd77,0xff6681,0x98fff1,0xfff1bd][(light+k)%4],x:winterFace-s*.13,y:height-.12,z:bz-2.42+light*.69,sx:.12,sy:.15,sz:.12})}}
+
       lm.push({g:UBOX,c:0xf5ece2,x:bx,y:h+.25,z:bz,sx:w+.5,sy:.5,sz:6.5});
       if(Math.random()<.5)lm.push({g:gChim,c:0x8a7f99,x:bx+w*.2,y:h+1.2,z:bz});
       lm.push({g:UBOX,c:awn[(Math.random()*5)|0],x:bx-s*(w/2+.6),y:3.4,z:bz,sx:1.4,sy:.25,sz:5,rz:s*.25});
@@ -944,14 +1107,38 @@ function makeSeg(i){
     for(let k=-4;k<=4;k++)bm.push({g:USPH_LO,c:k%2?0xfff0b0:0x4de3ff,x:k*1.05,y:6.45,sx:.12,sy:.12,sz:.12});
   }
   // Os lotes que podem encobrir a câmera são ocultados apenas durante a cena da Nuke.
-  g.userData.cinematicObstacles=[];
+  g.userData.winterHouseGeo=mergeList(winterHouses);g.userData.houseLightsA=mergeList(houseLightsA);g.userData.houseLightsB=mergeList(houseLightsB);
+  g.userData.cinematicObstacles=[];g.userData.buildings=[];
   const scenery=freeze(new THREE.Mesh(mergeList(lm),VLM)),decor=freeze(new THREE.Mesh(mergeList(bm),VBM));
   g.add(scenery,decor);g.userData.cinematicObstacles.push(scenery,decor);
-  for(let t=0;t<3;t++)if(blds[t].length){const building=freeze(new THREE.Mesh(mergeList(blds[t],true),bldMats[t]));g.add(building);g.userData.cinematicObstacles.push(building)}
+  for(let t=0;t<3;t++)if(blds[t].length){const building=freeze(new THREE.Mesh(mergeList(blds[t],true),bldMats[t]));g.add(building);g.userData.buildings.push({mesh:building,index:t});g.userData.cinematicObstacles.push(building)}
   const lv=new THREE.Mesh(lavaGeo,lavaMat);lv.position.y=.1;lv.visible=false;g.add(freeze(lv));g.userData.lava=lv;
   g.position.z=-i*SEG;scene.add(g);segs.push(g);
 }
 for(let i=0;i<NSEG;i++)makeSeg(i);
+
+// Cenário natalino separado: geometrias compartilhadas e sem colisão extra.
+const defaultSky=scene.background;const winterSky=(()=>{const c=document.createElement('canvas');c.width=2;c.height=256;const x=c.getContext('2d'),gr=x.createLinearGradient(0,0,0,256);gr.addColorStop(0,'#101c3b');gr.addColorStop(.5,'#293c69');gr.addColorStop(1,'#718cb2');x.fillStyle=gr;x.fillRect(0,0,2,256);return new THREE.CanvasTexture(c)})();
+const winterRoadMat=new THREE.MeshLambertMaterial({color:0xbccddb}),winterSideMat=new THREE.MeshLambertMaterial({color:0xeaf6fb}),holidaySolid=[],holidayGlow=[],pine=new THREE.ConeGeometry(1,1,8);
+for(const side of [-1,1])for(const z of [-8,4]){const x=side*(EDGE+1.7);
+ holidaySolid.push({g:UBOX,c:0x774e42,x,y:.55,z,sx:.3,sy:1.1,sz:.3},
+ {g:pine,c:0x21795d,x,y:1.35,z,sx:1.2,sy:1.5,sz:1.2},{g:pine,c:0x319775,x,y:2.15,z,sx:.92,sy:1.35,sz:.92},{g:pine,c:0xe8f7f5,x,y:2.63,z,sx:.55,sy:.42,sz:.55},
+ {g:UBOX,c:0xd94856,x:x+side*.55,y:.25,z:z+1.4,sx:.65,sy:.5,sz:.65},{g:UBOX,c:0xf6d27b,x:x+side*.55,y:.515,z:z+1.4,sx:.14,sy:.025,sz:.68});
+ for(let j=0;j<4;j++)holidayGlow.push({g:USPH_LO,c:[0xffde7b,0xff6b80,0x87f6e2,0xffe2b8][j],x:x+Math.cos(j*1.8)*.53,y:1.25+j*.36,z:z+Math.sin(j*1.8)*.53,sx:.12,sy:.12,sz:.12});
+ holidayGlow.push({g:USPH_LO,c:0xffe28a,x,y:2.95,z,sx:.19,sy:.19,sz:.19});
+}
+for(const side of [-1,1]){holidaySolid.push({g:UBOX,c:0xf2faff,x:side*(EDGE+.48),y:.33,sx:.35,sy:.12,sz:SEG});for(let j=0;j<8;j++)holidayGlow.push({g:USPH_LO,c:[0xff7e88,0xffe595,0x96f3ec,0x9bd393][j%4],x:side*(EDGE+.48),y:1.3,z:-10+j*3,sx:.09,sy:.09,sz:.09})}
+const winterGeo=mergeList(holidaySolid),winterLightGeo=mergeList(holidayGlow);
+const holidayBlinkA=new THREE.MeshBasicMaterial({vertexColors:true}),holidayBlinkB=new THREE.MeshBasicMaterial({vertexColors:true});
+for(const segment of segs){const decor=new THREE.Group();decor.add(new THREE.Mesh(winterGeo,VLM),new THREE.Mesh(winterLightGeo,holidayBlinkA),new THREE.Mesh(segment.userData.winterHouseGeo,VLM),new THREE.Mesh(segment.userData.houseLightsA,holidayBlinkA),new THREE.Mesh(segment.userData.houseLightsB,holidayBlinkB));decor.visible=false;segment.add(decor);segment.userData.winter=decor;segment.userData.cinematicObstacles.push(decor)}
+const snowCount=110,snowArray=new Float32Array(snowCount*3);for(let i=0;i<snowCount;i++){snowArray[i*3]=(Math.random()-.5)*30;snowArray[i*3+1]=1+Math.random()*15;snowArray[i*3+2]=-70+Math.random()*80}
+const snowGeo=new THREE.BufferGeometry();snowGeo.setAttribute('position',new THREE.BufferAttribute(snowArray,3));const snowParticles=new THREE.Points(snowGeo,new THREE.PointsMaterial({color:0xffffff,size:.16,transparent:true,opacity:.85,depthWrite:false}));snowParticles.frustumCulled=false;snowParticles.visible=false;scene.add(snowParticles);
+let christmasMap=true;try{christmasMap=localStorage.getItem('nico-map')!=='city'}catch(e){}
+function updateMapAppearance(){for(const segment of segs){segment.userData.winter.visible=christmasMap;segment.userData.road.material=christmasMap?winterRoadMat:roadMat;segment.userData.sidewalk.material=christmasMap?winterSideMat:swMat;for(const b of segment.userData.buildings)b.mesh.material=christmasMap?winterBuildingMats[b.index]:bldMats[b.index]}hemi.color.setHex(christmasMap?0xc4d9ff:0xffe2c4);hemi.groundColor.setHex(christmasMap?0x3a4f70:0x6a5acd);hemi.intensity=christmasMap?.85:.9;sun.color.setHex(christmasMap?0xb7ceff:0xffcf9a);sun.intensity=christmasMap?.65:1;scene.background=christmasMap?winterSky:defaultSky;if(scene.fog)scene.fog.color.set(christmasMap?0x536b92:(mode==='lava'&&state!=='menu'?0xe0603a:0xffc59a));$('mapNormal').classList.toggle('on',!christmasMap);$('mapChristmas').classList.toggle('on',christmasMap);$('mapNormal').setAttribute('aria-pressed',String(!christmasMap));$('mapChristmas').setAttribute('aria-pressed',String(christmasMap));snowParticles.visible=christmasMap&&(state==='play'||state==='menu')}
+function chooseMap(winter){if(state!=='menu')return;christmasMap=winter;try{localStorage.setItem('nico-map',winter?'christmas':'city')}catch(e){}updateMapAppearance();walletPrefs()}
+const reduceHolidayMotion=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+function animateSnow(dt){snowParticles.visible=christmasMap&&(state==='play'||state==='menu');if(!snowParticles.visible)return;const blinkA=reduceHolidayMotion?1:.73+.27*Math.sin(t*2.5),blinkB=reduceHolidayMotion?1:.73+.27*Math.sin(t*2.5+Math.PI);holidayBlinkA.color.setRGB(blinkA,blinkA,blinkA);holidayBlinkB.color.setRGB(blinkB,blinkB,blinkB);for(let i=0;i<snowCount;i++){const j=i*3;snowArray[j]+=(i%2?.09:-.09)*dt;snowArray[j+1]-=(.7+(i%5)*.2)*dt;snowArray[j+2]+=(state==='play'?Math.min(speed,26):1)*dt;if(snowArray[j+1]<0)snowArray[j+1]=15;if(snowArray[j+2]>10)snowArray[j+2]=-70}snowGeo.attributes.position.needsUpdate=true}
+
 
 /* ---------- Obstáculos e moedas (Object Pool) ---------- */
 let obs=[],coins=[];
@@ -1032,6 +1219,44 @@ const trainGeos=[0xe74c6f,0x3b8bea,0x2fbf8f,0x9b59d6].map(c=>{
   });
   return mergeList(parts);
 });
+// Trenó do Papai Noel: mesmo tamanho, teto e física do trem original.
+const sleighGeo=mergeList([
+ {g:UBOX,c:0x982d3d,y:1.65,sx:1.92,sy:2.7,sz:7.7},
+ // Molduras e painéis de carruagem natalina, com silhueta legível à distância.
+ {g:UBOX,c:0x612338,y:.27,sx:1.95,sy:.22,sz:7.9},
+ {g:UBOX,c:0xffd987,y:1.25,z:4.055,sx:1.72,sy:.12,sz:.04},
+ {g:UBOX,c:0xffd987,y:2.62,z:4.055,sx:1.72,sy:.10,sz:.04},
+ {g:UBOX,c:0x286c50,y:1.88,z:4.065,sx:1.42,sy:1.12,sz:.05},
+ {g:UBOX,c:0xd8bd70,y:1.88,z:4.10,sx:.15,sy:1.0,sz:.03},
+ {g:UBOX,c:0xf2cf79,y:1.92,z:4.11,sx:.68,sy:.13,sz:.03},
+ ...[-.68,.68].flatMap(x=>[{g:UBOX,c:0xf5cf76,x,y:.53,z:4.09,sx:.18,sy:.46,sz:.10},{g:USPH_LO,c:0xffeeaa,x,y:.78,z:4.10,sx:.16,sy:.16,sz:.12}]),
+ ...[-1,1].flatMap(side=>[
+  {g:UBOX,c:0x6c2235,x:side*1.012,y:1.83,sx:.025,sy:1.17,sz:7.55},
+  ...[-2.9,-.97,.97,2.9].flatMap(z=>[
+   {g:UBOX,c:0xe8c975,x:side*1.035,y:1.86,z,sx:.035,sy:1.03,sz:1.72},
+   {g:UBOX,c:0xad2c40,x:side*1.06,y:1.86,z,sx:.025,sy:.86,sz:1.53},
+   {g:UBOX,c:0xf4d994,x:side*1.08,y:1.86,z,sx:.018,sy:.14,sz:.73},
+   {g:UBOX,c:0xf4d994,x:side*1.08,y:1.86,z,sx:.018,sy:.50,sz:.12},
+   {g:USPH_LO,c:0xffefb0,x:side*1.10,y:2.96,z,sx:.12,sy:.12,sz:.12}
+  ]),
+  ...[-3.25,-1.65,0,1.65,3.25].map(z=>({g:UBOX,c:0xe7bd68,x:side*.87,y:.45,z,sx:.14,sy:.50,sz:.13})),
+  {g:UBOX,c:0xf6d47f,x:side*.87,y:.23,z:3.87,sx:.16,sy:.17,sz:.65,rx:-.38}
+ ]),
+
+ {g:UBOX,c:0xd5424b,y:1.8,sx:2,sy:2.5,sz:7.9},
+ {g:UBOX,c:0x77263b,y:.35,sx:1.95,sy:.35,sz:7.9},
+ {g:UBOX,c:0xf3d27c,y:3.26,sx:2.0,sy:.18,sz:7.95},
+ {g:UBOX,c:0xfcf6eb,y:3.35,sx:1.7,sy:.06,sz:7.6},
+ {g:UBOX,c:0xf1c55d,y:1.1,z:3.99,sx:1.85,sy:.18,sz:.05},
+ {g:UBOX,c:0xffe6a0,y:2.2,z:4.02,sx:.85,sy:.7,sz:.05},
+ ...[-1,1].flatMap(side=>[
+  {g:UBOX,c:0xeec766,x:side*.87,y:.14,sx:.16,sy:.17,sz:7.9},
+  {g:UBOX,c:0xffdf89,x:side*1.02,y:1.12,sx:.05,sy:.16,sz:7.8},
+  {g:UBOX,c:0xffe2a3,x:side*1.025,y:2.55,sx:.05,sy:.10,sz:7.7},
+  ...[-2.6,0,2.6].map(z=>({g:UBOX,c:0xf6dfaa,x:side*1.035,y:1.8,z,sx:.04,sy:.88,sz:.15})),
+  ...[-3,-1,1,3].map(z=>({g:USPH_LO,c:0xffe79c,x:side*1.08,y:2.92,z,sx:.10,sy:.10,sz:.10}))
+ ])
+]);
 const trainLightGeo=mergeList([-.65,.65].flatMap(x=>[
  {g:USPH_LO,c:0xfff4ae,x,y:.77,z:4.13,sx:.17,sy:.17,sz:.09},
  {g:USPH_LO,c:0xff7680,x,y:1.13,z:4.12,sx:.07,sy:.07,sz:.05}
@@ -1069,6 +1294,34 @@ const highGeo=mergeList([
   ...[-.91,.91].map(x=>({g:USPH_LO,c:0xffeb98,x,y:1.55,z:.24,sx:.085,sy:.085,sz:.04}))
 ]);
 
+// Presentes e arcos de bengala substituem visualmente as barreiras.
+const winterLowGeo=mergeList([
+ {g:UBOX,c:0x7e2941,y:.10,sx:2.04,sy:.18,sz:.52},
+ {g:UBOX,c:0x299269,x:-.67,y:.48,z:.27,sx:.48,sy:.65,sz:.045},
+ {g:UBOX,c:0xffdc89,x:-.67,y:.48,z:.30,sx:.075,sy:.65,sz:.02},
+ {g:UBOX,c:0xffdc89,x:-.67,y:.48,z:.31,sx:.48,sy:.075,sz:.02},
+ {g:UBOX,c:0x388a6c,x:.67,y:.48,z:.27,sx:.48,sy:.65,sz:.045},
+ {g:UBOX,c:0xffdc89,x:.67,y:.48,z:.30,sx:.075,sy:.65,sz:.02},
+ {g:UBOX,c:0xffdc89,x:.67,y:.48,z:.31,sx:.48,sy:.075,sz:.02},
+ {g:UBOX,c:0xb83250,y:.5,sx:1.95,sy:.8,sz:.46},
+ {g:UBOX,c:0xe5535f,y:.6,z:.24,sx:1.85,sy:.55,sz:.035},
+ {g:UBOX,c:0xffdd82,y:.5,z:.27,sx:.18,sy:.8,sz:.035},
+ {g:UBOX,c:0xffdd82,y:.53,z:.28,sx:1.88,sy:.13,sz:.03},
+ {g:UBOX,c:0xfff5e4,y:.93,sx:2.05,sy:.07,sz:.5},
+ ...[-.23,.23].map(x=>({g:UBOX,c:0xffd273,x,y:1,z:.03,sx:.42,sy:.12,sz:.14,rz:x<0?-.35:.35}))
+]);
+const winterHighGeo=mergeList([
+ // Cordões e enfeites permanecem acima da área livre para deslizar.
+ {g:UBOX,c:0x155b46,y:1.95,z:.23,sx:1.82,sy:.09,sz:.05},
+ ...[-.75,-.45,-.15,.15,.45,.75].map((x,i)=>({g:USPH_LO,c:[0xffd967,0xff7180,0x99e8c2][i%3],x,y:1.90,z:.27,sx:.10,sy:.10,sz:.07})),
+ ...[-1,1].map(x=>({g:UBOX,c:0xffd27b,x,y:.09,sx:.40,sy:.18,sz:.48})),
+ ...[-1,1].flatMap(x=>[{g:UBOX,c:0xfff3e6,x,y:1.08,sx:.23,sy:2.16,sz:.30},{g:UBOX,c:0xd93c52,x,y:.55,z:.17,sx:.24,sy:.28,sz:.03},{g:UBOX,c:0xd93c52,x,y:1.25,z:.17,sx:.24,sy:.28,sz:.03},{g:UBOX,c:0xd93c52,x,y:1.95,z:.17,sx:.24,sy:.28,sz:.03}]),
+ {g:UBOX,c:0x267552,y:1.55,sx:2.2,sy:.65,sz:.32},
+ {g:UBOX,c:0xf9ead5,y:1.55,z:.18,sx:2.08,sy:.52,sz:.05},
+ ...[-.75,-.25,.25,.75].map(x=>({g:UBOX,c:0xdd4054,x,y:1.55,z:.22,sx:.2,sy:.5,sz:.03,rz:-.55})),
+ {g:UBOX,c:0xfff9ed,y:1.9,sx:2.2,sy:.09,sz:.4},
+ ...[-.85,.85].map(x=>({g:USPH_LO,c:0xffdd7c,x,y:2.23,sx:.12,sy:.12,sz:.12}))
+]);
 // Rampa segue a frente do trem: superfície de 0 até TOP no teto.
 const rampAngle=Math.atan2(TOP,4.8),rampLength=Math.hypot(TOP,4.8);
 const rampGeo=mergeList([
@@ -1077,6 +1330,13 @@ const rampGeo=mergeList([
  {g:UBOX,c:0x2b3047,y:TOP/2+.16,z:6.4,sx:.18,sy:.04,sz:rampLength,rx:rampAngle},
  ...[-.7,.7].map(x=>({g:UBOX,c:0xffe4a5,x,y:TOP/2+.16,z:6.4,sx:.055,sy:.05,sz:rampLength,rx:rampAngle}))
 ]);
+// Rampa de Natal com a mesma superfície e inclinação da rampa padrão.
+const winterRampGeo=mergeList([
+ {g:UBOX,c:0x8e263e,y:TOP/2,z:6.4,sx:1.82,sy:.22,sz:rampLength,rx:rampAngle},
+ {g:UBOX,c:0x277c59,y:TOP/2+.12,z:6.4,sx:1.48,sy:.04,sz:rampLength,rx:rampAngle},
+ {g:UBOX,c:0xffe8b4,y:TOP/2+.16,z:6.4,sx:.18,sy:.04,sz:rampLength,rx:rampAngle},
+ ...[-.7,.7].map(x=>({g:UBOX,c:0xf4d27c,x,y:TOP/2+.16,z:6.4,sx:.055,sy:.05,sz:rampLength,rx:rampAngle}))
+]);
 function getObsMesh(type){
   let m=obsPool[type].pop();
   if(!m){
@@ -1084,14 +1344,14 @@ function getObsMesh(type){
       m=new THREE.Group();
       const body=freeze(new THREE.Mesh(trainGeos[0],VLM));
       m.add(body,freeze(new THREE.Mesh(trainLightGeo,VBM)));
-      [-1,1].forEach(side=>{const stripe=new THREE.Mesh(trainStripeGeo,trainStripeMat);stripe.position.set(side*1.08,.72,0);stripe.rotation.y=side*Math.PI/2;m.add(freeze(stripe))});
+      m.userData.stripes=[];[-1,1].forEach(side=>{const stripe=new THREE.Mesh(trainStripeGeo,trainStripeMat);stripe.position.set(side*1.08,.72,0);stripe.rotation.y=side*Math.PI/2;m.add(freeze(stripe));m.userData.stripes.push(stripe)});
       const ramp=freeze(new THREE.Mesh(rampGeo,VLM));m.add(ramp);m.userData.ramp=ramp;
       const movingSignal=freeze(new THREE.Mesh(movingTrainSignal,VBM));m.add(movingSignal);m.userData.movingSignal=movingSignal;
       m.userData.body=body;
     }else m=new THREE.Mesh(type==='low'?lowGeo:highGeo,VLM);
     poolGrp.add(m);
   }
-  if(type==='train'){m.userData.body.geometry=trainGeos[(Math.random()*4)|0];m.userData.ramp.visible=mode!=='lava'&&Math.random()<.20;}
+  if(type==='train'){m.userData.body.geometry=christmasMap?sleighGeo:trainGeos[(Math.random()*4)|0];for(const stripe of m.userData.stripes)stripe.visible=!christmasMap;m.userData.ramp.geometry=christmasMap?winterRampGeo:rampGeo;m.userData.ramp.visible=mode!=='lava'&&Math.random()<.20;}else m.geometry=christmasMap?(type==='low'?winterLowGeo:winterHighGeo):(type==='low'?lowGeo:highGeo);
   m.visible=true;return m;
 }
 // Sintetizador leve local; iniciado após toque ou tecla, conforme regras dos navegadores.
@@ -1137,8 +1397,17 @@ function coinPositionFree(lane,z,height){
 }
 function addSafeCoin(lane,z,height){if(coinPositionFree(lane,z,height))addCoin(lane,z,height)}
 let nextZ=-60;
-const dropBody=new THREE.BoxGeometry(.65,.5,.45),dropRing=new THREE.TorusGeometry(.48,.045,6,16),dropMats={board:new THREE.MeshBasicMaterial({color:0x4de3ff}),jet:new THREE.MeshBasicMaterial({color:0xffa333})};
-function addDrop(kind,lane,z,height){const g=new THREE.Group();g.add(new THREE.Mesh(dropBody,dropMats[kind]));const ring=new THREE.Mesh(dropRing,dropMats[kind]);g.add(ring);g.position.set(LANES[lane],height,z);poolGrp.add(g);drops.push({m:g,lane,kind})}
+// Caixas de suprimentos com ícones grandes e cores distintas, reaproveitando materiais.
+const dropBody=new THREE.BoxGeometry(.76,.76,.42),dropRing=new THREE.TorusGeometry(.60,.035,6,20),dropFaceGeo=new THREE.PlaneGeometry(.70,.70),dropGlowGeo=new THREE.SphereGeometry(.10,8,6);
+const dropColors={board:0x2d9ac5,jet:0xd77931,shield:0x299b76};
+function makeDropFace(kind){const c=document.createElement('canvas');c.width=c.height=128;const x=c.getContext('2d');x.fillStyle=kind==='board'?'#174f75':kind==='jet'?'#8a351f':'#165c49';x.fillRect(0,0,128,128);x.strokeStyle='#fff5d7';x.lineWidth=8;x.lineCap='round';x.lineJoin='round';x.beginPath();if(kind==='board'){x.moveTo(22,76);x.quadraticCurveTo(64,100,106,76);x.lineTo(101,61);x.quadraticCurveTo(64,76,27,61);x.closePath();x.moveTo(39,49);x.lineTo(89,49)}else if(kind==='jet'){x.moveTo(49,82);x.lineTo(38,87);x.lineTo(42,63);x.quadraticCurveTo(47,37,64,22);x.quadraticCurveTo(81,37,86,63);x.lineTo(90,87);x.lineTo(79,82);x.closePath();x.moveTo(55,93);x.lineTo(64,107);x.lineTo(73,93);x.moveTo(57,58);x.lineTo(71,58)}else{x.moveTo(64,20);x.lineTo(99,34);x.lineTo(96,66);x.quadraticCurveTo(90,91,64,106);x.quadraticCurveTo(38,91,32,66);x.lineTo(29,34);x.closePath();x.moveTo(47,63);x.lineTo(59,75);x.lineTo(81,50)}x.stroke();const t=new THREE.CanvasTexture(c);t.needsUpdate=true;return new THREE.MeshBasicMaterial({map:t})}
+const dropMats={},dropFaceMats={};for(const k of ['board','jet','shield']){dropMats[k]=new THREE.MeshLambertMaterial({color:dropColors[k],emissive:dropColors[k],emissiveIntensity:.2});dropFaceMats[k]=makeDropFace(k)}
+function addDrop(kind,lane,z,height){if(!dropMats[kind])return;const g=new THREE.Group();g.add(new THREE.Mesh(dropBody,dropMats[kind]));for(const side of [-1,1]){const face=new THREE.Mesh(dropFaceGeo,dropFaceMats[kind]);face.position.z=side*.215;if(side<0)face.rotation.y=Math.PI;g.add(face)}const ring=new THREE.Mesh(dropRing,dropMats[kind]);ring.rotation.x=.25;g.add(ring);for(const x of [-.48,.48]){const dot=new THREE.Mesh(dropGlowGeo,dropMats[kind]);dot.position.set(x,.45,0);g.add(dot)}g.position.set(LANES[lane],height,z);poolGrp.add(g);drops.push({m:g,lane,kind,baseY:height})}
+function randomDropKind(){const i=Math.floor(Math.random()*3);return ['board','jet','shield'][i]}
+let pickupNoticeTimer=null;function announceDrop(kind,saved){const notice=$('dropNotice'),label={board:'Prancha',jet:'Jetpack',shield:'Escudo'}[kind];notice.textContent='+1 '+label+(saved?'':' · entre para salvar');notice.className='show drop-'+kind;clearTimeout(pickupNoticeTimer);pickupNoticeTimer=setTimeout(()=>{notice.className=''},1800)}
+function consumeItem(kind){if(walletUid)return walletAdd('use_'+kind);if(stock[kind]<=0)return false;stock[kind]--;updBank();return true}
+function collectDrop(drop){const kind=drop.kind;let saved=false;if(walletUid){saved=walletAdd('drop_'+kind);if(!saved)return false}else{stock[kind]++}boards=runBoards+stock.board;updBank();announceDrop(kind,saved);return true}
+
 const trampGeo=mergeList([
  {g:UBOX,c:0x26304b,y:.10,sx:1.7,sy:.2,sz:1.7},
  {g:UBOX,c:0x9954d9,y:.22,sx:1.58,sy:.12,sz:1.58},
@@ -1174,7 +1443,7 @@ function spawnRow(){
     if(other.length&&Math.random()<.45)addObs(['train','low','high'][(Math.random()*3)|0],other[0],nextZ);
     if(trampsActive&&Math.random()<.45)addTramp(safe,nextZ,0);
     if(Math.random()<.72)for(let k=0;k<3;k++)addSafeCoin(coinLane,nextZ+4-k*2,1);
-    if(Math.random()<.15)addDrop(Math.random()<.5?'board':'jet',safe,nextZ+9,1);
+    if(Math.random()<.15)addDrop(randomDropKind(),safe,nextZ+9,1);
     nextZ-=25+Math.random()*9;return;
   }
   const safe=(Math.random()*3)|0,r=Math.random();
@@ -1184,7 +1453,7 @@ function spawnRow(){
   // As linhas seguem uma mesma pista e altura; não aparecem dentro de obstáculos.
   if(!hasTramp&&Math.random()<.18)addObs(['low','high'][(Math.random()*2)|0],safe,nextZ-2);
   for(let k=0;k<5;k++)addSafeCoin(safe,nextZ+6-k*1.8,1);
-  if(Math.random()<.18)addDrop(Math.random()<.5?'board':'jet',safe,nextZ+10,1);
+  if(Math.random()<.18)addDrop(randomDropKind(),safe,nextZ+10,1);
   nextZ-=14+Math.random()*8}
 
 let nz=[0,0,0];
@@ -1194,60 +1463,13 @@ function addTrainTop(l,z){
   const roofObstacle=z < -65&&Math.random()<.22;
   if(roofObstacle){addObs(Math.random()<.5?'low':'high',l,z,TOP)}
   else if(trampsActive&&z < -25&&Math.random()<.23)addTramp(l,z,TOP);
-  else if(z < -25&&Math.random()<.035)addDrop(Math.random()<.5?'board':'jet',l,z,4.4);
+  else if(z < -25&&Math.random()<.035)addDrop(randomDropKind(),l,z,4.4);
   else{addSafeCoin(l,z-1.5,TOP+1.1);addSafeCoin(l,z+1.5,TOP+1.1)}
 }
 function lavaSpawn(){for(let l=0;l<3;l++)while(nz[l]>-170){const n=1+((Math.random()*3)|0);for(let c=0;c<n;c++)addTrainTop(l,nz[l]-4-c*8);nz[l]-=n*8+3+Math.random()*5}}
 
-/* ---------- Catálogo Expandido: 39 Skins e 26 Pranchas (c/ Texturas!) ---------- */
-const SK=[
-  {n:'Nico Clássico',hair:0x2ec4b6,jacket:0xffc933,pants:0x2d3a6e,trim:0xff6a3d,acc:0xff4d6d},
-  {n:'Fogo',hair:0xff5a1f,jacket:0xe63946,pants:0x2b2d42,trim:0xffd23f,acc:0xffd23f},
-  {n:'Gelo',hair:0xbde0fe,jacket:0x4cc9f0,pants:0x3a0ca3,trim:0xffffff,acc:0xffffff},
-  {n:'Ninja',hair:0x1b1b2b,jacket:0x2b2d42,pants:0x1b1b2b,trim:0xff4d6d,acc:0xe63946,ac:'band'},
-  {n:'Floresta',hair:0x7a4a21,jacket:0x52b788,pants:0x6b4f2a,trim:0xffd166,acc:0xffd166},
-  {n:'Gatinha Pop',hair:0xff7ab8,jacket:0xff99c8,pants:0x6d597a,trim:0x9b5de5,acc:0x9b5de5,ac:'ears'},
-  {n:'Rei Dourado',hair:0xf4c430,jacket:0xf4a300,pants:0x3d2b56,trim:0xffffff,acc:0xffffff,ac:'crown'},
-  {n:'Galáxia',hair:0xb388ff,jacket:0x5e60ce,pants:0x1b1b3a,trim:0x4de3ff,acc:0xff7ab8,jTex:'galaxy'},
-  {n:'Cyber Neon',hair:0x00f5ff,jacket:0x161b33,pants:0x0f1324,trim:0xff2a85,acc:0x00f5ff,jTex:'cyber',ac:'visor'},
-  {n:'Tigre Selvagem',hair:0xff921c,jacket:0xff9f1c,pants:0x24130c,trim:0xffd23f,acc:0xff5a1f,jTex:'tiger',ac:'ears'},
-  {n:'Piloto Xadrez',hair:0x2b2d42,jacket:0xf6f7fb,pants:0x1b1b2b,trim:0xff3355,acc:0xffd23f,jTex:'check',ac:'cap'},
-  {n:'Camuflado',hair:0x283b33,jacket:0x52796f,pants:0x1e2f27,trim:0xffb703,acc:0xd8e2dc,jTex:'camo',pTex:'camo',ac:'band'},
-  {n:'Magma',hair:0xff4800,jacket:0x220b0b,pants:0x1a0808,trim:0xffb703,acc:0xff4800,jTex:'magma',ac:'horns'},
-  {n:'Arco-Íris',hair:0xff7ab8,jacket:0xffffff,pants:0x3a86ff,trim:0xffd23f,acc:0x8338ec,jTex:'rainbow',ac:'halo'},
-  {n:'Astronauta',hair:0x4de3ff,jacket:0xeef3fa,pants:0xd8e2ec,trim:0xff6a3d,acc:0x1d3557,jTex:'astro',ac:'astro'},
-  {n:'Pixel Neon',hair:0x00f5ff,jacket:0xffffff,pants:0x181828,trim:0xff4d6d,acc:0x4de3ff,jTex:'cyber',pTex:'carbon',ac:'visor'},
-  {n:'Gelo Estelar',hair:0xc6edff,jacket:0xffffff,pants:0x345588,trim:0x4cc9f0,acc:0xffffff,jTex:'ice',ac:'halo'},
-  {n:'Chama Urbana',hair:0xffa126,jacket:0xffffff,pants:0x242034,trim:0xff5a1f,acc:0xffd23f,jTex:'flames',ac:'cap'},
-  {n:'Zebra Street',hair:0xf8f9ff,jacket:0xffffff,pants:0x171624,trim:0x00f5ff,acc:0xff2a85,jTex:'zebra',ac:'visor'},
-  {n:'Aurora Boreal',hair:0x72e8c0,jacket:0xffffff,pants:0x22274d,trim:0xbc8cff,acc:0x72e8c0,jTex:'aurora',ac:'halo'},
-  {n:'Coral Tropical',hair:0xffa891,jacket:0xffffff,pants:0x80385c,trim:0xfff1d5,acc:0xffa891,jTex:'coral',ac:'ears'},
-  {n:'Tempestade',hair:0x9ec7f8,jacket:0xffffff,pants:0x252f54,trim:0xf8e86d,acc:0x9ec7f8,jTex:'tempestade',ac:'visor'},
-  {n:'Selva Viva',hair:0x8ad574,jacket:0xffffff,pants:0x184a38,trim:0xe4c077,acc:0x8ad574,jTex:'selva',ac:'band'},
-  {n:'Doce Algodão',hair:0xf6a1d7,jacket:0xffffff,pants:0x874f9d,trim:0xffeeb9,acc:0xf6a1d7,jTex:'candy',ac:'cap'},
-  {n:'Marinheiro',hair:0x72e8c0,jacket:0xffffff,pants:0x22274d,trim:0xbc8cff,acc:0x72e8c0,jTex:'marinho',ac:'astro'},
-  {n:'Deserto Dourado',hair:0xffa891,jacket:0xffffff,pants:0x80385c,trim:0xfff1d5,acc:0xffa891,jTex:'areia',ac:'crown'},
-  {n:'Uva Elétrica',hair:0x9ec7f8,jacket:0xffffff,pants:0x252f54,trim:0xf8e86d,acc:0x9ec7f8,jTex:'uva'},
-  {n:'Limão Neon',hair:0x8ad574,jacket:0xffffff,pants:0x184a38,trim:0xe4c077,acc:0x8ad574,jTex:'lima',ac:'halo'},
-  {n:'Sakura',hair:0xf6a1d7,jacket:0xffffff,pants:0x874f9d,trim:0xffeeb9,acc:0xf6a1d7,jTex:'sakura',ac:'ears'},
-  {n:'Vaporwave',hair:0x72e8c0,jacket:0xffffff,pants:0x22274d,trim:0xbc8cff,acc:0x72e8c0,jTex:'vapor',ac:'visor'},
-  {n:'Oceano',hair:0xffa891,jacket:0xffffff,pants:0x80385c,trim:0xfff1d5,acc:0xffa891,jTex:'oceano',ac:'band'},
-  {n:'Sol Ardente',hair:0x9ec7f8,jacket:0xffffff,pants:0x252f54,trim:0xf8e86d,acc:0x9ec7f8,jTex:'solar',ac:'cap'},
-  {n:'Prisma',hair:0x8ad574,jacket:0xffffff,pants:0x184a38,trim:0xe4c077,acc:0x8ad574,jTex:'prisma',ac:'astro'},
-  {n:'Robo Floral',hair:0xf6a1d7,jacket:0xffffff,pants:0x874f9d,trim:0xffeeb9,acc:0xf6a1d7,jTex:'roboflora',ac:'crown'},
-  {n:'Festival',hair:0x72e8c0,jacket:0xffffff,pants:0x22274d,trim:0xbc8cff,acc:0x72e8c0,jTex:'festival'},
-  {n:'Grafite Street',hair:0xffa891,jacket:0xffffff,pants:0x80385c,trim:0xfff1d5,acc:0xffa891,jTex:'grafite',ac:'halo'},
-  {n:'Melancia',hair:0x9ec7f8,jacket:0xffffff,pants:0x252f54,trim:0xf8e86d,acc:0x9ec7f8,jTex:'melancia',ac:'ears'},
-  {n:'Noite Estrelada',hair:0x8ad574,jacket:0xffffff,pants:0x184a38,trim:0xe4c077,acc:0x8ad574,jTex:'noite',ac:'visor'},
-  {n:'Ouro Verde',hair:0xf6a1d7,jacket:0xffffff,pants:0x874f9d,trim:0xffeeb9,acc:0xf6a1d7,jTex:'ouroverde',ac:'band'}
-];
-const ORIGINAL_SKIN_COUNT=SK.length,MAX_CUSTOM_SKINS=8;
-const CUSTOM_ACCESSORIES=['','cap','visor','ears','crown','band','horns','halo','astro'];
-const CUSTOM_PATTERNS=['','flames','ice','check','cyber','galaxy','rainbow','tiger','zebra','camo'];
-function cleanCustomSkin(k){if(!k||typeof k!=='object')return null;const out={n:typeof k.n==='string'?k.n.trim().slice(0,20):''};if(!out.n)out.n='Minha skin';
-  for(const key of ['hair','jacket','pants','trim','acc']){if(!Number.isInteger(k[key])||k[key]<0||k[key]>0xffffff)return null;out[key]=k[key]}
-  if(CUSTOM_ACCESSORIES.includes(k.ac)&&k.ac)out.ac=k.ac;if(CUSTOM_PATTERNS.includes(k.jTex)&&k.jTex)out.jTex=k.jTex;out.custom=true;return out}
-try{const stored=JSON.parse(localStorage.getItem('nico-custom-skins')||'[]');if(Array.isArray(stored))for(const k of stored.slice(0,MAX_CUSTOM_SKINS)){const clean=cleanCustomSkin(k);if(clean)SK.push(clean)}}catch(e){}
+/* ---------- Nico clássico e catálogo de pranchas ---------- */
+const SK=[{n:'Nico Clássico',hair:0x2ec4b6,jacket:0xffc933,pants:0x2d3a6e,trim:0xff6a3d,acc:0xff4d6d}];
 const BD=[
   {n:'Neon',top:0x4de3ff,glow:0xff4dcb},
   {n:'Chamas',top:0xff6a3d,glow:0xffd23f,tex:'flames'},
@@ -1274,7 +1496,8 @@ const BD=[
   {n:'Nuvem Cósmica',top:0xffffff,glow:0xbbdaff,tex:'nuvem'},
   {n:'Onda Quente',top:0xffffff,glow:0xfca455,tex:'ondaquente'},
   {n:'Floresta Neon',top:0xffffff,glow:0x4cf5b5,tex:'florestraneon'},
-  {n:'Holograma',top:0xffffff,glow:0xd8a6ff,tex:'holograma'}
+  {n:'Holograma',top:0xffffff,glow:0xd8a6ff,tex:'holograma'},
+  {n:'Prancha de Natal',top:0xffffff,glow:0xffd878,tex:'natal'}
 ];
 
 /* ---------- Estado, UI e Animações ---------- */
@@ -1485,18 +1708,29 @@ $('fullscreenLobby').onclick=toggleFullscreen;$('fullscreenGame').onclick=toggle
 document.addEventListener('fullscreenchange',updateFullscreenButtons);document.addEventListener('webkitfullscreenchange',updateFullscreenButtons);updateFullscreenButtons();
 let pSc=-1,pCo=-1,pBn='',pBdOp=-1,pDizVis=false,pDizTxt='',pRec=false,lastTap=0;
 
-const best={normal:0,nocoin:0,lava:0};try{Object.assign(best,JSON.parse(localStorage.getItem('nico-best')||'{}'))}catch(e){}
-let bankCoins=+(localStorage.getItem('nico-coins')||0)||0;
-let stock={board:0,jet:0,shield:0},giftApplied={};try{Object.assign(stock,JSON.parse(localStorage.getItem('nico-stock')||'{}'));const saved=JSON.parse(localStorage.getItem('nico-economy-v2')||'null');if(saved&&Number.isFinite(saved.coins)&&saved.coins>=0){bankCoins=saved.coins;Object.assign(stock,saved.stock||{});giftApplied=saved.gifts||{}}}catch(e){}
-for(const k of ['board','jet','shield'])stock[k]=Math.max(0,Math.floor(+stock[k]||0));
-let economySaveTimer=null;
-function saveEconomy(){if(economySaveTimer){clearTimeout(economySaveTimer);economySaveTimer=null}try{localStorage.setItem('nico-economy-v2',JSON.stringify({coins:bankCoins,stock,gifts:giftApplied}));localStorage.setItem('nico-coins',''+bankCoins);localStorage.setItem('nico-stock',JSON.stringify(stock))}catch(e){}}
-function deferEconomySave(){if(!economySaveTimer)economySaveTimer=setTimeout(()=>{economySaveTimer=null;saveEconomy()},700)}
-addEventListener('pagehide',saveEconomy);
+const best={normal:0,nocoin:0,lava:0};
+// Economia vinculada à conta; operações pendentes são separadas por usuário.
+let bankCoins=0,stock={board:0,jet:0,shield:0},giftApplied={};
+let walletUid=null,walletReady=false,walletBase=null,walletQueue=[],walletBusy=false,walletGeneration=0,walletSequence=0,walletPrefTimer=null,walletPrefsApplying=false;
+const walletZero=()=>({coins:0,board:0,jet:0,shield:0,elf:false,santa:false,prefs:{}});
+function walletSaveQueue(){if(walletUid)try{localStorage.setItem('nico-wallet-pending:'+walletUid,JSON.stringify(walletQueue))}catch(e){}}
+function walletReset(){clearTimeout(walletPrefTimer);walletGeneration++;walletUid=null;walletReady=false;walletBase=null;walletQueue=[];walletBusy=false;bankCoins=0;stock={board:0,jet:0,shield:0};updBank()}
+function walletRender(){let w={...(walletBase||walletZero())};for(const op of walletQueue){const k=op.kind;if(k==='earn_coins')w.coins+=op.amount;else if(k.startsWith('drop_'))w[k.slice(5)]++;else if(k.startsWith('use_'))w[k.slice(4)]--;else if(k.startsWith('buy_')){const name=k.slice(4);w.coins-=name==='jet'?150:100;w[name]++}}bankCoins=Math.max(0,w.coins||0);for(const k of ['board','jet','shield'])stock[k]=Math.max(0,w[k]||0);updBank()}
+function walletGuid(){if(window.crypto&&window.crypto.randomUUID)return window.crypto.randomUUID();return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c==='x'?r:(r&3|8)).toString(16)})}
+function walletAdd(kind,amount=1){if(!walletUid||(!walletReady&&!kind.startsWith('drop_')&&!kind.startsWith('use_')))return false;walletSequence++;walletQueue.push({id:walletGuid(),kind,amount});walletSaveQueue();walletRender();walletDrain();return true}
+async function walletDrain(){if(walletBusy||!walletReady||!walletUid||!sb)return;walletBusy=true;const uid=walletUid,gen=walletGeneration;try{while(walletQueue.length&&walletUid===uid&&walletGeneration===gen){const op=walletQueue[0],{data,error}=await sb.rpc('nico_wallet_action',{p_op:op.id,p_kind:op.kind,p_amount:op.amount});if(walletUid!==uid||walletGeneration!==gen)return;if(error){if(error.code==='P0001'||error.code==='23514'){walletQueue.shift();walletSaveQueue();walletRender();$('accountMsg').textContent='Uma operação não pôde ser concluída: '+error.message;continue}throw error}walletBase=data;walletQueue.shift();walletSaveQueue();walletRender()}}catch(e){$('accountMsg').textContent='Sem conexão: suas operações aguardam sincronização neste aparelho.'}finally{if(walletGeneration===gen)walletBusy=false}}
+async function walletRefresh(){if(!walletReady||!walletUid||!sb||walletBusy)return;const uid=walletUid,gen=walletGeneration,seq=walletSequence;try{const {data,error}=await sb.rpc('nico_wallet_get');if(error)throw error;if(walletUid!==uid||walletGeneration!==gen||walletSequence!==seq||walletBusy)return;walletBase=data;walletRender();if($('ward').style.display==='block')renderWard()}catch(e){if(walletUid===uid)$('accountMsg').textContent='Não foi possível atualizar a carteira.'}}
+async function walletOpen(user){walletReset();walletPrefsApplying=true;try{for(const k of ['normal','nocoin','lava'])best[k]=0;showBest();sel.board=0;applyBoard(0,false);selectJetSkin('sleigh');setCharacterModel('nico')}finally{walletPrefsApplying=false}if(!user||!sb)return;const uid=user.id,gen=walletGeneration;walletUid=uid;try{const q=JSON.parse(localStorage.getItem('nico-wallet-pending:'+uid)||'[]');walletQueue=Array.isArray(q)?q:[]}catch(e){walletQueue=[]}walletRender();try{const {data,error}=await sb.rpc('nico_wallet_get');if(error)throw error;if(walletGeneration!==gen||walletUid!==uid)return;walletBase=data;walletReady=true;walletRender();walletApplyPrefs(data.prefs||{});walletDrain()}catch(e){if(walletGeneration===gen)$('accountMsg').textContent='Não foi possível carregar os dados da conta. Verifique a conexão.'}}
+function walletPrefs(){if(!walletReady||walletPrefsApplying)return;clearTimeout(walletPrefTimer);const uid=walletUid;walletPrefTimer=setTimeout(async()=>{if(uid!==walletUid||!walletReady)return;const prefs={character:characterModel,board:sel.board,jet:selectedJetSkin,map:christmasMap?'christmas':'city',best:{...best}};const {error}=await sb.rpc('nico_wallet_set_prefs',{p_prefs:prefs});if(error&&uid===walletUid)$('accountMsg').textContent='Não foi possível sincronizar as preferências.'},800)}
+function walletApplyPrefs(p){walletPrefsApplying=true;try{for(const k of ['normal','nocoin','lava'])best[k]=Number.isFinite(p.best?.[k])?Math.max(0,p.best[k]):0;showBest();sel.board=Number.isInteger(p.board)&&p.board>=0&&p.board<BD.length?p.board:0;applyBoard(sel.board,false);selectJetSkin(p.jet==='classic'?'classic':'sleigh');const c=['nico','pilantra','santa','elfo'].includes(p.character)?p.character:'nico';setCharacterModel((c==='santa'&&!walletBase.santa)||(c==='elfo'&&!walletBase.elf)?'nico':c);christmasMap=p.map!=='city';updateMapAppearance()}finally{walletPrefsApplying=false}}
+function saveEconomy(){walletSaveQueue();walletDrain()}
+function deferEconomySave(){walletSaveQueue();walletDrain()}
+addEventListener('online',()=>{walletRefresh();walletDrain()});
+setInterval(()=>{if(accountUser&&!walletReady)walletOpen(accountUser);else{walletRefresh();walletDrain()}},15000);
 function updBank(){$('bankValue').textContent=bankCoins;$('shopBalance').textContent=bankCoins;$('shopBoards').textContent=stock.board;$('shopJets').textContent=stock.jet;$('shopShields').textContent=stock.shield}updBank();
-function openShop(){if(wardTab==='edit')leaveSkinEditor();$('ward').style.display='none';updBank();$('shopMsg').textContent='';$('shop').style.display='flex'}
+function openShop(){$('ward').style.display='none';updBank();$('shopMsg').textContent='';$('shop').style.display='flex'}
 $('openShop').onclick=openShop;$('closeShop').onclick=()=>$('shop').style.display='none';
-function buy(k,price){if(bankCoins<price){$('shopMsg').textContent='Moedas insuficientes. Corra e colete mais!';return}bankCoins-=price;stock[k]++;saveEconomy();updBank();$('shopMsg').textContent='Compra concluída! Item guardado no estoque.'}
+function buy(k,price){if(!walletReady){$('shopMsg').textContent='Entre na conta e aguarde a sincronização.';return}if(bankCoins<price){$('shopMsg').textContent='Moedas insuficientes. Corra e colete mais!';return}walletAdd('buy_'+k);$('shopMsg').textContent='Compra enviada para sincronização.'}
 $('buyBoard').onclick=()=>buy('board',100);$('buyJet').onclick=()=>buy('jet',150);$('buyShield').onclick=()=>buy('shield',100);
 function showBest(){for(const k in best){const e=$('b-'+k);if(e)e.textContent=''+best[k]+' m'}}showBest();
 
@@ -1506,7 +1740,7 @@ function swStyle(tex,col,tall){
   return `background:${hexCss(col)}`;
 }
 function escapeSkinText(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function applySkin(i,cheer){return applySkinData(SK[i],cheer)}
+function applySkin(i,cheer){setSantaView(santaSelected);return applySkinData(SK[i],cheer)}
 function applySkinData(k,cheer){
   for(const r in roleMats){
     const m=roleMats[r],tx=(r==='jacket'&&k.jTex)||(r==='pants'&&k.pTex)||(r==='hair'&&k.hTex);
@@ -1520,6 +1754,7 @@ function applySkinData(k,cheer){
 }
 function applyBoard(i,cheer){
   const b=BD[i],ud=hero.board.userData;
+  holidayBoardGifts.visible=b.tex==='natal';
   ud.topMat.map=b.tex?getPat(b.tex,true):WHITE_TEX;
   ud.topMat.color.setHex(b.tex?0xffffff:b.top);
   ud.glow.material.color.setHex(b.glow);
@@ -1527,49 +1762,70 @@ function applyBoard(i,cheer){
   $('bkDot').setAttribute('style',swStyle(b.tex,b.top,true));
   if(cheer){cheerT=.65;flipT=1}
 }
+let selectedJetSkin='sleigh';try{const storedJetSkin=localStorage.getItem('nico-jet-skin');if(storedJetSkin==='classic'||storedJetSkin==='sleigh')selectedJetSkin=storedJetSkin}catch(e){}
+function selectJetSkin(skin){if(skin!=='classic'&&skin!=='sleigh')return;selectedJetSkin=skin;try{localStorage.setItem('nico-jet-skin',skin)}catch(e){}walletPrefs()}
 const sel={skin:0,board:0};try{Object.assign(sel,JSON.parse(localStorage.getItem('nico-sel')||'{}'))}catch(e){}
 sel.skin=Number.isInteger(sel.skin)&&sel.skin>=0&&sel.skin<SK.length?sel.skin:0;sel.board=Number.isInteger(sel.board)&&sel.board>=0&&sel.board<BD.length?sel.board:0;
-function saveSel(){try{localStorage.setItem('nico-sel',JSON.stringify(sel))}catch(e){}}
-function cyc(k,d){if(wardTab==='edit'){leaveSkinEditor();wardTab=k;openWard(k)}const N=k==='skin'?SK.length:BD.length;sel[k]=(sel[k]+d+N)%N;(k==='skin'?applySkin:applyBoard)(sel[k],true);saveSel();if($('ward').style.display==='block')renderWard()}
+function saveSel(){try{localStorage.setItem('nico-sel',JSON.stringify(sel))}catch(e){}walletPrefs()}
+function cyc(k,d){if(k==='skin')setSantaSelected(false);const N=k==='skin'?SK.length:BD.length;sel[k]=(sel[k]+d+N)%N;(k==='skin'?applySkin:applyBoard)(sel[k],true);saveSel();if($('ward').style.display==='block')renderWard()}
 document.querySelectorAll('.ar').forEach(b=>b.onclick=()=>cyc(b.dataset.k,+b.dataset.d));
 applySkin(sel.skin,false);applyBoard(sel.board,false);
+
+/* Miniaturas 3D reais: um único renderizador compartilhado, imagens estáticas em cache. */
+const wardThumbCache=new Map(),wardThumbQueue=[];let wardThumbWorker=false,wardThumbKit=null;
+function wardThumbInit(){
+  if(wardThumbKit)return wardThumbKit;
+  const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,preserveDrawingBuffer:true,powerPreference:'low-power'});renderer.setPixelRatio(1);renderer.setSize(144,144);renderer.setClearColor(0x000000,0);
+  const scene3d=new THREE.Scene(),camera=new THREE.OrthographicCamera(-1.65,1.65,1.65,-1.65,.1,50);
+  scene3d.add(new THREE.HemisphereLight(0xffffff,0x8498aa,1.15));const light=new THREE.DirectionalLight(0xffffff,.95);light.position.set(3,6,5);scene3d.add(light);
+  const model=makeHero();model.g.rotation.set(0,0,0);model.armL.rotation.set(0,0,0);model.armR.rotation.set(0,0,0);model.legL.rotation.set(0,0,0);model.legR.rotation.set(0,0,0);model.head.rotation.set(0,0,0);model.jet.visible=false;model.board.visible=false;
+  const previewMats={};model.g.traverse(o=>{if(!o.isMesh)return;for(const key in roleMats)if(o.material===roleMats[key]){if(!previewMats[key])previewMats[key]=roleMats[key].clone();o.material=previewMats[key];break}});
+  const santa=santaRig.clone();santa.visible=true;santa.rotation.set(0,0,0);santa.position.set(0,0,0);for(const limb of [santaHead,santaArmL,santaArmR,santaLegL,santaLegR])santa.children[santaRig.children.indexOf(limb)].rotation.set(0,0,0);santa.children[santa.children.length-1].visible=false;
+  const pilantra=pilantraRig.clone();pilantra.visible=true;pilantra.rotation.set(0,0,0);pilantra.position.set(0,0,0);for(const limb of [pilHead,pilArmL,pilArmR,pilLegL,pilLegR])pilantra.children[pilantraRig.children.indexOf(limb)].rotation.set(0,0,0);pilantra.children[pilantra.children.length-1].visible=false;
+  const elfo=elfRig.clone();elfo.visible=true;elfo.rotation.set(0,0,0);elfo.position.set(0,0,0);for(const limb of [elfHead,elfArmL,elfArmR,elfLegL,elfLegR])elfo.children[elfRig.children.indexOf(limb)].rotation.set(0,0,0);elfo.children[elfo.children.length-1].visible=false;
+  const board=hero.board.clone();board.visible=true;board.position.set(0,0,0);board.rotation.set(0,0,0);const deck=board.children[0];deck.material=deck.material.clone();const glow=board.children[2];glow.material=glow.material.clone();const giftIndex=hero.board.children.indexOf(holidayBoardGifts);const gifts=board.children[giftIndex];for(const spark of hero.boardSparks){const copy=board.children[hero.board.children.indexOf(spark)];if(copy)copy.visible=false;}
+  const jet=hero.jet.clone();jet.visible=true;jet.position.set(0,0,0);jet.rotation.set(0,0,0);
+  const sleigh=flyingSleigh.clone();sleigh.visible=true;sleigh.position.set(0,0,0);sleigh.rotation.set(0,0,0);
+  wardThumbKit={renderer,scene3d,camera,model,previewMats,santa,pilantra,elfo,board,deck,glow,gifts,jet,sleigh};return wardThumbKit;
+}
+function wardThumbDraw(kind,item){
+  const q=wardThumbInit(),{renderer,scene3d,camera}=q;let obj;
+  if(kind==='skin'){
+    obj=q.model;for(const r in q.previewMats){const m=q.previewMats[r],tx=(r==='jacket'&&item.jTex)||(r==='pants'&&item.pTex)||(r==='hair'&&item.hTex);m.map=tx?getPat(tx,false):WHITE_TEX;m.color.set(tx?0xffffff:(r==='acc2'?new THREE.Color(item.acc).lerp(_wht,.3):item[r]));m.needsUpdate=true}
+    for(const n in obj.accs)obj.accs[n].visible=item.ac===n;
+    camera.position.set(0,1.28,5.8);camera.lookAt(0,1.28,0);
+  }else if(kind==='santa'||kind==='pilantra'||kind==='elfo'){obj=kind==='santa'?q.santa:kind==='pilantra'?q.pilantra:q.elfo;camera.position.set(0,1.25,5.8);camera.lookAt(0,1.25,0)}
+  else if(kind==='board'){obj=q.board;q.deck.material.map=item.tex?getPat(item.tex,true):WHITE_TEX;q.deck.material.color.setHex(item.tex?0xffffff:item.top);q.deck.material.needsUpdate=true;q.glow.material.color.setHex(item.glow);if(q.gifts)q.gifts.visible=item.tex==='natal';camera.position.set(2.4,3.5,3.6);camera.lookAt(0,0,0)}
+  else if(kind==='sleigh'){obj=q.sleigh;camera.position.set(3,2.5,4);camera.lookAt(0,.4,0)}
+  else{obj=q.jet;camera.position.set(2,1.4,4);camera.lookAt(0,-.15,0)}
+  scene3d.add(obj);try{renderer.render(scene3d,camera);return renderer.domElement.toDataURL('image/png')}finally{scene3d.remove(obj)}
+}
+function queueWardThumb(target,kind,item){if(!target)return;const key=kind+':'+(item?JSON.stringify(item):'');const cached=wardThumbCache.get(key);if(cached){target.style.backgroundImage='url('+cached+')';return}wardThumbQueue.push({target,kind,item,key});if(!wardThumbWorker){wardThumbWorker=true;setTimeout(runWardThumbQueue,0)}}
+function runWardThumbQueue(){let jobs=0;while(wardThumbQueue.length&&jobs++<2){const task=wardThumbQueue.shift();if(!task.target.isConnected)continue;try{let img=wardThumbCache.get(task.key);if(!img){img=wardThumbDraw(task.kind,task.item);wardThumbCache.set(task.key,img)}task.target.style.backgroundImage='url('+img+')'}catch(e){task.target.classList.add('thumb-unavailable')}}if(wardThumbQueue.length)setTimeout(runWardThumbQueue,0);else wardThumbWorker=false}
 
 /* ---------- Vestiário Interativo ---------- */
 function renderWard(){
   const g=$('wardGrid'),isSk=wardTab==='skin',arr=isSk?SK:BD;
-  g.style.display=wardTab==='edit'?'none':'grid';$('skinEditor').style.display=wardTab==='edit'?'block':'none';if(wardTab==='edit')return;
+  g.style.display='grid';
   g.innerHTML='';
+  if(wardTab==='jet'){
+    [{id:'classic',name:'Jetpack clássico',color:'linear-gradient(135deg,#9fb7ca,#435471)'},{id:'sleigh',name:'Trenó do Papai Noel',color:'linear-gradient(135deg,#b32d40 50%,#e9ca7d 50%)'}].forEach(item=>{const btn=document.createElement('button');btn.type='button';btn.className='w-item'+(selectedJetSkin===item.id?' on':'');btn.innerHTML=`<i class="w-thumb" aria-hidden="true"></i><span class="w-meta"><span>${item.name}</span><small>Liberado</small></span>`;btn.onclick=()=>{selectJetSkin(item.id);renderWard()};g.appendChild(btn);queueWardThumb(btn.querySelector?btn.querySelector('.w-thumb'):null,item.id==='sleigh'?'sleigh':'jet')});return;
+  }
+  if(isSk){const santaBtn=document.createElement('button');santaBtn.className='w-item'+(santaSelected?' on':'');santaBtn.innerHTML='<i class="w-thumb'+(walletBase?.santa?'':' is-locked')+'" aria-hidden="true"></i><span class="w-meta"><span>Papai Noel</span><small>Evento · '+(walletBase?.santa?'Liberado':'<svg class="natal-icon" aria-hidden="true"><use href="#natal-lock"></use></svg> Bloqueado')+'</small></span>';santaBtn.onclick=()=>{if(!walletReady||!walletBase?.santa){alert('Papai Noel: raridade Evento. Um administrador precisa liberar esta skin para sua conta.');return}setSantaSelected(true);cheerT=.65;renderWard()};g.appendChild(santaBtn);queueWardThumb(santaBtn.querySelector?santaBtn.querySelector('.w-thumb'):null,'santa')}
+  if(isSk){const btn=document.createElement('button');btn.className='w-item'+(characterModel==='pilantra'?' on':'');btn.innerHTML='<i class="w-thumb" aria-hidden="true"></i><span class="w-meta"><span>Pilantra</span><small>Personagem em blocos</small></span>';btn.onclick=()=>{setCharacterModel('pilantra');cheerT=.65;renderWard()};g.appendChild(btn);queueWardThumb(btn.querySelector?btn.querySelector('.w-thumb'):null,'pilantra')}
+  if(isSk){const btn=document.createElement('button');btn.className='w-item'+(characterModel==='elfo'?' on':'');btn.innerHTML='<i class="w-thumb'+(walletBase?.elf?'':' is-locked')+'" aria-hidden="true"></i><span class="w-meta"><span>Elfo de Natal</span><small>Evento · '+(walletBase?.elf?'Liberado':'<svg class="natal-icon" aria-hidden="true"><use href="#natal-lock"></use></svg> 500 moedas')+'</small></span>';btn.onclick=async()=>{if(!walletReady){alert('Entre na conta e aguarde a sincronização.');return}if(!walletBase.elf){if(walletQueue.length){alert('Aguarde a sincronização das moedas antes de comprar.');return}if(!confirm('Comprar o Elfo de Natal por 500 moedas?'))return;try{walletSequence++;const uid=walletUid,{data,error}=await sb.rpc('nico_wallet_buy_elf');if(error)throw error;if(walletUid!==uid)return;walletBase=data;walletRender()}catch(e){alert(e.message||'Não foi possível comprar o Elfo.');return}}setCharacterModel('elfo');cheerT=.65;renderWard()};g.appendChild(btn);queueWardThumb(btn.querySelector?btn.querySelector('.w-thumb'):null,'elfo')}
   arr.forEach((it,idx)=>{
     const btn=document.createElement('button');
-    btn.className='w-item'+(sel[wardTab]===idx?' on':'');
+    btn.className='w-item'+(sel[wardTab]===idx&&(!isSk||characterModel==='nico')?' on':'');
     const tx=isSk?it.jTex:it.tex,col=isSk?it.jacket:it.top;
-    btn.innerHTML=`<i class="w-sw" style="${swStyle(tx,col,!isSk)}"></i><span class="w-meta"><span>${escapeSkinText(it.n)}</span>${it.custom?'<small>Personalizada</small>':tx?'<small>Textura</small>':''}</span>`;
-    btn.onclick=()=>{sel[wardTab]=idx;(isSk?applySkin:applyBoard)(idx,true);saveSel();renderWard()};
-    g.appendChild(btn);
+    btn.innerHTML=`<i class="w-thumb" aria-hidden="true"></i><span class="w-meta"><span>${escapeSkinText(it.n)}</span>${it.custom?'<small>Personalizada</small>':tx?'<small>Textura</small>':''}</span>`;
+    btn.onclick=()=>{if(isSk)setSantaSelected(false);sel[wardTab]=idx;(isSk?applySkin:applyBoard)(idx,true);saveSel();renderWard()};
+    g.appendChild(btn);queueWardThumb(btn.querySelector?btn.querySelector('.w-thumb'):null,isSk?'skin':'board',it);
   });
 }
-let editingCustomIndex=-1;
-const editorColors={hair:'colorHair',jacket:'colorJacket',pants:'colorPants',trim:'colorTrim',acc:'colorAcc'};
-function loadSkinEditor(index){editingCustomIndex=index>=ORIGINAL_SKIN_COUNT&&index<SK.length?index:-1;const base=editingCustomIndex>=0?SK[editingCustomIndex]:SK[0];
-  $('skinName').value=editingCustomIndex>=0?base.n:'Minha skin';for(const key in editorColors)$(editorColors[key]).value=hexCss(base[key]);
-  $('skinPattern').value=CUSTOM_PATTERNS.includes(base.jTex||'')?(base.jTex||''):'';$('skinAccessory').value=CUSTOM_ACCESSORIES.includes(base.ac||'')?(base.ac||''):'';
-  $('editorHeading').textContent=editingCustomIndex>=0?'Editar sua skin':'Crie sua skin';$('deleteCustomSkin').style.display=editingCustomIndex>=0?'inline-block':'none';$('skinEditorMsg').textContent='';previewCustomSkin();
-}
-function editorSkin(){const k={n:$('skinName').value.trim()||'Minha skin',jTex:$('skinPattern').value,ac:$('skinAccessory').value};for(const key in editorColors){const v=$(editorColors[key]).value;k[key]=/^#[0-9a-f]{6}$/i.test(v)?parseInt(v.slice(1),16):SK[0][key]}return cleanCustomSkin(k)}
-function previewCustomSkin(){const k=editorSkin();if(k)applySkinData(k,false)}
-function leaveSkinEditor(){if(wardTab==='edit')applySkin(sel.skin,false)}
-function openWard(tab){const next=tab||wardTab;if(wardTab==='edit'&&next!=='edit')leaveSkinEditor();wardTab=next;document.querySelectorAll('.w-tab').forEach(b=>b.classList.toggle('on',b.dataset.wt===wardTab));renderWard();$('ward').style.display='block';if(wardTab==='edit')loadSkinEditor(sel.skin)}
-for(const id of ['skinName','colorHair','colorJacket','colorPants','colorTrim','colorAcc','skinPattern','skinAccessory'])$(id).addEventListener('input',previewCustomSkin);
-for(const id of ['skinPattern','skinAccessory'])$(id).addEventListener('change',previewCustomSkin);
-$('newCustomSkin').onclick=()=>loadSkinEditor(-1);
-$('skinEditor').onsubmit=e=>{e.preventDefault();const k=editorSkin();if(!k)return;if(editingCustomIndex<0&&SK.length-ORIGINAL_SKIN_COUNT>=MAX_CUSTOM_SKINS){$('skinEditorMsg').textContent='Limite de 8 skins. Exclua uma para criar outra.';return}
-  const saved=SK.slice(ORIGINAL_SKIN_COUNT);if(editingCustomIndex>=0)saved[editingCustomIndex-ORIGINAL_SKIN_COUNT]=k;else saved.push(k);
-  try{localStorage.setItem('nico-custom-skins',JSON.stringify(saved))}catch(err){$('skinEditorMsg').textContent='Não foi possível salvar neste aparelho.';return}
-  SK.splice(ORIGINAL_SKIN_COUNT,SK.length-ORIGINAL_SKIN_COUNT,...saved);sel.skin=editingCustomIndex>=0?editingCustomIndex:SK.length-1;saveSel();applySkin(sel.skin,true);wardTab='skin';openWard('skin');
-};
-$('deleteCustomSkin').onclick=()=>{if(editingCustomIndex<ORIGINAL_SKIN_COUNT)return;const saved=SK.slice(ORIGINAL_SKIN_COUNT);saved.splice(editingCustomIndex-ORIGINAL_SKIN_COUNT,1);try{localStorage.setItem('nico-custom-skins',JSON.stringify(saved))}catch(err){$('skinEditorMsg').textContent='Não foi possível excluir neste aparelho.';return}SK.splice(ORIGINAL_SKIN_COUNT,SK.length-ORIGINAL_SKIN_COUNT,...saved);sel.skin=0;saveSel();applySkin(0,false);wardTab='skin';openWard('skin')};
+function openWard(tab){wardTab=['skin','board','jet'].includes(tab)?tab:wardTab;document.querySelectorAll('.w-tab').forEach(b=>b.classList.toggle('on',b.dataset.wt===wardTab));renderWard();$('ward').style.display='block'}
 $('openWard').onclick=()=>openWard();
-$('closeWard').onclick=()=>{leaveSkinEditor();$('ward').style.display='none';if(wardTab==='edit')wardTab='skin'};
+$('closeWard').onclick=()=>{$('ward').style.display='none'};
 document.querySelectorAll('.pill-lbl').forEach(el=>el.onclick=()=>openWard(el.dataset.open));
 document.querySelectorAll('.w-tab').forEach(b=>b.onclick=()=>openWard(b.dataset.wt));
 
@@ -1601,12 +1857,12 @@ function resetPose(){
 let rankRunUser=null,rankRunRecorded=false,rankRunSerial=0;
 function reset(){
   rankRunSerial++;rankRunRecorded=false;rankRunUser=mode==='nocoin'&&accountUser&&playerName(accountUser)?accountUser.id:null;$('rankRunNotice').textContent='';$('rankingOverlay').style.display='none';
-  leaveSkinEditor();if(wardTab==='edit')wardTab='skin';$('ward').style.display='none';$('shop').style.display='none';$('pauseOv').style.display='none';$('deathOverlay').style.display='none';clearAll();resetPose();
+  $('ward').style.display='none';$('shop').style.display='none';$('pauseOv').style.display='none';$('deathOverlay').style.display='none';clearAll();resetPose();
   hideNuke();hideUfo();hideTrampLanding();$('sceneFlash').style.opacity='0';growthEnabled=false;growthTime=-1;trampsActive=false;trampTimeLeft=0;giant.visible=false;flyingTramp.visible=false;cutTarget=null;$('cutMsg').style.display='none';throwTarget=null;thrownDone=false;$('growthNotice').style.display='none';
   jetUsed=false;previousRampTrain=null;touchGesture=null;lastTap=0;noCoinSafeLane=1;safeCoinSeconds=0;safeCoinShown=-1;$('jetBtn').disabled=false;
   dizzy=invul=boardT=shieldT=jetT=shake=0;shieldAura.visible=false;runBoards=1;boards=1+stock.board;hero.visible=true;speed=18;dist=0;coinCount=0;lane=1;y=0;vy=0;slide=0;gY=0;lavaT=0;camY=0;
   pSc=pCo=pBdOp=-1;pBn='';pRec=false;elRec.style.display='none';elScPill.classList.remove('rec');elRing.style.strokeDashoffset='245';
-  const lv=mode==='lava';segs.forEach(g=>g.userData.lava.visible=lv);scene.fog.color.set(lv?0xe0603a:0xffc59a);
+  const lv=mode==='lava';segs.forEach(g=>g.userData.lava.visible=lv);scene.fog.color.set(christmasMap?0x536b92:(lv?0xe0603a:0xffc59a));
   $('coinCount').textContent=mode==='nocoin'?'perigo':'0';$('statsHud').style.display='flex';$('safeTimeStat').style.display=mode==='nocoin'?'inline-flex':'none';$('safeTimeValue').textContent='0:00';$('safeTimeStat').style.visibility='visible';
   if(lv){[12,4,-4,-12].forEach(z=>addTrainTop(1,z));nz=[-8-Math.random()*6,-19,-8-Math.random()*6];y=gY=camY=TOP;lavaSpawn()}
   else{nextZ=-60;while(nextZ>-170)spawnRow()}
@@ -1616,7 +1872,7 @@ function showLobby(ti,m,canReplay){
   $('deathOverlay').style.display='none';clearAll();resetPose();
   hideNuke();hideUfo();hideTrampLanding();$('sceneFlash').style.opacity='0';growthEnabled=false;growthTime=-1;trampsActive=false;trampTimeLeft=0;giant.visible=false;flyingTramp.visible=false;cutTarget=null;$('cutMsg').style.display='none';throwTarget=null;thrownDone=false;$('growthNotice').style.display='none';
   state='menu';lane=1;y=0;vy=0;slide=0;gY=0;camY=0;
-  segs.forEach(g=>g.userData.lava.visible=false);scene.fog.color.set(0xffc59a);
+  segs.forEach(g=>g.userData.lava.visible=false);scene.fog.color.set(christmasMap?0x536b92:0xffc59a);
   $('statsHud').style.display='none';elHud.style.visibility='hidden';elBd.style.visibility='hidden';$('jetBtn').style.visibility='hidden';$('shieldBtn').style.visibility='hidden';shieldAura.visible=false;shieldT=0;hero.jet.visible=false;jetT=0;elDiz.style.display='none';pDizVis=false;hero.visible=true;dizzy=invul=boardT=0;
   $('t').textContent=ti;$('m').innerHTML=m;$('againBtn').style.display=canReplay?'inline-block':'none';elOv.style.display='flex';const title=$('t');title.classList.remove('title-enter');if(ti==='NICO RUNNER'){void title.offsetWidth;title.classList.add('title-enter')}}
 
@@ -1624,7 +1880,7 @@ function die(why){
   if(mode==='nocoin')recordNoCoinRun();
   state='over';overT=0;shake=.55;
   const dInt=dist|0,isNew=dInt>best[mode];
-  if(isNew){best[mode]=dInt;try{localStorage.setItem('nico-best',JSON.stringify(best))}catch(e){}showBest()}
+  if(isNew){best[mode]=dInt;try{localStorage.setItem('nico-best',JSON.stringify(best))}catch(e){}showBest();walletPrefs()}
   const ti=why==='coin'?'MOEDA!':why==='lava'?'LAVA!':'BATEU!';
   const m=(isNew?'<b>NOVO RECORDE!</b> · ':'')+'Distância: <b>'+dInt+' m</b>'+(mode==='nocoin'?'':' · <b>'+coinCount+'</b>');
   $('deathDetails').innerHTML=m;setTimeout(()=>{if(state==='over'){$('deathOverlay').style.display='flex';$('reviveBtn').focus?.()}},850)}
@@ -1634,9 +1890,9 @@ $('reviveBtn').onclick=()=>{if(state!=='over')return;$('deathOverlay').style.dis
 document.querySelectorAll('.mode').forEach(b=>b.onclick=()=>{if(mpRoom){$('mpOverlay').style.display='flex';$('mpStatus').textContent='Saia do grupo ou escolha o modo pelo painel multiplayer.';return}mode=b.dataset.m;reset()});
 function act(a){
   if(state!=='play')return;
-  if(a==='B'&&boardT<=0&&boards>0){if(runBoards>0)runBoards--;else if(stock.board>0){stock.board--;saveEconomy();updBank()}boards=runBoards+stock.board;boardT=15;flipT=1;squash=.22}
-  if(a==='Q'&&shieldT<=0&&stock.shield>0){stock.shield--;shieldT=8;dizzy=0;saveEconomy();updBank()}
-  if(a==='J'&&!jetUsed&&jetT<=0&&stock.jet>0){jetUsed=true;stock.jet--;saveEconomy();updBank();jetT=8;jetCamFollow=true;vy=0;slide=0;flipT=0} 
+  if(a==='B'&&boardT<=0&&boards>0){if(runBoards>0)runBoards--;else if(stock.board>0){if(!consumeItem('board'))return}boards=runBoards+stock.board;boardT=15;flipT=1;squash=.22}
+  if(a==='Q'&&shieldT<=0&&stock.shield>0){if(!consumeItem('shield'))return;shieldT=8;dizzy=0}
+  if(a==='J'&&!jetUsed&&jetT<=0&&stock.jet>0){if(!consumeItem('jet'))return;jetUsed=true;jetT=8;jetCamFollow=true;vy=0;slide=0;flipT=0} 
   if(a==='L'&&lane>0){lane--;dodgeTilt=.42}
   if(a==='R'&&lane<2){lane++;dodgeTilt=-.42}
   if(a==='U'&&y<=gY+.01){vy=mode==='lava'?15:14;slide=0;squash=.26;if(boardT>0||Math.random()<.28)flipT=1}
@@ -1664,6 +1920,7 @@ addEventListener('touchcancel',e=>{if(touchGesture&&touchById(e.changedTouches,t
 /* ---------- Loop Principal c/ Animações Avançadas ---------- */
 let last=performance.now(),fpsAcc=0,fpsN=0,safeCoinSeconds=0,safeCoinShown=-1,displayFpsTime=0,displayFpsFrames=0;
 function loop(now){requestAnimationFrame(loop);
+  if(state!=='play'&&state!=='menu'){snowParticles.visible=false;flyingSleigh.visible=false;}
   if(state!=='play'&&typeof mpAvatar!=='undefined')mpAvatar.visible=false;
   if(state==='pause')return;
   if(state==='cutscene'){last=now;playCutscene(now);return}
@@ -1674,7 +1931,7 @@ function loop(now){requestAnimationFrame(loop);
 
   if(raw<.25){fpsAcc+=raw;if(++fpsN>=90){const avg=fpsN/fpsAcc;fpsAcc=fpsN=0;
     if(avg<48&&dprCap>1){dprCap=Math.max(1,dprCap-.25);ren.setPixelRatio(dprCap);ren.setSize(innerWidth,innerHeight)}}}
-  for(let i=0;i<clouds.length;i++){const c=clouds[i];c.position.x+=dt*1.5;if(c.position.x>140)c.position.x=-140}
+  animateSnow(dt);for(let i=0;i<clouds.length;i++){const c=clouds[i];c.position.x+=dt*1.5;if(c.position.x>140)c.position.x=-140}
   if(mode==='lava')lavaTex.offset.y+=dt*.2;
   updateBlasts(dt);
 
@@ -1701,7 +1958,7 @@ function loop(now){requestAnimationFrame(loop);
       if(growthTime>=10){giant.visible=false;flyingTramp.visible=false;notice.textContent='Trampolins liberados!'}
     }else if(trampsActive&&growthTime>=10){growthTime+=dt;const notice=$('growthNotice');notice.style.display='block';notice.textContent='Trampolins: '+Math.ceil(trampTimeLeft)+' s'}
     const cr=dt*5;for(let i=0;i<coins.length;i++){const c=coins[i],m=c.m;c.prevZ=m.position.z;m.position.z+=d;m.rotation.y+=cr}
-    for(let i=drops.length-1;i>=0;i--){const drop=drops[i];drop.m.position.z+=d;drop.m.rotation.y+=dt*2;drop.m.position.y+=(Math.sin(t*4+i)*.002);if(drop.m.position.z>10){poolGrp.remove(drop.m);drops.splice(i,1)}else if(drop.lane===lane&&Math.abs(drop.m.position.z)<1&&Math.abs(drop.m.position.y-y-1)<1.5){stock[drop.kind]++;boards=runBoards+stock.board;saveEconomy();updBank();poolGrp.remove(drop.m);drops.splice(i,1)}}
+    for(let i=drops.length-1;i>=0;i--){const drop=drops[i];drop.m.position.z+=d;drop.m.rotation.y+=dt*2;drop.m.position.y=drop.baseY+Math.sin(t*3+i)*.12;if(drop.m.position.z>10){poolGrp.remove(drop.m);drops.splice(i,1)}else if(drop.lane===lane&&Math.abs(drop.m.position.z)<1&&Math.abs(drop.m.position.y-y-1)<1.5){if(collectDrop(drop)){poolGrp.remove(drop.m);drops.splice(i,1)}}}
     if(mode==='lava'){nz[0]+=d;nz[1]+=d;nz[2]+=d;lavaSpawn()}else{nextZ+=d;while(nextZ>-170)spawnRow()}
     if(jetT>0)jetT=Math.max(0,jetT-dt);dizzy=Math.max(0,dizzy-dt);invul=Math.max(0,invul-dt);if(boardT>0)boardT=Math.max(0,boardT-dt);if(shieldT>0)shieldT=Math.max(0,shieldT-dt);
     const previousGround=gY,lastRampTrain=previousRampTrain;previousRampTrain=null;gY=0;
@@ -1751,7 +2008,7 @@ function loop(now){requestAnimationFrame(loop);
       if(z>8){freeCoin(c);coins[i]=coins[coins.length-1];coins.pop();continue}
       if(c.lane===lane&&Math.abs(hero.position.x-LANES[c.lane])<.85&&c.prevZ<=.8&&z>=-.8&&Math.abs(c.m.position.y-y-1)<1.3){
         freeCoin(c);coins[i]=coins[coins.length-1];coins.pop();
-        if(mode==='nocoin')die('coin');else{playCoinSound();coinCount++;bankCoins++;deferEconomySave();updBank();elCo.classList.add('pop');setTimeout(()=>elCo.classList.remove('pop'),110);if(coinCount%25===0&&runBoards<3){runBoards++;boards=runBoards+stock.board}}}}
+        if(mode==='nocoin')die('coin');else{playCoinSound();coinCount++;walletAdd('earn_coins');elCo.classList.add('pop');setTimeout(()=>elCo.classList.remove('pop'),110);if(coinCount%25===0&&runBoards<3){runBoards++;boards=runBoards+stock.board}}}}
     for(let i=obs.length-1;i>=0;i--){const o=obs[i];
       if(o.broken||o.m.position.z>12){freeObs(o);obs[i]=obs[obs.length-1];obs.pop()}}
 
@@ -1760,9 +2017,9 @@ function loop(now){requestAnimationFrame(loop);
     if(dInt!==pSc){pSc=dInt;elSc.textContent=dInt+' m';
       const isR=best[mode]>0&&dInt>best[mode];if(isR!==pRec){pRec=isR;elRec.style.display=isR?'inline-block':'none';elScPill.classList.toggle('rec',isR)}}
     if(mode!=='nocoin'&&coinCount!==pCo){pCo=coinCount;$('coinCount').textContent=coinCount}
-    $('shieldCount').textContent=shieldT>0?Math.ceil(shieldT)+'s':stock.shield;$('shieldBtn').style.opacity=(shieldT>0||stock.shield>0)?1:.45;
-    $('jn').textContent=jetT>0?Math.ceil(jetT)+'s':jetUsed?'usado':stock.jet;$('jetBtn').disabled=jetUsed&&jetT<=0;$('jetBtn').title=jetUsed?'Jetpack: uma utilização por partida':'Ativar jetpack (R)';$('jetBtn').style.opacity=(jetT>0||(!jetUsed&&stock.jet>0))?1:.45;
-    const bnTxt=boardT>0?Math.ceil(boardT)+'s':''+boards;if(bnTxt!==pBn){pBn=bnTxt;elBn.textContent=bnTxt}
+    $('shieldCount').textContent=stock.shield;$('shieldLabel').textContent=shieldT>0?'ESCUDO '+Math.ceil(shieldT)+'s':'ESCUDO';$('shieldBtn').style.opacity=(shieldT>0||stock.shield>0)?1:.45;
+    $('jn').textContent=stock.jet;$('jetLabel').textContent=jetT>0?'JETPACK '+Math.ceil(jetT)+'s':jetUsed?'USADO':'JETPACK';$('jetBtn').disabled=jetUsed&&jetT<=0;$('jetBtn').title=jetUsed?'Jetpack: uma utilização por partida':'Ativar jetpack (R)';$('jetBtn').style.opacity=(jetT>0||(!jetUsed&&stock.jet>0))?1:.45;
+    $('boardLabel').textContent=boardT>0?'PRANCHA '+Math.ceil(boardT)+'s':'PRANCHA';const bnTxt=''+boards;if(bnTxt!==pBn){pBn=bnTxt;elBn.textContent=bnTxt}
     if(boardT>0)elRing.style.strokeDashoffset=''+(245*(1-boardT/15)).toFixed(1);else if(pBdOp!==2)elRing.style.strokeDashoffset='245';
     const bdOp=boardT>0?2:(boards>0?1:.45);if(bdOp!==pBdOp){pBdOp=bdOp;elBd.style.opacity=bdOp===.45?.45:1}
   }
@@ -1881,10 +2138,13 @@ function loop(now){requestAnimationFrame(loop);
   for(let i=0;i<4;i++){const s=hero.scarf[i];s.rotation.y=Math.sin(t*wind-i*.85)*(.24+speed*.004)-dx*.08;s.rotation.x=-.22+lift+Math.sin(t*(wind*1.2)-i)*.16}
 
   // Prancha c/ kickflip 360° nos pulos e carving nas curvas!
-  hero.jet.visible=state==='play'&&jetT>0;
+  const jetPreview=state==='menu'&&$('ward').style.display==='block'&&wardTab==='jet';
+  const sleighFlying=selectedJetSkin==='sleigh'&&((state==='play'&&jetT>0)||jetPreview);flyingSleigh.visible=sleighFlying;
+  if(sleighFlying){flyingSleigh.rotation.z=Math.sin(t*2.4)*.025;hero.g.position.y+=.12;hero.g.rotation.x=0;hero.g.rotation.y=Math.PI;hero.legL.rotation.x=hero.legR.rotation.x=-Math.PI/2;hero.armL.rotation.x=hero.armR.rotation.x=-.8;hero.armL.rotation.z=-.14;hero.armR.rotation.z=.14}
+  hero.jet.visible=selectedJetSkin==='classic'&&((state==='play'&&jetT>0)||jetPreview);
   if(hero.jet.visible){hero.jet.rotation.z=Math.sin(t*12)*.04;hero.jet.scale.y=1+Math.sin(t*24)*.04}
   hero.boardSparks.forEach((p,i)=>{p.visible=bon;p.position.set(Math.cos(t*4+i)*.43,.08+Math.sin(t*7+i)*.08,Math.sin(t*4+i)*1.0);p.scale.setScalar(.7+.3*Math.sin(t*9+i))});
-  hero.board.visible=bon;
+  hero.board.visible=bon&&!sleighFlying;
   if(bon){
     hero.board.userData.glow.scale.set(1,1,1+Math.sin(t*12)*.08);
     hero.board.rotation.z=(flipT>0?(1-flipT)*Math.PI*2:0)-dx*.12;
@@ -1905,7 +2165,7 @@ function loop(now){requestAnimationFrame(loop);
   cam.position.z+=((lobby?5.1:7.5)-cam.position.z)*kk;
   if(shake>0){cam.position.x+=(Math.random()-.5)*shake;cam.position.y+=(Math.random()-.5)*shake*.6;shake=Math.max(0,shake-dt)}
   lookP.set(cam.position.x*.5,1.7+camY+(trackedHeight-gY),-9);look.lerp(lobby?lookL:lookP,lobby?.08:.2);cam.lookAt(look);
-  mpRender(dt);ren.render(scene,cam)}
+  animateSanta();mpRender(dt);ren.render(scene,cam)}
 requestAnimationFrame(loop);
 // Autenticação e evento global no Supabase. Somente a chave pública é usada.
 const SUPABASE_URL='https://rcobkgjavhqzddcldaip.supabase.co';
@@ -1930,7 +2190,7 @@ function accountView(){const u=accountUser,name=playerName(u),needsName=!!u&&!na
   $('accountIntro').textContent=needsName?'Para proteger sua privacidade, escolha um nome de jogador. Seu e-mail não será exibido no perfil.':u?'Conectado como '+name+(accountIsAdmin?' · administrador':''):'Crie sua conta ou entre para jogar com seu perfil. Seu e-mail não aparece no perfil.';
   if(needsName){$('accountOverlay').style.display='flex';$('accountMsg').textContent='';}
 }
-async function changeAuth(user){const rev=++authRevision;accountUser=user;accountIsAdmin=false;authReady=true;mpAuthChanged(user);accountView();maybePromptAccount();if(!user)$('adminOverlay').style.display='none';if(user){syncGiftCoins();try{const result=await accountApi('/api/admin/check',undefined,true);if(rev!==authRevision)return;accountIsAdmin=result.admin===true;accountView()}catch(e){if(rev===authRevision)$('accountMsg').textContent='Não foi possível verificar o acesso de administrador.'}}}
+async function changeAuth(user){const previous=accountUser?.id||null,next=user?.id||null;const rev=++authRevision;accountUser=user;accountIsAdmin=false;authReady=true;if(previous!==next&&(state==='play'||state==='pause'||state==='over'))showLobby('NICO RUNNER','Conta alterada. Entre para sincronizar.');if(previous!==next||(!walletReady&&user))walletOpen(user);else if(!user)walletReset();mpAuthChanged(user);accountView();maybePromptAccount();if(!user)$('adminOverlay').style.display='none';if(user){try{const result=await accountApi('/api/admin/check',undefined,true);if(rev!==authRevision)return;accountIsAdmin=result.admin===true;accountView()}catch(e){if(rev===authRevision)$('accountMsg').textContent='Não foi possível verificar o acesso de administrador.'}}}
 $('accountBtn').onclick=()=>{$('accountMsg').textContent='';$('accountOverlay').style.display='flex'};$('closeAccount').onclick=()=>$('accountOverlay').style.display='none';
 function accountErr(e){const message=e.message||'';return message.includes('Invalid login credentials')?'E-mail ou senha incorretos.':message.includes('Email not confirmed')?'Confirme seu e-mail antes de entrar.':message.includes('provider is not enabled')?'O login Google ainda precisa ser ativado no Supabase.':message||'Confira a conexão e tente novamente.'}
 $('emailForm').onsubmit=async e=>{e.preventDefault();if(!sb){$('accountMsg').textContent='Supabase indisponível.';return}try{$('accountMsg').textContent='Entrando...';const {error}=await sb.auth.signInWithPassword({email:$('emailInput').value.trim(),password:$('passInput').value});if(error)throw error;$('passInput').value='';$('emailInput').value='';$('accountMsg').textContent='Login realizado!'}catch(err){$('accountMsg').textContent=accountErr(err)}};
@@ -1939,12 +2199,12 @@ $('chooseNameForm').onsubmit=async e=>{e.preventDefault();const name=validPlayer
 $('logoutBtn').onclick=async()=>{try{const {error}=await sb.auth.signOut();if(error)throw error;$('adminOverlay').style.display='none';$('emailInput').value='';$('nameInput').value='';$('chooseName').value='';$('accountMsg').textContent='Você saiu da conta.'}catch(e){$('accountMsg').textContent='Não foi possível sair.'}};
 function openEventPanel(){if(!accountIsAdmin)return;$('growthStatus').textContent='';$('nukeStatus').textContent='';$('adminOverlay').style.display='flex';loadAdminPlayers()}$('adminBtn').onclick=openEventPanel;$('gameAdmin').onclick=openEventPanel;
 $('closeAdmin').onclick=()=>$('adminOverlay').style.display='none';
-let adminPlayers=[],adminOwner=false,giftSyncBusy=false;
-async function syncGiftCoins(){if(!sb||!accountUser||giftSyncBusy)return;giftSyncBusy=true;const uid=accountUser.id;try{const {data,error}=await sb.rpc('nico_my_coin_gifts');if(error)throw error;if(!accountUser||accountUser.id!==uid)return;const total=Number(data),previous=Number(giftApplied[uid]||0);if(!Number.isSafeInteger(total)||total<previous)return;const delta=total-previous;if(delta>0){const nextGifts={...giftApplied,[uid]:total},nextCoins=bankCoins+delta;if(!Number.isSafeInteger(nextCoins))throw Error('Saldo muito alto');localStorage.setItem('nico-economy-v2',JSON.stringify({coins:nextCoins,stock,gifts:nextGifts}));bankCoins=nextCoins;giftApplied=nextGifts;saveEconomy();updBank();$('accountMsg').textContent='Você recebeu '+delta+' moedas do administrador!'}}catch(e){/* tenta novamente sem consumir o presente no servidor */}finally{giftSyncBusy=false}}
-setInterval(syncGiftCoins,15000);
+let adminPlayers=[],adminOwner=false;
+function syncGiftCoins(){return walletRefresh()}
 async function loadAdminPlayers(){if(!sb||!accountIsAdmin)return;const status=$('manageStatus'),select=$('adminPlayer');status.textContent='Carregando jogadores...';try{const [players,owner]=await Promise.all([sb.rpc('nico_admin_players'),sb.rpc('nico_is_owner')]);if(players.error)throw players.error;if(owner.error)throw owner.error;adminOwner=owner.data===true;adminPlayers=Array.isArray(players.data)?players.data:[];const prev=select.value;select.replaceChildren();const placeholder=document.createElement('option');placeholder.value='';placeholder.textContent='Selecione um jogador';select.appendChild(placeholder);for(const row of adminPlayers){const option=document.createElement('option');option.value=row.player_id;option.textContent=(validPlayerName(row.player_name)||'Jogador sem nome')+' · '+row.player_id.slice(0,8)+(row.is_owner?' · principal':row.is_admin?' · admin':'');select.appendChild(option)}if(adminPlayers.some(p=>p.player_id===prev))select.value=prev;$('grantAdmin').style.display=adminOwner?'inline-block':'none';$('revokeAdmin').style.display=adminOwner?'inline-block':'none';status.textContent=adminPlayers.length?'Selecione um jogador.':'Nenhum jogador encontrado.'}catch(e){status.textContent='Não foi possível carregar os jogadores: '+(e.message||'verifique a conexão.')}}
 $('reloadPlayers').onclick=loadAdminPlayers;
 async function adminAction(kind){const player=adminPlayers.find(p=>p.player_id===$('adminPlayer').value),status=$('manageStatus');if(!player){status.textContent='Selecione um jogador.';return}const name=(validPlayerName(player.player_name)||'Jogador sem nome')+' ('+player.player_id.slice(0,8)+')';let amount;if(kind==='coins'){amount=Number($('giftAmount').value);if(!Number.isInteger(amount)||amount<1||amount>1000000){status.textContent='Informe uma quantidade inteira entre 1 e 1.000.000.';return}}else if(!adminOwner||player.is_owner){status.textContent='A conta principal não pode ser alterada.';return}const question=kind==='coins'?'Dar '+amount+' moedas para '+name+'?':(kind==='grant'?'Dar acesso de administrador a ':'Remover o acesso de administrador de ')+name+'?';if(!confirm(question))return;const buttons=['giveCoins','grantAdmin','revokeAdmin'];buttons.forEach(id=>$(id).disabled=true);status.textContent='Enviando...';try{const result=kind==='coins'?await sb.rpc('nico_admin_give_coins',{p_user:player.player_id,p_amount:amount}):await sb.rpc('nico_admin_set_access',{p_user:player.player_id,p_enabled:kind==='grant'});if(result.error)throw result.error;await loadAdminPlayers();status.textContent=kind==='coins'?'Moedas enviadas para '+name+'.':'Acesso atualizado para '+name+'.';if(accountUser&&accountUser.id===player.player_id)syncGiftCoins()}catch(e){status.textContent='Não foi possível concluir: '+(e.message||'verifique a conexão.')}finally{buttons.forEach(id=>$(id).disabled=false)}}
+$('giveSanta').onclick=async()=>{const p=adminPlayers.find(x=>x.player_id===$('adminPlayer').value);if(!p){$('manageStatus').textContent='Selecione um jogador.';return}if(!confirm('Liberar Papai Noel para este jogador?'))return;try{const {error}=await sb.rpc('nico_admin_grant_santa',{p_user:p.player_id});if(error)throw error;$('manageStatus').textContent='Papai Noel liberado.';if(walletUid===p.player_id)walletRefresh()}catch(e){$('manageStatus').textContent='Não foi possível liberar: '+(e.message||'verifique a conexão.')}};
 $('giveCoins').onclick=()=>adminAction('coins');$('grantAdmin').onclick=()=>adminAction('grant');$('revokeAdmin').onclick=()=>adminAction('revoke');
 
 if(sb){sb.auth.onAuthStateChange((_event,session)=>{setTimeout(()=>changeAuth(session?.user||null),0)});}else{authReady=true;$('accountMsg').textContent='Supabase indisponível. Verifique a conexão.';maybePromptAccount()}
@@ -1981,18 +2241,19 @@ function mpDisplay(){const r=mpRoom,u=accountUser?.id,other=r?(r.host===u?r.gues
  const list=$('mpPlayers');list.replaceChildren();if(!mpPlayers.length){const el=document.createElement('p');el.className='mp-small';el.textContent='Nenhum outro jogador online no momento.';list.appendChild(el)}else for(const p of mpPlayers){const row=document.createElement('div'),name=document.createElement('span'),button=document.createElement('button');row.className='mp-player';name.textContent=(validPlayerName(p.name)||'Jogador')+' · '+String(p.id).slice(0,8);button.textContent='Convidar';button.type='button';button.onclick=()=>mpInvitePlayer(p.id);row.appendChild(name);row.appendChild(button);list.appendChild(row)}$('mpStatus').textContent=mpMsg;
 }
 async function mpCall(method,args){if(!sb||!accountUser)throw Error('Entre na sua conta para jogar com um amigo.');const result=await sb.rpc(method,args);if(result.error)throw Error(result.error.message||'Falha na conexão.');return result.data}
-async function mpSync(){if(!accountUser||!sb||mpSyncing)return;mpSyncing=true;const uid=accountUser.id;try{const data=await mpCall('nico_mp_sync');if(accountUser?.id!==uid)return;mpPlayers=Array.isArray(data.players)?data.players:[];const old=mpRoom;mpRoom=data.room||null;if(old&&!mpRoom){mpMsg='O grupo foi encerrado ou o amigo ficou offline.';mpCloseChannel()}if(mpRoom&&(mpRoom.status==='ready'||mpRoom.status==='playing'))mpJoinChannel(mpRoom.id);if(mpRoom?.status==='playing'&&mpRoom.run_id&&mpRoom.run_id!==mpLastRun){mpLastRun=mpRoom.run_id;if(mpTimer)clearTimeout(mpTimer);const wait=Math.max(0,(Number(mpRoom.start_at)-Number(data.server_time))*1000);const run=mpRoom.run_id,room=mpRoom.id,selected=mpRoom.mode;mpMsg='Partida marcada! Preparando a corrida...';mpTimer=setTimeout(()=>{mpTimer=null;if(mpRoom?.id!==room||mpRoom?.run_id!==run)return;if(!['normal','nocoin','lava'].includes(selected))return;mode=selected;$('mpOverlay').style.display='none';$('mpInvite').style.display='none';reset();last=performance.now()},wait)}mpDisplay()}catch(e){mpMsg='Não foi possível conectar ao multiplayer. Verifique a conexão.';if($('mpOverlay').style.display==='flex')mpDisplay()}finally{mpSyncing=false}}
+async function mpSync(){if(!accountUser||!sb||mpSyncing)return;mpSyncing=true;const uid=accountUser.id,requestStarted=performance.now();try{const data=await mpCall('nico_mp_sync');if(accountUser?.id!==uid)return;mpPlayers=Array.isArray(data.players)?data.players:[];const old=mpRoom;mpRoom=data.room||null;if(old&&!mpRoom){mpMsg='O grupo foi encerrado ou o amigo ficou offline.';mpCloseChannel()}if(mpRoom&&(mpRoom.status==='ready'||mpRoom.status==='playing'))mpJoinChannel(mpRoom.id);if(mpRoom?.status==='playing'&&mpRoom.run_id&&mpRoom.run_id!==mpLastRun){mpLastRun=mpRoom.run_id;if(mpTimer)clearTimeout(mpTimer);const wait=Math.max(0,(Number(mpRoom.start_at)-Number(data.server_time))*1000-Math.max(0,performance.now()-requestStarted)/2);const run=mpRoom.run_id,room=mpRoom.id,selected=mpRoom.mode;mpMsg='Partida marcada! Preparando a corrida...';mpTimer=setTimeout(()=>{mpTimer=null;if(mpRoom?.id!==room||mpRoom?.run_id!==run)return;if(!['normal','nocoin','lava'].includes(selected))return;mode=selected;$('mpOverlay').style.display='none';$('mpInvite').style.display='none';reset();last=performance.now()},wait)}mpDisplay()}catch(e){mpMsg='Não foi possível conectar ao multiplayer. Verifique a conexão.';if($('mpOverlay').style.display==='flex')mpDisplay()}finally{mpSyncing=false}}
 async function mpInvitePlayer(id){try{mpMsg='Enviando convite...';mpDisplay();await mpCall('nico_mp_invite',{p_guest:id});mpMsg='Convite enviado.';await mpSync()}catch(e){mpMsg=e.message;mpDisplay()}}
 async function mpReply(accept){if(!mpRoom)return;try{await mpCall('nico_mp_reply',{p_room:mpRoom.id,p_accept:accept});$('mpInvite').style.display='none';mpMsg=accept?'Convite aceito.':'Convite recusado.';await mpSync();if(accept)$('mpOverlay').style.display='flex'}catch(e){mpMsg=e.message;await mpSync()}}
 async function mpLeaveGroup(){try{await mpCall('nico_mp_leave');mpResetLocal();mpMsg='Você saiu do grupo.';if(state==='menu')$('mpOverlay').style.display='flex';await mpSync()}catch(e){mpMsg=e.message;mpDisplay()}}
 function mpCloseChannel(){if(mpChannel&&sb)sb.removeChannel(mpChannel);mpChannel=null;mpChannelRoom='';mpPeer=null;mpAvatar.visible=false}
 async function mpJoinChannel(roomId){if(!sb||mpChannelRoom===roomId)return;mpCloseChannel();mpChannelRoom=roomId;try{await sb.realtime.setAuth();if(mpRoom?.id!==roomId||mpChannelRoom!==roomId)return;const ch=sb.channel('nico-mp:'+roomId,{config:{private:true,broadcast:{self:false}}});mpChannel=ch;ch.on('broadcast',{event:'pos'},({payload:p})=>{if(!mpRoom||!accountUser||p?.user!==(mpRoom.host===accountUser.id?mpRoom.guest:mpRoom.host)||p.run!==mpRoom.run_id)return;if(!Number.isFinite(p.dist)||!Number.isFinite(p.x)||!Number.isFinite(p.y)||Math.abs(p.x)>12||p.y< -5||p.y>100||p.dist<0||p.dist>100000000)return;mpPeer=p;mpPeerAt=performance.now()});ch.subscribe(status=>{if((status==='CHANNEL_ERROR'||status==='TIMED_OUT')&&mpChannel===ch){mpMsg='Conexão em tempo real indisponível. Tentando novamente...';mpCloseChannel()}})}catch(e){mpCloseChannel();mpMsg='Não foi possível conectar o grupo em tempo real.'}}
-function mpSend(){if(!mpChannel||!mpRoom||mpRoom.status!=='playing'||!accountUser)return;try{mpChannel.send({type:'broadcast',event:'pos',payload:{user:accountUser.id,run:mpRoom.run_id,dist,x:hero.position.x,y:hero.position.y,playing:state==='play',board:boardT>0}})}catch(e){}}
-function mpRender(dt){if(!mpRoom||!mpPeer||!mpPeer.playing||!['play','pause'].includes(state)||performance.now()-mpPeerAt>2500){mpAvatar.visible=false;return}const relative=dist-mpPeer.dist;if(relative>10||relative< -90){mpAvatar.visible=false;return}mpAvatar.visible=true;const targetZ=Math.min(4,Math.max(-55,relative-3)),targetX=Math.max(-9,Math.min(9,mpPeer.x+.35));const a=1-Math.exp(-Math.max(0,dt)*9);mpAvatar.position.x+=(targetX-mpAvatar.position.x)*a;mpAvatar.position.y+=(mpPeer.y-mpAvatar.position.y)*a;mpAvatar.position.z+=(targetZ-mpAvatar.position.z)*a;mpAvatar.g.rotation.y=Math.PI;mpAvatar.legL.rotation.x=Math.sin(t*9)*.65;mpAvatar.legR.rotation.x=-Math.sin(t*9)*.65;mpAvatar.armL.rotation.x=-mpAvatar.legL.rotation.x*.6;mpAvatar.armR.rotation.x=-mpAvatar.legR.rotation.x*.6;mpAvatar.board.visible=!!mpPeer.board}
+function mpSend(){if(!mpChannel||!mpRoom||mpRoom.status!=='playing'||!accountUser)return;try{mpChannel.send({type:'broadcast',event:'pos',payload:{user:accountUser.id,run:mpRoom.run_id,dist,x:hero.position.x,y:hero.position.y,speed:state==='play'?speed:0,playing:state==='play',board:boardT>0}})}catch(e){}}
+function mpRender(dt){if(!mpRoom||!mpPeer||!mpPeer.playing||!['play','pause'].includes(state)||performance.now()-mpPeerAt>2500){mpAvatar.visible=false;return}const age=Math.max(0,(performance.now()-mpPeerAt)/1000),remoteSpeed=Number.isFinite(mpPeer.speed)?Math.max(0,Math.min(30,mpPeer.speed)):0,estimatedDist=mpPeer.dist+(age<.5?Math.min(age,.18)*remoteSpeed:0),relative=dist-estimatedDist;if(relative>10||relative< -90){mpAvatar.visible=false;return}mpAvatar.visible=true;const targetZ=Math.min(4,Math.max(-55,relative-3)),targetX=Math.max(-9,Math.min(9,mpPeer.x+.35));const a=1-Math.exp(-Math.max(0,dt)*15);mpAvatar.position.x+=(targetX-mpAvatar.position.x)*a;mpAvatar.position.y+=(mpPeer.y-mpAvatar.position.y)*a;mpAvatar.position.z+=(targetZ-mpAvatar.position.z)*a;mpAvatar.g.rotation.y=Math.PI;mpAvatar.legL.rotation.x=Math.sin(t*9)*.65;mpAvatar.legR.rotation.x=-Math.sin(t*9)*.65;mpAvatar.armL.rotation.x=-mpAvatar.legL.rotation.x*.6;mpAvatar.armR.rotation.x=-mpAvatar.legR.rotation.x*.6;mpAvatar.board.visible=!!mpPeer.board}
 $('openMultiplayer').onclick=()=>{if(!accountUser){$('accountMsg').textContent='Entre na conta para jogar com um amigo.';$('accountOverlay').style.display='flex';return}mpMsg='';$('mpOverlay').style.display='flex';mpDisplay();mpSync()};$('closeMultiplayer').onclick=()=>$('mpOverlay').style.display='none';$('mpAccept').onclick=()=>mpReply(true);$('mpReject').onclick=()=>mpReply(false);$('mpLeave').onclick=mpLeaveGroup;
 document.querySelectorAll('[data-mp-mode]').forEach(button=>button.onclick=async()=>{if(!mpRoom||mpRoom.host!==accountUser?.id)return;try{button.disabled=true;await mpCall('nico_mp_start',{p_room:mpRoom.id,p_mode:button.dataset.mpMode});mpMsg='Modo escolhido!';await mpSync()}catch(e){mpMsg=e.message;mpDisplay()}finally{button.disabled=false}});
-setInterval(mpSync,3000);setInterval(mpSend,150);
+setInterval(mpSync,1500);setInterval(mpSend,75);
 
+$('mapNormal').onclick=()=>chooseMap(false);$('mapChristmas').onclick=()=>chooseMap(true);updateMapAppearance();
 accountView();
 </script>
 
